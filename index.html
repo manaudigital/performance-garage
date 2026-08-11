@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Performance Garage | Automotive Specialists</title>
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Performance Garage | Automotive Specialists
+    </title>
 
     <meta
         name="description"
@@ -24,9 +32,15 @@
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
             background: #080808;
+
             color: #ffffff;
+
             line-height: 1.6;
         }
 
@@ -45,50 +59,69 @@
             margin: auto;
         }
 
+
         /* =========================
            NAVIGATION
         ========================= */
 
         nav {
             position: fixed;
+
             top: 0;
+
             width: 100%;
+
             z-index: 1000;
 
-            background: rgba(8, 8, 8, 0.92);
-            backdrop-filter: blur(12px);
+            background:
+                rgba(8, 8, 8, 0.92);
 
-            border-bottom: 1px solid #252525;
+            backdrop-filter:
+                blur(12px);
+
+            border-bottom:
+                1px solid #252525;
         }
+
 
         .nav-container {
             height: 78px;
 
             display: flex;
+
             align-items: center;
-            justify-content: space-between;
+
+            justify-content:
+                space-between;
         }
+
 
         .logo {
             font-size: 1.15rem;
+
             font-weight: 900;
 
             letter-spacing: 1px;
         }
 
+
         .logo span {
             color: #e3262e;
         }
 
+
         .nav-links {
             display: flex;
+
             gap: 30px;
 
             list-style: none;
 
             font-size: 0.9rem;
+
             font-weight: 700;
         }
+
 
         .nav-links a {
             color: #aaa;
@@ -96,28 +129,45 @@
             transition: 0.3s;
         }
 
+
         .nav-links a:hover {
             color: #e3262e;
         }
 
+
+        .nav-buttons {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+        }
+
+
         .nav-button {
             background: #e3262e;
+
             color: #ffffff;
 
-            padding: 11px 18px;
+            padding:
+                11px 18px;
 
             border-radius: 5px;
 
             font-size: 0.85rem;
+
             font-weight: 800;
 
             transition: 0.3s;
         }
 
+
         .nav-button:hover {
             background: #ffffff;
+
             color: #080808;
         }
+
 
         /* =========================
            HERO
@@ -127,6 +177,7 @@
             min-height: 100vh;
 
             display: flex;
+
             align-items: center;
 
             padding-top: 78px;
@@ -145,8 +196,10 @@
                 url("hero.PNG");
 
             background-size: cover;
+
             background-position: center;
         }
+
 
         .hero::after {
             content: "";
@@ -154,7 +207,9 @@
             position: absolute;
 
             left: 0;
+
             right: 0;
+
             bottom: 0;
 
             height: 180px;
@@ -166,22 +221,27 @@
                 );
         }
 
+
         .hero-content {
             position: relative;
+
             z-index: 2;
 
             max-width: 700px;
         }
 
+
         .eyebrow {
             display: inline-flex;
 
             align-items: center;
+
             gap: 9px;
 
             color: #e3262e;
 
             font-size: 0.78rem;
+
             font-weight: 900;
 
             letter-spacing: 2px;
@@ -191,17 +251,21 @@
             margin-bottom: 22px;
         }
 
+
         .eyebrow::before {
             content: "";
 
             width: 30px;
+
             height: 2px;
 
             background: #e3262e;
         }
 
+
         .hero h1 {
-            font-size: clamp(3.4rem, 8vw, 7rem);
+            font-size:
+                clamp(3.4rem, 8vw, 7rem);
 
             line-height: 0.9;
 
@@ -212,9 +276,11 @@
             margin-bottom: 28px;
         }
 
+
         .hero h1 span {
             color: #e3262e;
         }
+
 
         .hero-text {
             color: #b5b5b5;
@@ -226,6 +292,7 @@
             margin-bottom: 35px;
         }
 
+
         .hero-buttons {
             display: flex;
 
@@ -234,10 +301,12 @@
             flex-wrap: wrap;
         }
 
+
         .btn {
             display: inline-block;
 
-            padding: 15px 24px;
+            padding:
+                15px 24px;
 
             border-radius: 5px;
 
@@ -246,30 +315,39 @@
             transition: 0.3s;
         }
 
+
         .btn-primary {
             background: #e3262e;
+
             color: #ffffff;
         }
 
+
         .btn-primary:hover {
-            transform: translateY(-3px);
+            transform:
+                translateY(-3px);
 
             box-shadow:
                 0 12px 35px
                 rgba(227, 38, 46, 0.25);
         }
 
+
         .btn-secondary {
-            border: 1px solid #444;
+            border:
+                1px solid #444;
 
             color: #ffffff;
         }
 
+
         .btn-secondary:hover {
-            border-color: #e3262e;
+            border-color:
+                #e3262e;
 
             color: #e3262e;
         }
+
 
         /* =========================
            STATS
@@ -278,9 +356,13 @@
         .stats {
             background: #0d0d0d;
 
-            border-top: 1px solid #222;
-            border-bottom: 1px solid #222;
+            border-top:
+                1px solid #222;
+
+            border-bottom:
+                1px solid #222;
         }
+
 
         .stats-grid {
             display: grid;
@@ -289,17 +371,22 @@
                 repeat(4, 1fr);
         }
 
-        .stat {
-            padding: 35px 20px;
 
-            border-right: 1px solid #222;
+        .stat {
+            padding:
+                35px 20px;
+
+            border-right:
+                1px solid #222;
 
             text-align: center;
         }
 
+
         .stat:last-child {
             border-right: none;
         }
+
 
         .stat-number {
             color: #ffffff;
@@ -308,6 +395,7 @@
 
             font-weight: 900;
         }
+
 
         .stat-label {
             color: #777;
@@ -319,6 +407,7 @@
             letter-spacing: 1px;
         }
 
+
         /* =========================
            GENERAL SECTIONS
         ========================= */
@@ -326,6 +415,7 @@
         section {
             padding: 110px 0;
         }
+
 
         .section-label {
             color: #e3262e;
@@ -341,8 +431,10 @@
             margin-bottom: 12px;
         }
 
+
         .section-title {
-            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-size:
+                clamp(2.2rem, 5vw, 4rem);
 
             line-height: 1;
 
@@ -353,6 +445,7 @@
             margin-bottom: 20px;
         }
 
+
         .section-intro {
             color: #888;
 
@@ -360,6 +453,7 @@
 
             margin-bottom: 50px;
         }
+
 
         /* =========================
            SERVICES
@@ -374,10 +468,12 @@
             gap: 18px;
         }
 
+
         .service {
             background: #101010;
 
-            border: 1px solid #222;
+            border:
+                1px solid #222;
 
             padding: 32px;
 
@@ -386,11 +482,15 @@
             transition: 0.3s;
         }
 
-        .service:hover {
-            border-color: #e3262e;
 
-            transform: translateY(-4px);
+        .service:hover {
+            border-color:
+                #e3262e;
+
+            transform:
+                translateY(-4px);
         }
+
 
         .service-number {
             color: #e3262e;
@@ -402,6 +502,7 @@
             margin-bottom: 25px;
         }
 
+
         .service h3 {
             font-size: 1.35rem;
 
@@ -410,11 +511,13 @@
             margin-bottom: 10px;
         }
 
+
         .service p {
             color: #888;
 
             font-size: 0.94rem;
         }
+
 
         /* =========================
            WHY US
@@ -423,9 +526,13 @@
         .why {
             background: #0d0d0d;
 
-            border-top: 1px solid #222;
-            border-bottom: 1px solid #222;
+            border-top:
+                1px solid #222;
+
+            border-bottom:
+                1px solid #222;
         }
+
 
         .why-grid {
             display: grid;
@@ -438,11 +545,13 @@
             align-items: center;
         }
 
+
         .why-text p {
             color: #999;
 
             margin-bottom: 18px;
         }
+
 
         .feature-list {
             display: grid;
@@ -452,6 +561,7 @@
             margin-top: 30px;
         }
 
+
         .feature {
             display: flex;
 
@@ -460,13 +570,16 @@
             align-items: flex-start;
         }
 
+
         .feature-icon {
             width: 32px;
+
             height: 32px;
 
             flex-shrink: 0;
 
             display: grid;
+
             place-items: center;
 
             background: #e3262e;
@@ -478,9 +591,11 @@
             font-weight: 900;
         }
 
+
         .feature h4 {
             margin-bottom: 2px;
         }
+
 
         .feature p {
             color: #777;
@@ -488,10 +603,12 @@
             font-size: 0.88rem;
         }
 
+
         .why-box {
             min-height: 450px;
 
-            border: 1px solid #282828;
+            border:
+                1px solid #282828;
 
             border-radius: 8px;
 
@@ -509,11 +626,14 @@
             padding: 35px;
         }
 
+
         .why-box-text {
-            border-left: 3px solid #e3262e;
+            border-left:
+                3px solid #e3262e;
 
             padding-left: 20px;
         }
+
 
         .why-box-text strong {
             display: block;
@@ -525,6 +645,7 @@
             text-transform: uppercase;
         }
 
+
         .why-box-text span {
             color: #777;
 
@@ -534,6 +655,7 @@
 
             letter-spacing: 1px;
         }
+
 
         /* =========================
            REVIEWS
@@ -548,15 +670,18 @@
             gap: 18px;
         }
 
+
         .review {
             background: #101010;
 
-            border: 1px solid #222;
+            border:
+                1px solid #222;
 
             border-radius: 8px;
 
             padding: 28px;
         }
+
 
         .stars {
             color: #e3262e;
@@ -566,21 +691,25 @@
             margin-bottom: 18px;
         }
 
+
         .review p {
             color: #aaa;
 
             margin-bottom: 20px;
         }
 
+
         .review-name {
             font-weight: 900;
         }
+
 
         .review-type {
             color: #666;
 
             font-size: 0.78rem;
         }
+
 
         /* =========================
            CTA
@@ -597,13 +726,16 @@
                 );
         }
 
+
         .cta p {
             color: #888;
 
             max-width: 550px;
 
-            margin: 0 auto 30px;
+            margin:
+                0 auto 30px;
         }
+
 
         /* =========================
            CONTACT
@@ -618,15 +750,18 @@
             gap: 20px;
         }
 
+
         .contact-card {
             background: #101010;
 
-            border: 1px solid #222;
+            border:
+                1px solid #222;
 
             border-radius: 8px;
 
             padding: 30px;
         }
+
 
         .contact-card h3 {
             text-transform: uppercase;
@@ -634,14 +769,17 @@
             margin-bottom: 10px;
         }
 
+
         .contact-card p,
         .contact-card a {
             color: #888;
         }
 
+
         .contact-card a:hover {
             color: #e3262e;
         }
+
 
         /* =========================
            FOOTER
@@ -650,22 +788,26 @@
         footer {
             padding: 35px 0;
 
-            border-top: 1px solid #222;
+            border-top:
+                1px solid #222;
 
             color: #666;
 
             font-size: 0.82rem;
         }
 
+
         .footer-container {
             display: flex;
 
             align-items: center;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
 
             gap: 20px;
         }
+
 
         .footer-brand {
             color: #ffffff;
@@ -673,9 +815,35 @@
             font-weight: 900;
         }
 
+
         .footer-brand span {
             color: #e3262e;
         }
+
+
+        /* =========================
+           WORKSHOP DASHBOARD LINK
+        ========================= */
+
+        .dashboard-link {
+            color: #555;
+
+            font-size: 0.7rem;
+
+            font-weight: 800;
+
+            letter-spacing: 0.7px;
+
+            text-transform: uppercase;
+
+            transition: 0.3s;
+        }
+
+
+        .dashboard-link:hover {
+            color: #e3262e;
+        }
+
 
         /* =========================
            MOBILE
@@ -684,30 +852,37 @@
         @media (max-width: 800px) {
 
             .nav-links,
-            .nav-button {
+            .nav-buttons {
                 display: none;
             }
+
 
             .hero {
                 background-position: center;
             }
 
+
             .hero h1 {
                 letter-spacing: -3px;
             }
+
 
             .stats-grid {
                 grid-template-columns:
                     repeat(2, 1fr);
             }
 
+
             .stat:nth-child(2) {
                 border-right: none;
             }
 
+
             .stat:nth-child(-n+2) {
-                border-bottom: 1px solid #222;
+                border-bottom:
+                    1px solid #222;
             }
+
 
             .services-grid,
             .reviews-grid,
@@ -716,37 +891,53 @@
                 grid-template-columns: 1fr;
             }
 
+
             .why-box {
                 min-height: 320px;
             }
 
+
             .footer-container {
                 flex-direction: column;
 
-                align-items: flex-start;
+                align-items:
+                    flex-start;
             }
+
 
             section {
                 padding: 80px 0;
             }
+
         }
 
     </style>
+
 </head>
+
 
 <body>
 
-    <!-- NAVIGATION -->
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
 
     <nav>
 
         <div class="container nav-container">
 
-            <a href="#" class="logo">
+
+            <a
+                href="index.html"
+                class="logo"
+            >
                 PERFORMANCE<span>.</span>
             </a>
 
+
             <ul class="nav-links">
+
 
                 <li>
                     <a href="#services">
@@ -754,11 +945,13 @@
                     </a>
                 </li>
 
+
                 <li>
                     <a href="#why">
                         Why Us
                     </a>
                 </li>
+
 
                 <li>
                     <a href="#reviews">
@@ -766,42 +959,66 @@
                     </a>
                 </li>
 
+
                 <li>
                     <a href="#contact">
                         Contact
                     </a>
                 </li>
 
+
             </ul>
 
-            <a
-                href="booking.html"
-                class="nav-button"
-            >
-                Book a Service
-            </a>
+
+            <div class="nav-buttons">
+
+
+                <a
+                    href="dashboard.html"
+                    class="nav-button"
+                >
+                    Workshop Dashboard
+                </a>
+
+
+                <a
+                    href="booking.html"
+                    class="nav-button"
+                >
+                    Book a Service
+                </a>
+
+
+            </div>
 
         </div>
 
     </nav>
 
 
-    <!-- HERO -->
+    <!-- =========================
+         HERO
+    ========================= -->
 
     <header class="hero">
 
+
         <div class="container">
 
+
             <div class="hero-content">
+
 
                 <div class="eyebrow">
                     Automotive Specialists
                 </div>
 
+
                 <h1>
                     Built To
                     <span>Perform.</span>
                 </h1>
+
 
                 <p class="hero-text">
                     Performance servicing, diagnostics
@@ -809,7 +1026,9 @@
                     who expect more from their vehicles.
                 </p>
 
+
                 <div class="hero-buttons">
+
 
                     <a
                         href="booking.html"
@@ -818,12 +1037,14 @@
                         Book a Service
                     </a>
 
+
                     <a
                         href="#services"
                         class="btn btn-secondary"
                     >
                         Explore Services
                     </a>
+
 
                 </div>
 
@@ -834,13 +1055,18 @@
     </header>
 
 
-    <!-- STATS -->
+    <!-- =========================
+         STATS
+    ========================= -->
 
     <section class="stats">
 
+
         <div class="container">
 
+
             <div class="stats-grid">
+
 
                 <div class="stat">
 
@@ -854,6 +1080,7 @@
 
                 </div>
 
+
                 <div class="stat">
 
                     <div class="stat-number">
@@ -865,6 +1092,7 @@
                     </div>
 
                 </div>
+
 
                 <div class="stat">
 
@@ -878,6 +1106,7 @@
 
                 </div>
 
+
                 <div class="stat">
 
                     <div class="stat-number">
@@ -885,10 +1114,11 @@
                     </div>
 
                     <div class="stat-label">
-                        Online Booking
+                        Support
                     </div>
 
                 </div>
+
 
             </div>
 
@@ -897,20 +1127,26 @@
     </section>
 
 
-    <!-- SERVICES -->
+    <!-- =========================
+         SERVICES
+    ========================= -->
 
     <section id="services">
 
+
         <div class="container">
+
 
             <div class="section-label">
                 What We Do
             </div>
 
+
             <h2 class="section-title">
                 Serious work.<br>
                 Serious results.
             </h2>
+
 
             <p class="section-intro">
                 From routine maintenance to performance
@@ -918,7 +1154,9 @@
                 quality workmanship and reliable results.
             </p>
 
+
             <div class="services-grid">
+
 
                 <div class="service">
 
@@ -938,6 +1176,7 @@
 
                 </div>
 
+
                 <div class="service">
 
                     <div class="service-number">
@@ -955,6 +1194,7 @@
                     </p>
 
                 </div>
+
 
                 <div class="service">
 
@@ -974,6 +1214,7 @@
 
                 </div>
 
+
                 <div class="service">
 
                     <div class="service-number">
@@ -992,6 +1233,7 @@
 
                 </div>
 
+
             </div>
 
         </div>
@@ -999,27 +1241,35 @@
     </section>
 
 
-    <!-- WHY US -->
+    <!-- =========================
+         WHY US
+    ========================= -->
 
     <section
         id="why"
         class="why"
     >
 
+
         <div class="container">
+
 
             <div class="why-grid">
 
+
                 <div class="why-text">
+
 
                     <div class="section-label">
                         Why Performance Garage
                     </div>
 
+
                     <h2 class="section-title">
                         Built around<br>
                         your vehicle.
                     </h2>
+
 
                     <p>
                         We believe automotive work should be
@@ -1028,13 +1278,16 @@
                         it and what it will cost.
                     </p>
 
+
                     <div class="feature-list">
+
 
                         <div class="feature">
 
                             <div class="feature-icon">
                                 ✓
                             </div>
+
 
                             <div>
 
@@ -1051,11 +1304,13 @@
 
                         </div>
 
+
                         <div class="feature">
 
                             <div class="feature-icon">
                                 ✓
                             </div>
+
 
                             <div>
 
@@ -1072,11 +1327,13 @@
 
                         </div>
 
+
                         <div class="feature">
 
                             <div class="feature-icon">
                                 ✓
                             </div>
+
 
                             <div>
 
@@ -1093,11 +1350,14 @@
 
                         </div>
 
+
                     </div>
 
                 </div>
 
+
                 <div class="why-box">
+
 
                     <div class="why-box-text">
 
@@ -1112,7 +1372,9 @@
 
                     </div>
 
+
                 </div>
+
 
             </div>
 
@@ -1121,33 +1383,42 @@
     </section>
 
 
-    <!-- REVIEWS -->
+    <!-- =========================
+         REVIEWS
+    ========================= -->
 
     <section id="reviews">
 
+
         <div class="container">
+
 
             <div class="section-label">
                 Customer Reviews
             </div>
+
 
             <h2 class="section-title">
                 Don't take our<br>
                 word for it.
             </h2>
 
+
             <p class="section-intro">
                 A strong workshop is built on the people
                 who trust it with their vehicles.
             </p>
 
+
             <div class="reviews-grid">
+
 
                 <div class="review">
 
                     <div class="stars">
                         ★★★★★
                     </div>
+
 
                     <p>
                         "Great communication from start to
@@ -1155,9 +1426,11 @@
                         clearly and the car drives perfectly."
                     </p>
 
+
                     <div class="review-name">
                         Jordan M.
                     </div>
+
 
                     <div class="review-type">
                         Performance Upgrade
@@ -1165,11 +1438,13 @@
 
                 </div>
 
+
                 <div class="review">
 
                     <div class="stars">
                         ★★★★★
                     </div>
+
 
                     <p>
                         "Finally found a workshop that actually
@@ -1177,9 +1452,11 @@
                         properly."
                     </p>
 
+
                     <div class="review-name">
                         Daniel R.
                     </div>
+
 
                     <div class="review-type">
                         Diagnostics
@@ -1187,11 +1464,13 @@
 
                 </div>
 
+
                 <div class="review">
 
                     <div class="stars">
                         ★★★★★
                     </div>
+
 
                     <p>
                         "Professional service, fair pricing
@@ -1199,15 +1478,18 @@
                         Will definitely be back."
                     </p>
 
+
                     <div class="review-name">
                         Marcus T.
                     </div>
+
 
                     <div class="review-type">
                         General Service
                     </div>
 
                 </div>
+
 
             </div>
 
@@ -1216,26 +1498,33 @@
     </section>
 
 
-    <!-- CTA -->
+    <!-- =========================
+         CTA
+    ========================= -->
 
     <section class="cta">
 
+
         <div class="container">
+
 
             <div class="section-label">
                 Ready To Get Started?
             </div>
+
 
             <h2 class="section-title">
                 Your car.<br>
                 Our expertise.
             </h2>
 
+
             <p>
                 Whether it's routine maintenance or your
                 next performance project, let's talk about
                 what your vehicle needs.
             </p>
+
 
             <a
                 href="booking.html"
@@ -1244,32 +1533,41 @@
                 Book a Service
             </a>
 
+
         </div>
 
     </section>
 
 
-    <!-- CONTACT -->
+    <!-- =========================
+         CONTACT
+    ========================= -->
 
     <section id="contact">
 
+
         <div class="container">
+
 
             <div class="section-label">
                 Contact
             </div>
+
 
             <h2 class="section-title">
                 Let's get<br>
                 your car sorted.
             </h2>
 
+
             <p class="section-intro">
                 Contact Performance Garage to book a
                 service or talk through your vehicle's needs.
             </p>
 
+
             <div class="contact-grid">
+
 
                 <div class="contact-card">
 
@@ -1283,17 +1581,22 @@
 
                 </div>
 
+
                 <div class="contact-card">
 
                     <h3>
                         Email
                     </h3>
 
-                    <a href="mailto:hello@performancegarage.co.nz">
+
+                    <a
+                        href="mailto:hello@performancegarage.co.nz"
+                    >
                         hello@performancegarage.co.nz
                     </a>
 
                 </div>
+
 
                 <div class="contact-card">
 
@@ -1307,6 +1610,7 @@
 
                 </div>
 
+
                 <div class="contact-card">
 
                     <h3>
@@ -1319,6 +1623,7 @@
 
                 </div>
 
+
             </div>
 
         </div>
@@ -1326,27 +1631,44 @@
     </section>
 
 
-    <!-- FOOTER -->
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
     <footer>
 
+
         <div class="container footer-container">
+
 
             <div class="footer-brand">
                 PERFORMANCE<span>.</span>
             </div>
 
+
             <div>
                 © 2026 Performance Garage
             </div>
+
+
+            <a
+                href="dashboard.html"
+                class="dashboard-link"
+            >
+                Workshop Dashboard →
+            </a>
+
 
             <div>
                 Demo website by ManaU Digital
             </div>
 
+
         </div>
 
     </footer>
 
+
 </body>
+
 </html>
