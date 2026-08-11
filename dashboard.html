@@ -1,1117 +1,937 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
-<title>
-    Workshop Dashboard | Performance Garage
-</title>
+<title>Workshop Dashboard | Performance Garage</title>
 
 <style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#080808;
-    color:#fff;
-    min-height:100vh;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #080808;
+    color: #fff;
+    min-height: 100vh;
 }
 
-button{
-    font:inherit;
-    cursor:pointer;
+button {
+    font: inherit;
+    cursor: pointer;
 }
 
-a{
-    color:inherit;
-    text-decoration:none;
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
-/* =========================
-   SIDEBAR
-========================= */
+/* SIDEBAR */
 
-.sidebar{
-    position:fixed;
-    top:0;
-    left:0;
-    bottom:0;
-
-    width:240px;
-
-    background:#0d0d0d;
-    border-right:1px solid #222;
-
-    padding:28px 18px;
-
-    z-index:100;
+.sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: 240px;
+    background: #0d0d0d;
+    border-right: 1px solid #222;
+    padding: 28px 18px;
+    z-index: 100;
 }
 
-.brand{
-    display:block;
-
-    padding:0 12px 30px;
-
-    font-size:1.05rem;
-    font-weight:900;
-    letter-spacing:1px;
+.brand {
+    display: block;
+    padding: 0 12px 30px;
+    font-size: 1.05rem;
+    font-weight: 900;
+    letter-spacing: 1px;
 }
 
-.brand span{
-    color:#e3262e;
+.brand span {
+    color: #e3262e;
 }
 
-.nav-label{
-    color:#444;
-
-    font-size:.62rem;
-    font-weight:900;
-    letter-spacing:1.5px;
-
-    text-transform:uppercase;
-
-    padding:0 12px 10px;
+.nav-label {
+    color: #444;
+    font-size: .62rem;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 0 12px 10px;
 }
 
-.side-nav{
-    display:grid;
-    gap:5px;
+.side-nav {
+    display: grid;
+    gap: 5px;
 }
 
-.side-nav button{
-    width:100%;
-
-    display:flex;
-    align-items:center;
-    gap:12px;
-
-    padding:12px;
-
-    border:none;
-    border-radius:6px;
-
-    background:transparent;
-
-    color:#777;
-
-    text-align:left;
-
-    font-size:.82rem;
-    font-weight:700;
-
-    transition:.2s;
+.side-nav button {
+    width: 100%;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: #777;
+    text-align: left;
+    font-size: .82rem;
+    font-weight: 700;
 }
 
 .side-nav button:hover,
-.side-nav button.active{
-    background:#171717;
-    color:#fff;
+.side-nav button.active {
+    background: #171717;
+    color: #fff;
 }
 
-.side-nav button.active{
-    box-shadow:inset 3px 0 #e3262e;
+.side-nav button.active {
+    box-shadow: inset 3px 0 #e3262e;
 }
 
-.nav-icon{
-    width:22px;
-    color:#555;
-    text-align:center;
+.nav-icon {
+    width: 22px;
+    text-align: center;
 }
 
-.side-nav button.active .nav-icon{
-    color:#e3262e;
+.sidebar-bottom {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #222;
 }
 
-.sidebar-bottom{
-    position:absolute;
-    left:18px;
-    right:18px;
-    bottom:25px;
-
-    padding-top:20px;
-
-    border-top:1px solid #222;
+.workshop-status {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #777;
+    font-size: .72rem;
 }
 
-.workshop-status{
-    display:flex;
-    align-items:center;
-    gap:9px;
-
-    color:#777;
-    font-size:.72rem;
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #38c172;
 }
-
-.status-dot{
-    width:7px;
-    height:7px;
 
-    border-radius:50%;
+/* MAIN */
 
-    background:#38c172;
-
-    box-shadow:0 0 10px rgba(56,193,114,.45);
+.main {
+    margin-left: 240px;
+    min-height: 100vh;
 }
-
-/* =========================
-   MAIN
-========================= */
 
-.main{
-    margin-left:240px;
-    min-height:100vh;
+.topbar {
+    height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 38px;
+    border-bottom: 1px solid #222;
+    background: rgba(8,8,8,.94);
 }
-
-.topbar{
-    height:76px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0 38px;
 
-    border-bottom:1px solid #222;
-
-    background:rgba(8,8,8,.94);
+.topbar-left {
+    display: flex;
+    gap: 10px;
 }
 
-.topbar-left{
-    display:flex;
-    align-items:center;
-    gap:10px;
+.topbar-left span {
+    color: #555;
+    font-size: .8rem;
 }
 
-.topbar-left span{
-    color:#555;
-    font-size:.8rem;
+.topbar-left strong {
+    font-size: .85rem;
 }
 
-.topbar-left strong{
-    font-size:.85rem;
+.avatar {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #202020;
+    font-size: .72rem;
+    font-weight: 900;
 }
-
-.avatar{
-    width:34px;
-    height:34px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:50%;
 
-    background:#202020;
-
-    font-size:.72rem;
-    font-weight:900;
+.content {
+    width: min(1400px, 92%);
+    margin: auto;
+    padding: 38px 0 70px;
 }
-
-/* =========================
-   CONTENT
-========================= */
 
-.content{
-    width:min(1400px,92%);
-    margin:auto;
-
-    padding:38px 0 70px;
+.page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    margin-bottom: 30px;
 }
-
-.page-heading{
-    display:flex;
-    align-items:flex-end;
-    justify-content:space-between;
-
-    gap:20px;
 
-    margin-bottom:30px;
+.eyebrow {
+    color: #e3262e;
+    font-size: .68rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 7px;
 }
 
-.eyebrow{
-    color:#e3262e;
-
-    font-size:.68rem;
-    font-weight:900;
-    letter-spacing:2px;
-
-    text-transform:uppercase;
-
-    margin-bottom:7px;
+.page-heading h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1;
+    text-transform: uppercase;
 }
 
-.page-heading h1{
-    font-size:clamp(2rem,4vw,3rem);
+.page-heading p {
+    color: #666;
+    margin-top: 8px;
+    font-size: .85rem;
+}
 
-    line-height:1;
+.date-display {
+    color: #777;
+    font-size: .75rem;
+}
 
-    letter-spacing:-1.5px;
+/* STATS */
 
-    text-transform:uppercase;
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 25px;
 }
 
-.page-heading p{
-    color:#666;
-    margin-top:8px;
-    font-size:.85rem;
+.stat-card {
+    background: #101010;
+    border: 1px solid #242424;
+    border-radius: 8px;
+    padding: 22px;
 }
 
-.date-display{
-    color:#777;
-    font-size:.75rem;
-    text-align:right;
+.stat-label {
+    color: #666;
+    font-size: .65rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
 }
-
-/* =========================
-   STATS
-========================= */
 
-.stats-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-
-    gap:14px;
-
-    margin-bottom:25px;
+.stat-number {
+    font-size: 2rem;
+    font-weight: 900;
 }
-
-.stat-card{
-    background:#101010;
 
-    border:1px solid #242424;
-
-    border-radius:8px;
-
-    padding:22px;
+.stat-change {
+    color: #38c172;
+    font-size: .68rem;
+    margin-top: 10px;
 }
 
-.stat-label{
-    color:#666;
+/* PANELS */
 
-    font-size:.65rem;
-    font-weight:900;
-    letter-spacing:1px;
-
-    text-transform:uppercase;
-
-    margin-bottom:10px;
+.panel {
+    background: #101010;
+    border: 1px solid #242424;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-.stat-number{
-    font-size:2rem;
-    font-weight:900;
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 22px;
+    border-bottom: 1px solid #222;
 }
 
-.stat-change{
-    color:#38c172;
-    font-size:.68rem;
-    margin-top:10px;
+.panel-header h2 {
+    font-size: .95rem;
+    text-transform: uppercase;
 }
 
-.stat-change.neutral{
-    color:#666;
+.panel-header span {
+    color: #555;
+    font-size: .68rem;
 }
-
-/* =========================
-   PANELS
-========================= */
 
-.panel{
-    background:#101010;
-
-    border:1px solid #242424;
-
-    border-radius:8px;
-
-    overflow:hidden;
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.6fr .9fr;
+    gap: 18px;
 }
 
-.panel-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+/* BOOKINGS */
 
-    padding:20px 22px;
-
-    border-bottom:1px solid #222;
+.booking {
+    padding: 20px 22px;
+    border-bottom: 1px solid #1d1d1d;
 }
 
-.panel-header h2{
-    font-size:.95rem;
-    text-transform:uppercase;
+.booking:last-child {
+    border-bottom: none;
 }
 
-.panel-header span{
-    color:#555;
-    font-size:.68rem;
+.booking-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
 }
-
-.dashboard-grid{
-    display:grid;
 
-    grid-template-columns:
-        minmax(0,1.6fr)
-        minmax(280px,.9fr);
-
-    gap:18px;
+.customer {
+    display: flex;
+    gap: 13px;
 }
-
-/* =========================
-   BOOKINGS
-========================= */
 
-.booking{
-    padding:20px 22px;
-
-    border-bottom:1px solid #1d1d1d;
+.customer-avatar {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 6px;
+    background: #1b1b1b;
+    font-size: .7rem;
+    font-weight: 900;
 }
 
-.booking:last-child{
-    border-bottom:none;
+.customer-name {
+    font-size: .86rem;
+    font-weight: 900;
 }
 
-.booking-top{
-    display:flex;
-    align-items:flex-start;
-    justify-content:space-between;
-    gap:15px;
+.customer-contact {
+    color: #555;
+    font-size: .68rem;
 }
 
-.customer{
-    display:flex;
-    gap:13px;
+.booking-status {
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: .58rem;
+    font-weight: 900;
+    text-transform: uppercase;
 }
-
-.customer-avatar{
-    width:38px;
-    height:38px;
 
-    display:grid;
-    place-items:center;
-
-    border-radius:6px;
-
-    background:#1b1b1b;
-
-    font-size:.7rem;
-    font-weight:900;
+.status-new {
+    background: #261012;
+    color: #e3262e;
 }
 
-.customer-name{
-    font-size:.86rem;
-    font-weight:900;
+.status-confirmed {
+    background: #0d2118;
+    color: #38c172;
 }
 
-.customer-contact{
-    color:#555;
-    font-size:.68rem;
+.booking-details {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 15px;
+    margin: 18px 0 0 51px;
+    padding-top: 15px;
+    border-top: 1px solid #1d1d1d;
 }
-
-.booking-status{
-    padding:5px 8px;
-
-    border-radius:4px;
 
-    font-size:.58rem;
-    font-weight:900;
-    letter-spacing:.7px;
-
-    text-transform:uppercase;
+.detail-label {
+    color: #4d4d4d;
+    font-size: .58rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 4px;
 }
 
-.status-new{
-    background:#261012;
-    color:#e3262e;
+.detail-value {
+    color: #ccc;
+    font-size: .73rem;
+    font-weight: 700;
 }
 
-.status-confirmed{
-    background:#0d2118;
-    color:#38c172;
+.booking-actions {
+    display: flex;
+    gap: 8px;
+    margin: 15px 0 0 51px;
 }
-
-.booking-details{
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:15px;
-
-    margin:18px 0 0 51px;
 
-    padding-top:15px;
-
-    border-top:1px solid #1d1d1d;
+.small-btn {
+    padding: 8px 12px;
+    border: 1px solid #2c2c2c;
+    border-radius: 4px;
+    background: transparent;
+    color: #888;
+    font-size: .62rem;
+    font-weight: 900;
+    text-transform: uppercase;
 }
-
-.detail-label{
-    color:#4d4d4d;
 
-    font-size:.58rem;
-    font-weight:900;
-    letter-spacing:.8px;
-
-    text-transform:uppercase;
-
-    margin-bottom:4px;
+.small-btn:hover {
+    border-color: #e3262e;
+    color: #fff;
 }
-
-.detail-value{
-    color:#ccc;
 
-    font-size:.73rem;
-    font-weight:700;
+.small-btn.primary {
+    border-color: #e3262e;
+    background: #e3262e;
+    color: #fff;
 }
 
-.booking-actions{
-    display:flex;
+/* AUTOMATION */
 
-    gap:8px;
-
-    margin:15px 0 0 51px;
+.automation {
+    padding: 22px;
 }
-
-.small-btn{
-    padding:8px 12px;
-
-    border:1px solid #2c2c2c;
-    border-radius:4px;
-
-    background:transparent;
-    color:#888;
 
-    font-size:.62rem;
-    font-weight:900;
-
-    text-transform:uppercase;
+.automation-intro {
+    color: #666;
+    font-size: .73rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
 }
 
-.small-btn:hover{
-    border-color:#e3262e;
-    color:#fff;
+.timeline {
+    position: relative;
+    padding-left: 30px;
 }
 
-.small-btn.primary{
-    border-color:#e3262e;
-    background:#e3262e;
-    color:#fff;
+.timeline::before {
+    content: "";
+    position: absolute;
+    top: 7px;
+    bottom: 7px;
+    left: 7px;
+    width: 1px;
+    background: #2a2a2a;
 }
-
-/* =========================
-   AUTOMATION
-========================= */
 
-.automation{
-    padding:22px;
+.timeline-item {
+    position: relative;
+    padding-bottom: 24px;
 }
 
-.automation-intro{
-    color:#666;
-    font-size:.73rem;
-    line-height:1.6;
-    margin-bottom:25px;
+.timeline-dot {
+    position: absolute;
+    top: 4px;
+    left: -27px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 3px solid #101010;
+    background: #303030;
 }
 
-.timeline{
-    position:relative;
-    padding-left:30px;
+.timeline-item.complete .timeline-dot {
+    background: #38c172;
 }
-
-.timeline::before{
-    content:"";
-
-    position:absolute;
-
-    top:7px;
-    bottom:7px;
-    left:7px;
 
-    width:1px;
-
-    background:#2a2a2a;
+.timeline-item.current .timeline-dot {
+    background: #e3262e;
 }
 
-.timeline-item{
-    position:relative;
-    padding-bottom:24px;
+.timeline-title {
+    font-size: .75rem;
+    font-weight: 900;
 }
 
-.timeline-item:last-child{
-    padding-bottom:0;
+.timeline-copy {
+    color: #555;
+    font-size: .66rem;
 }
-
-.timeline-dot{
-    position:absolute;
-
-    top:4px;
-    left:-27px;
-
-    width:15px;
-    height:15px;
-
-    border-radius:50%;
 
-    border:3px solid #101010;
+/* QUOTE */
 
-    background:#303030;
-
-    box-shadow:0 0 0 1px #333;
+.quote-panel {
+    margin-top: 18px;
 }
 
-.timeline-item.complete .timeline-dot{
-    background:#38c172;
-    box-shadow:0 0 0 1px #38c172;
+.quote-body {
+    padding: 22px;
 }
 
-.timeline-item.current .timeline-dot{
-    background:#e3262e;
-    box-shadow:
-        0 0 0 1px #e3262e,
-        0 0 12px rgba(227,38,46,.35);
+.quote-customer {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #222;
 }
 
-.timeline-title{
-    font-size:.75rem;
-    font-weight:900;
+.quote-customer h3 {
+    font-size: .9rem;
 }
 
-.timeline-copy{
-    color:#555;
-    font-size:.66rem;
-    line-height:1.5;
+.quote-customer p {
+    color: #666;
+    font-size: .68rem;
+    margin-top: 4px;
 }
-
-/* =========================
-   QUOTE PANEL
-========================= */
 
-.quote-panel{
-    margin-top:18px;
+.quote-status {
+    padding: 6px 9px;
+    border-radius: 4px;
+    background: #201b0e;
+    color: #d6a93d;
+    font-size: .58rem;
+    font-weight: 900;
+    text-transform: uppercase;
 }
 
-.quote-body{
-    padding:22px;
+.quote-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 0;
+    border-bottom: 1px solid #1c1c1c;
+    color: #aaa;
+    font-size: .73rem;
 }
 
-.quote-customer{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-
-    padding-bottom:18px;
-
-    border-bottom:1px solid #222;
+.quote-line span:last-child {
+    color: #fff;
+    font-weight: 800;
 }
 
-.quote-customer h3{
-    font-size:.9rem;
+.quote-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 18px 0;
+    font-weight: 900;
 }
 
-.quote-customer p{
-    color:#666;
-    font-size:.68rem;
-    margin-top:4px;
+.quote-total span:last-child {
+    color: #e3262e;
+    font-size: 1.25rem;
 }
-
-.quote-status{
-    padding:6px 9px;
 
-    border-radius:4px;
-
-    background:#201b0e;
-    color:#d6a93d;
-
-    font-size:.58rem;
-    font-weight:900;
-
-    text-transform:uppercase;
+.quote-actions {
+    display: flex;
+    gap: 8px;
 }
-
-.quote-line{
-    display:flex;
 
-    justify-content:space-between;
-
-    padding:13px 0;
-
-    border-bottom:1px solid #1c1c1c;
-
-    color:#aaa;
-
-    font-size:.73rem;
+.quote-btn {
+    flex: 1;
+    padding: 11px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background: transparent;
+    color: #888;
+    font-size: .65rem;
+    font-weight: 900;
+    text-transform: uppercase;
 }
 
-.quote-line span:last-child{
-    color:#fff;
-    font-weight:800;
+.quote-btn.primary {
+    background: #e3262e;
+    border-color: #e3262e;
+    color: #fff;
 }
-
-.quote-total{
-    display:flex;
 
-    justify-content:space-between;
-
-    padding:18px 0;
-
-    font-size:.85rem;
-    font-weight:900;
+.quote-btn.approved {
+    background: #38c172;
+    border-color: #38c172;
+    color: #06140b;
 }
 
-.quote-total span:last-child{
-    color:#e3262e;
+/* LOWER */
 
-    font-size:1.25rem;
+.lower-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 18px;
 }
 
-.quote-actions{
-    display:flex;
-    gap:8px;
+.schedule-item {
+    display: grid;
+    grid-template-columns: 70px 1fr auto;
+    gap: 15px;
+    padding: 16px 22px;
+    border-bottom: 1px solid #1d1d1d;
 }
 
-.quote-btn{
-    flex:1;
-
-    padding:11px;
-
-    border:1px solid #333;
-    border-radius:5px;
+.schedule-time {
+    color: #e3262e;
+    font-size: .7rem;
+    font-weight: 900;
+}
 
-    background:transparent;
+.schedule-customer {
+    font-size: .76rem;
+    font-weight: 800;
+}
 
-    color:#888;
+.schedule-service,
+.schedule-bay {
+    color: #555;
+    font-size: .63rem;
+}
 
-    font-size:.65rem;
-    font-weight:900;
+/* QUICK ACTIONS */
 
-    text-transform:uppercase;
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+    padding: 22px;
 }
 
-.quote-btn:hover{
-    border-color:#e3262e;
-    color:#fff;
+.quick-action {
+    min-height: 90px;
+    padding: 15px;
+    border: 1px solid #272727;
+    border-radius: 6px;
+    background: #0c0c0c;
+    color: #fff;
+    text-align: left;
 }
 
-.quote-btn.primary{
-    background:#e3262e;
-    border-color:#e3262e;
-    color:#fff;
+.quick-action:hover {
+    border-color: #e3262e;
 }
 
-.quote-btn.approved{
-    background:#38c172;
-    border-color:#38c172;
-    color:#06140b;
+.quick-icon {
+    color: #e3262e;
 }
-
-/* =========================
-   LOWER GRID
-========================= */
-
-.lower-grid{
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
 
-    gap:18px;
-
-    margin-top:18px;
+.quick-action strong {
+    display: block;
+    font-size: .67rem;
+    text-transform: uppercase;
+    margin-top: 10px;
 }
-
-/* =========================
-   SCHEDULE
-========================= */
-
-.schedule-item{
-    display:grid;
-
-    grid-template-columns:70px 1fr auto;
 
-    align-items:center;
-
-    gap:15px;
+.quick-action span {
+    color: #555;
+    font-size: .58rem;
+}
 
-    padding:16px 22px;
+/* MODAL */
 
-    border-bottom:1px solid #1d1d1d;
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0,0,0,.82);
+    backdrop-filter: blur(8px);
+    z-index: 500;
 }
 
-.schedule-item:last-child{
-    border-bottom:none;
+.modal.active {
+    display: flex;
 }
 
-.schedule-time{
-    color:#e3262e;
-
-    font-size:.7rem;
-    font-weight:900;
+.modal-card {
+    width: min(700px,100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #111;
+    border: 1px solid #2b2b2b;
+    border-radius: 10px;
 }
 
-.schedule-customer{
-    font-size:.76rem;
-    font-weight:800;
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px;
+    border-bottom: 1px solid #242424;
 }
 
-.schedule-service{
-    color:#555;
-    font-size:.63rem;
-    margin-top:3px;
+.modal-header h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
 }
 
-.schedule-bay{
-    color:#555;
-    font-size:.62rem;
+.close-modal {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #2d2d2d;
+    border-radius: 5px;
+    background: transparent;
+    color: #777;
+    font-size: 1rem;
 }
-
-/* =========================
-   QUICK ACTIONS
-========================= */
-
-.quick-actions{
-    display:grid;
 
-    grid-template-columns:repeat(2,1fr);
-
-    gap:10px;
-
-    padding:22px;
+.modal-body {
+    padding: 24px;
 }
-
-.quick-action{
-    min-height:90px;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-
-    padding:15px;
 
-    border:1px solid #272727;
-    border-radius:6px;
+/* VEHICLE PROFILE */
 
-    background:#0c0c0c;
-
-    color:#fff;
-
-    text-align:left;
+.vehicle-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #242424;
 }
 
-.quick-action:hover{
-    border-color:#e3262e;
-    transform:translateY(-2px);
+.vehicle-label {
+    color: #e3262e;
+    font-size: .62rem;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 7px;
 }
 
-.quick-icon{
-    color:#e3262e;
+.vehicle-hero h3 {
+    font-size: 1.55rem;
+    text-transform: uppercase;
 }
 
-.quick-action strong{
-    font-size:.67rem;
-    text-transform:uppercase;
+.vehicle-subtitle {
+    color: #666;
+    font-size: .7rem;
+    margin-top: 5px;
 }
 
-.quick-action span{
-    color:#555;
-    font-size:.58rem;
+.job-status {
+    padding: 7px 10px;
+    border-radius: 4px;
+    background: #201b0e;
+    color: #d6a93d;
+    font-size: .58rem;
+    font-weight: 900;
+    text-transform: uppercase;
 }
-
-/* =========================
-   MODAL
-========================= */
-
-.modal{
-    position:fixed;
-
-    inset:0;
 
-    display:none;
-
-    align-items:center;
-    justify-content:center;
-
-    padding:20px;
-
-    background:rgba(0,0,0,.78);
-
-    backdrop-filter:blur(8px);
-
-    z-index:500;
+.vehicle-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+    margin-top: 18px;
 }
 
-.modal.active{
-    display:flex;
+.vehicle-card {
+    padding: 14px;
+    background: #0b0b0b;
+    border: 1px solid #222;
+    border-radius: 6px;
 }
-
-.modal-card{
-    width:min(600px,100%);
-
-    max-height:90vh;
-
-    overflow-y:auto;
-
-    background:#111;
 
-    border:1px solid #2b2b2b;
-
-    border-radius:10px;
+.vehicle-card small {
+    display: block;
+    color: #555;
+    font-size: .57rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 5px;
 }
-
-.modal-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
 
-    padding:22px;
-
-    border-bottom:1px solid #242424;
+.vehicle-card strong {
+    font-size: .72rem;
 }
 
-.modal-header h2{
-    font-size:1rem;
-    text-transform:uppercase;
+.profile-section {
+    margin-top: 22px;
 }
-
-.close-modal{
-    width:32px;
-    height:32px;
-
-    border:1px solid #2d2d2d;
-    border-radius:5px;
 
-    background:transparent;
-
-    color:#777;
-
-    font-size:1rem;
+.profile-section h4 {
+    font-size: .72rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
 }
 
-.modal-body{
-    padding:25px;
+.note-box {
+    padding: 15px;
+    background: #0b0b0b;
+    border: 1px solid #222;
+    border-left: 2px solid #e3262e;
+    border-radius: 5px;
 }
 
-.modal-grid{
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:15px;
+.note-box p {
+    color: #999;
+    font-size: .72rem;
+    line-height: 1.6;
 }
-
-.modal-detail{
-    padding:15px;
 
-    background:#0b0b0b;
-
-    border:1px solid #222;
-
-    border-radius:6px;
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 12px 0;
+    border-bottom: 1px solid #1d1d1d;
 }
-
-.modal-detail small{
-    display:block;
-
-    color:#555;
 
-    font-size:.58rem;
-    font-weight:900;
-    letter-spacing:1px;
-
-    text-transform:uppercase;
-
-    margin-bottom:6px;
+.history-item:last-child {
+    border-bottom: none;
 }
 
-.modal-detail strong{
-    font-size:.75rem;
+.history-main strong {
+    font-size: .7rem;
 }
-
-.modal-note{
-    margin-top:15px;
-
-    padding:15px;
-
-    background:#0b0b0b;
 
-    border:1px solid #222;
-
-    border-left:2px solid #e3262e;
-
-    border-radius:5px;
+.history-main p {
+    color: #555;
+    font-size: .62rem;
+    margin-top: 3px;
 }
-
-.modal-note small{
-    display:block;
-
-    color:#555;
-
-    font-size:.58rem;
-    font-weight:900;
 
-    text-transform:uppercase;
-
-    margin-bottom:6px;
+.history-date {
+    color: #666;
+    font-size: .6rem;
+    white-space: nowrap;
 }
-
-.modal-note p{
-    color:#999;
 
-    font-size:.75rem;
-
-    line-height:1.6;
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
 }
 
-.modal-actions{
-    display:flex;
-
-    gap:10px;
+.photo-box {
+    min-height: 90px;
+    display: grid;
+    place-items: center;
+    border: 1px dashed #333;
+    border-radius: 6px;
+    background: #0b0b0b;
+    color: #555;
+    font-size: .62rem;
+    text-align: center;
+}
 
-    margin-top:22px;
+.profile-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 24px;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* RESPONSIVE */
 
-@media(max-width:1050px){
+@media(max-width:1050px) {
 
-    .sidebar{
-        width:210px;
+    .sidebar {
+        width: 210px;
     }
 
-    .main{
-        margin-left:210px;
+    .main {
+        margin-left: 210px;
     }
 
-    .stats-grid{
-        grid-template-columns:repeat(2,1fr);
+    .stats-grid {
+        grid-template-columns: repeat(2,1fr);
     }
 
-    .dashboard-grid{
-        grid-template-columns:1fr;
+    .dashboard-grid {
+        grid-template-columns: 1fr;
     }
 }
 
-@media(max-width:760px){
+@media(max-width:760px) {
 
-    .sidebar{
-        position:static;
-
-        width:100%;
-
-        padding:15px;
-
-        border-right:none;
-
-        border-bottom:1px solid #222;
+    .sidebar {
+        position: static;
+        width: 100%;
+        padding: 15px;
+        border-right: none;
+        border-bottom: 1px solid #222;
     }
 
-    .brand{
-        padding:5px 5px 18px;
+    .brand {
+        padding: 5px 5px 18px;
     }
 
-    .side-nav{
-        display:flex;
-        overflow-x:auto;
+    .side-nav {
+        display: flex;
+        overflow-x: auto;
     }
 
-    .side-nav button{
-        width:auto;
-        white-space:nowrap;
+    .side-nav button {
+        width: auto;
+        white-space: nowrap;
     }
 
     .nav-label,
-    .sidebar-bottom{
-        display:none;
+    .sidebar-bottom {
+        display: none;
     }
 
-    .main{
-        margin-left:0;
+    .main {
+        margin-left: 0;
     }
 
-    .topbar{
-        padding:0 20px;
+    .topbar {
+        padding: 0 20px;
     }
 
-    .content{
-        width:92%;
-        padding-top:25px;
+    .content {
+        width: 92%;
+        padding-top: 25px;
     }
 
-    .page-heading{
-        align-items:flex-start;
-        flex-direction:column;
-    }
-
-    .date-display{
-        text-align:left;
+    .page-heading {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .stats-grid,
-    .lower-grid{
-        grid-template-columns:1fr;
+    .lower-grid {
+        grid-template-columns: 1fr;
     }
 }
 
-@media(max-width:520px){
+@media(max-width:520px) {
 
-    .booking-details{
-        grid-template-columns:1fr;
-        margin-left:0;
+    .booking-details {
+        grid-template-columns: 1fr;
+        margin-left: 0;
     }
 
-    .booking-actions{
-        margin-left:0;
+    .booking-actions {
+        margin-left: 0;
     }
 
-    .quick-actions{
-        grid-template-columns:1fr;
+    .quick-actions {
+        grid-template-columns: 1fr;
     }
 
-    .modal-grid{
-        grid-template-columns:1fr;
+    .vehicle-grid {
+        grid-template-columns: 1fr 1fr;
     }
 
-    .modal-actions{
-        flex-direction:column;
+    .photo-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .vehicle-hero {
+        flex-direction: column;
+    }
+
+    .profile-actions {
+        flex-direction: column;
     }
 }
-
 </style>
-
 </head>
 
 <body>
 
-
-<!-- =========================
-     SIDEBAR
-========================= -->
+<!-- SIDEBAR -->
 
 <aside class="sidebar">
 
-<a
-    href="index.html"
-    class="brand"
->
+<a href="index.html" class="brand">
     PERFORMANCE<span>.</span>
 </a>
 
-<div class="nav-label">
-    Workshop
-</div>
+<div class="nav-label">Workshop</div>
 
 <nav class="side-nav">
 
-<button class="active">
+<button class="active" onclick="topPage()">
     <span class="nav-icon">▦</span>
     Dashboard
 </button>
@@ -1147,50 +967,32 @@ a{
 </nav>
 
 <div class="sidebar-bottom">
-
-<div class="workshop-status">
-
-<span class="status-dot"></span>
-
-Workshop system online
-
-</div>
-
+    <div class="workshop-status">
+        <span class="status-dot"></span>
+        Workshop system online
+    </div>
 </div>
 
 </aside>
 
 
-<!-- =========================
-     MAIN
-========================= -->
+<!-- MAIN -->
 
 <main class="main">
-
 
 <header class="topbar">
 
 <div class="topbar-left">
-
-<strong>
-    Performance Garage
-</strong>
-
-<span>
-    / Workshop Dashboard
-</span>
-
+    <strong>Performance Garage</strong>
+    <span>/ Workshop Dashboard</span>
 </div>
 
-<div class="avatar">
-    PG
-</div>
+<div class="avatar">PG</div>
 
 </header>
 
 
 <div class="content">
-
 
 <!-- HEADING -->
 
@@ -1223,104 +1025,46 @@ Workshop system online
 
 <div class="stats-grid">
 
+<div class="stat-card">
+    <div class="stat-label">Today's Bookings</div>
+    <div class="stat-number">12</div>
+    <div class="stat-change">↑ 20% from last week</div>
+</div>
 
 <div class="stat-card">
-
-<div class="stat-label">
-    Today's Bookings
+    <div class="stat-label">Pending</div>
+    <div class="stat-number">4</div>
+    <div class="stat-change">Require attention</div>
 </div>
-
-<div class="stat-number">
-    12
-</div>
-
-<div class="stat-change">
-    ↑ 20% from last week
-</div>
-
-</div>
-
 
 <div class="stat-card">
-
-<div class="stat-label">
-    Pending
+    <div class="stat-label">Vehicles In Workshop</div>
+    <div class="stat-number">2</div>
+    <div class="stat-change">Currently active</div>
 </div>
-
-<div class="stat-number">
-    4
-</div>
-
-<div class="stat-change neutral">
-    Require attention
-</div>
-
-</div>
-
 
 <div class="stat-card">
-
-<div class="stat-label">
-    Vehicles In Workshop
-</div>
-
-<div class="stat-number">
-    2
-</div>
-
-<div class="stat-change neutral">
-    Currently active
+    <div class="stat-label">Completed</div>
+    <div class="stat-number">6</div>
+    <div class="stat-change">↑ 12% this week</div>
 </div>
 
 </div>
 
 
-<div class="stat-card">
-
-<div class="stat-label">
-    Completed
-</div>
-
-<div class="stat-number">
-    6
-</div>
-
-<div class="stat-change">
-    ↑ 12% this week
-</div>
-
-</div>
-
-
-</div>
-
-
-<!-- =========================
-     BOOKINGS + AUTOMATION
-========================= -->
+<!-- BOOKINGS + AUTOMATION -->
 
 <div class="dashboard-grid">
 
-
-<section
-    class="panel"
-    id="bookings"
->
+<section class="panel" id="bookings">
 
 <div class="panel-header">
-
-<h2>
-    New Bookings
-</h2>
-
-<span>
-    3 recent
-</span>
-
+    <h2>New Bookings</h2>
+    <span>3 recent</span>
 </div>
 
 
-<!-- BOOKING 1 -->
+<!-- BOOKING -->
 
 <div class="booking">
 
@@ -1333,15 +1077,8 @@ Workshop system online
 </div>
 
 <div>
-
-<div class="customer-name">
-    John Smith
-</div>
-
-<div class="customer-contact">
-    021 555 1234
-</div>
-
+    <div class="customer-name">John Smith</div>
+    <div class="customer-contact">021 555 1234</div>
 </div>
 
 </div>
@@ -1356,39 +1093,18 @@ Workshop system online
 <div class="booking-details">
 
 <div>
-
-<div class="detail-label">
-    Vehicle
-</div>
-
-<div class="detail-value">
-    2018 BMW M3
-</div>
-
+    <div class="detail-label">Vehicle</div>
+    <div class="detail-value">2018 BMW M3</div>
 </div>
 
 <div>
-
-<div class="detail-label">
-    Service
-</div>
-
-<div class="detail-value">
-    Diagnostics
-</div>
-
+    <div class="detail-label">Service</div>
+    <div class="detail-value">Diagnostics</div>
 </div>
 
 <div>
-
-<div class="detail-label">
-    Appointment
-</div>
-
-<div class="detail-value">
-    Tomorrow • 10:00 AM
-</div>
-
+    <div class="detail-label">Appointment</div>
+    <div class="detail-value">Tomorrow • 10:00 AM</div>
 </div>
 
 </div>
@@ -1398,9 +1114,9 @@ Workshop system online
 
 <button
     class="small-btn primary"
-    onclick="openBooking()"
+    onclick="openVehicleProfile()"
 >
-    View Booking
+    View Vehicle
 </button>
 
 <button
@@ -1428,15 +1144,8 @@ Workshop system online
 </div>
 
 <div>
-
-<div class="customer-name">
-    Sarah Williams
-</div>
-
-<div class="customer-contact">
-    021 444 7821
-</div>
-
+    <div class="customer-name">Sarah Williams</div>
+    <div class="customer-contact">021 444 7821</div>
 </div>
 
 </div>
@@ -1451,39 +1160,18 @@ Workshop system online
 <div class="booking-details">
 
 <div>
-
-<div class="detail-label">
-    Vehicle
-</div>
-
-<div class="detail-value">
-    2021 Toyota Hilux
-</div>
-
+    <div class="detail-label">Vehicle</div>
+    <div class="detail-value">2021 Toyota Hilux</div>
 </div>
 
 <div>
-
-<div class="detail-label">
-    Service
-</div>
-
-<div class="detail-value">
-    General Service
-</div>
-
+    <div class="detail-label">Service</div>
+    <div class="detail-value">General Service</div>
 </div>
 
 <div>
-
-<div class="detail-label">
-    Appointment
-</div>
-
-<div class="detail-value">
-    Tomorrow • 1:00 PM
-</div>
-
+    <div class="detail-label">Appointment</div>
+    <div class="detail-value">Tomorrow • 1:00 PM</div>
 </div>
 
 </div>
@@ -1493,9 +1181,9 @@ Workshop system online
 
 <button
     class="small-btn primary"
-    onclick="alert('Sarah Williams booking details opened.')"
+    onclick="alert('Sarah Williams vehicle profile opened.')"
 >
-    View Booking
+    View Vehicle
 </button>
 
 <button
@@ -1523,15 +1211,8 @@ Workshop system online
 </div>
 
 <div>
-
-<div class="customer-name">
-    Marcus Taylor
-</div>
-
-<div class="customer-contact">
-    021 338 9912
-</div>
-
+    <div class="customer-name">Marcus Taylor</div>
+    <div class="customer-contact">021 338 9912</div>
 </div>
 
 </div>
@@ -1546,39 +1227,18 @@ Workshop system online
 <div class="booking-details">
 
 <div>
-
-<div class="detail-label">
-    Vehicle
-</div>
-
-<div class="detail-value">
-    2020 Audi RS3
-</div>
-
+    <div class="detail-label">Vehicle</div>
+    <div class="detail-value">2020 Audi RS3</div>
 </div>
 
 <div>
-
-<div class="detail-label">
-    Service
-</div>
-
-<div class="detail-value">
-    Performance
-</div>
-
+    <div class="detail-label">Service</div>
+    <div class="detail-value">Performance</div>
 </div>
 
 <div>
-
-<div class="detail-label">
-    Appointment
-</div>
-
-<div class="detail-value">
-    Today • 2:00 PM
-</div>
-
+    <div class="detail-label">Appointment</div>
+    <div class="detail-value">Today • 2:00 PM</div>
 </div>
 
 </div>
@@ -1590,23 +1250,12 @@ Workshop system online
 
 <!-- AUTOMATION -->
 
-<section
-    class="panel"
-    id="automation"
->
+<section class="panel" id="automation">
 
 <div class="panel-header">
-
-<h2>
-    Booking Automation
-</h2>
-
-<span>
-    Live workflow
-</span>
-
+    <h2>Booking Automation</h2>
+    <span>Live workflow</span>
 </div>
-
 
 <div class="automation">
 
@@ -1616,87 +1265,49 @@ Workshop system online
     chasing every step.
 </p>
 
-
 <div class="timeline">
 
+<div class="timeline-item complete">
+    <div class="timeline-dot"></div>
+    <div class="timeline-title">Booking received</div>
+    <div class="timeline-copy">
+        Customer submits the online booking form.
+    </div>
+</div>
 
 <div class="timeline-item complete">
-
-<div class="timeline-dot"></div>
-
-<div class="timeline-title">
-    Booking received
+    <div class="timeline-dot"></div>
+    <div class="timeline-title">Customer confirmation</div>
+    <div class="timeline-copy">
+        Booking details are confirmed.
+    </div>
 </div>
-
-<div class="timeline-copy">
-    Customer submits the online booking form.
-</div>
-
-</div>
-
-
-<div class="timeline-item complete">
-
-<div class="timeline-dot"></div>
-
-<div class="timeline-title">
-    Customer confirmation
-</div>
-
-<div class="timeline-copy">
-    Booking details are confirmed with the customer.
-</div>
-
-</div>
-
 
 <div class="timeline-item current">
-
-<div class="timeline-dot"></div>
-
-<div class="timeline-title">
-    Appointment reminder
+    <div class="timeline-dot"></div>
+    <div class="timeline-title">Appointment reminder</div>
+    <div class="timeline-copy">
+        Automated reminder before arrival.
+    </div>
 </div>
-
-<div class="timeline-copy">
-    Automated reminder before the vehicle arrives.
-</div>
-
-</div>
-
 
 <div class="timeline-item">
-
-<div class="timeline-dot"></div>
-
-<div class="timeline-title">
-    Service completed
+    <div class="timeline-dot"></div>
+    <div class="timeline-title">Service completed</div>
+    <div class="timeline-copy">
+        Customer is updated when the job is complete.
+    </div>
 </div>
-
-<div class="timeline-copy">
-    Customer is updated when the job is complete.
-</div>
-
-</div>
-
 
 <div class="timeline-item">
-
-<div class="timeline-dot"></div>
-
-<div class="timeline-title">
-    Follow-up & review
-</div>
-
-<div class="timeline-copy">
-    Follow-up message and review request after service.
+    <div class="timeline-dot"></div>
+    <div class="timeline-title">Follow-up & review</div>
+    <div class="timeline-copy">
+        Follow-up message and review request.
+    </div>
 </div>
 
 </div>
-
-
-</div>
-
 </div>
 
 </section>
@@ -1704,119 +1315,54 @@ Workshop system online
 </div>
 
 
-<!-- =========================
-     QUOTE
-========================= -->
+<!-- QUOTE -->
 
-<section
-    class="panel quote-panel"
-    id="quote"
->
+<section class="panel quote-panel" id="quote">
 
 <div class="panel-header">
-
-<h2>
-    Repair Quote
-</h2>
-
-<span>
-    John Smith • BMW M3
-</span>
-
+    <h2>Repair Quote</h2>
+    <span>John Smith • BMW M3</span>
 </div>
 
-
 <div class="quote-body">
-
 
 <div class="quote-customer">
 
 <div>
-
-<h3>
-    2018 BMW M3
-</h3>
-
-<p>
-    Diagnostic inspection • Job #PG-1048
-</p>
-
+    <h3>2018 BMW M3</h3>
+    <p>Diagnostic inspection • Job #PG-1048</p>
 </div>
 
-<div
-    class="quote-status"
-    id="quoteStatus"
->
+<div class="quote-status" id="quoteStatus">
     Draft
 </div>
 
 </div>
 
-
 <div class="quote-line">
-
-<span>
-    Diagnostic inspection
-</span>
-
-<span>
-    $120
-</span>
-
+    <span>Diagnostic inspection</span>
+    <span>$120</span>
 </div>
 
-
 <div class="quote-line">
-
-<span>
-    Front brake pads
-</span>
-
-<span>
-    $420
-</span>
-
+    <span>Front brake pads</span>
+    <span>$420</span>
 </div>
 
-
 <div class="quote-line">
-
-<span>
-    Front brake rotors
-</span>
-
-<span>
-    $380
-</span>
-
+    <span>Front brake rotors</span>
+    <span>$380</span>
 </div>
 
-
 <div class="quote-line">
-
-<span>
-    Labour
-</span>
-
-<span>
-    $250
-</span>
-
+    <span>Labour</span>
+    <span>$250</span>
 </div>
-
 
 <div class="quote-total">
-
-<span>
-    Estimated Total
-</span>
-
-<span>
-    $1,170
-</span>
-
+    <span>Estimated Total</span>
+    <span>$1,170</span>
 </div>
-
 
 <div class="quote-actions">
 
@@ -1843,128 +1389,51 @@ Workshop system online
 </section>
 
 
-<!-- =========================
-     LOWER GRID
-========================= -->
+<!-- LOWER -->
 
 <div class="lower-grid">
 
-
-<section
-    class="panel"
-    id="schedule"
->
+<section class="panel" id="schedule">
 
 <div class="panel-header">
-
-<h2>
-    Today's Schedule
-</h2>
-
-<span>
-    12 appointments
-</span>
-
+    <h2>Today's Schedule</h2>
+    <span>12 appointments</span>
 </div>
-
 
 <div class="schedule-item">
-
-<div class="schedule-time">
-    08:00
+    <div class="schedule-time">08:00</div>
+    <div>
+        <div class="schedule-customer">James Wilson</div>
+        <div class="schedule-service">Brake Inspection</div>
+    </div>
+    <div class="schedule-bay">BAY 01</div>
 </div>
-
-<div>
-
-<div class="schedule-customer">
-    James Wilson
-</div>
-
-<div class="schedule-service">
-    Brake Inspection
-</div>
-
-</div>
-
-<div class="schedule-bay">
-    BAY 01
-</div>
-
-</div>
-
 
 <div class="schedule-item">
-
-<div class="schedule-time">
-    10:00
+    <div class="schedule-time">10:00</div>
+    <div>
+        <div class="schedule-customer">Olivia Brown</div>
+        <div class="schedule-service">General Service</div>
+    </div>
+    <div class="schedule-bay">BAY 02</div>
 </div>
-
-<div>
-
-<div class="schedule-customer">
-    Olivia Brown
-</div>
-
-<div class="schedule-service">
-    General Service
-</div>
-
-</div>
-
-<div class="schedule-bay">
-    BAY 02
-</div>
-
-</div>
-
 
 <div class="schedule-item">
-
-<div class="schedule-time">
-    12:30
+    <div class="schedule-time">12:30</div>
+    <div>
+        <div class="schedule-customer">Ethan Clark</div>
+        <div class="schedule-service">Diagnostics</div>
+    </div>
+    <div class="schedule-bay">BAY 01</div>
 </div>
-
-<div>
-
-<div class="schedule-customer">
-    Ethan Clark
-</div>
-
-<div class="schedule-service">
-    Diagnostics
-</div>
-
-</div>
-
-<div class="schedule-bay">
-    BAY 01
-</div>
-
-</div>
-
 
 <div class="schedule-item">
-
-<div class="schedule-time">
-    14:00
-</div>
-
-<div>
-
-<div class="schedule-customer">
-    Marcus Taylor
-</div>
-
-<div class="schedule-service">
-    Performance
-</div>
-
-</div>
-
-<div class="schedule-bay">
-    BAY 03
-</div>
-
+    <div class="schedule-time">14:00</div>
+    <div>
+        <div class="schedule-customer">Marcus Taylor</div>
+        <div class="schedule-service">Performance</div>
+    </div>
+    <div class="schedule-bay">BAY 03</div>
 </div>
 
 </section>
@@ -1973,100 +1442,35 @@ Workshop system online
 <section class="panel">
 
 <div class="panel-header">
-
-<h2>
-    Quick Actions
-</h2>
-
-<span>
-    Workshop tools
-</span>
-
+    <h2>Quick Actions</h2>
+    <span>Workshop tools</span>
 </div>
-
 
 <div class="quick-actions">
 
-
-<button
-    class="quick-action"
-    onclick="scrollToQuote()"
->
-
-<span class="quick-icon">
-    💰
-</span>
-
-<strong>
-    Create Quote
-</strong>
-
-<span>
-    Send repair estimate
-</span>
-
+<button class="quick-action" onclick="scrollToQuote()">
+    <span class="quick-icon">💰</span>
+    <strong>Create Quote</strong>
+    <span>Send repair estimate</span>
 </button>
 
-
-<button
-    class="quick-action"
-    onclick="scrollToBookings()"
->
-
-<span class="quick-icon">
-    ◫
-</span>
-
-<strong>
-    Manage Bookings
-</strong>
-
-<span>
-    Review incoming requests
-</span>
-
+<button class="quick-action" onclick="scrollToBookings()">
+    <span class="quick-icon">◫</span>
+    <strong>Manage Bookings</strong>
+    <span>Review incoming requests</span>
 </button>
 
-
-<button
-    class="quick-action"
-    onclick="scrollToSchedule()"
->
-
-<span class="quick-icon">
-    ◷
-</span>
-
-<strong>
-    View Schedule
-</strong>
-
-<span>
-    See today's appointments
-</span>
-
+<button class="quick-action" onclick="scrollToSchedule()">
+    <span class="quick-icon">◷</span>
+    <strong>View Schedule</strong>
+    <span>See appointments</span>
 </button>
 
-
-<button
-    class="quick-action"
-    onclick="scrollToAutomation()"
->
-
-<span class="quick-icon">
-    ⚡
-</span>
-
-<strong>
-    Automations
-</strong>
-
-<span>
-    Manage customer workflows
-</span>
-
+<button class="quick-action" onclick="openVehicleProfile()">
+    <span class="quick-icon">🚗</span>
+    <strong>Vehicle Profile</strong>
+    <span>Open customer vehicle</span>
 </button>
-
 
 </div>
 
@@ -2074,33 +1478,25 @@ Workshop system online
 
 </div>
 
-
 </div>
-
 </main>
 
 
-<!-- =========================
-     BOOKING MODAL
-========================= -->
+<!-- VEHICLE PROFILE MODAL -->
 
-<div
-    class="modal"
-    id="bookingModal"
->
+<div class="modal" id="vehicleModal">
 
 <div class="modal-card">
-
 
 <div class="modal-header">
 
 <h2>
-    Booking Details
+    Vehicle & Job Profile
 </h2>
 
 <button
     class="close-modal"
-    onclick="closeBooking()"
+    onclick="closeVehicleProfile()"
 >
     ×
 </button>
@@ -2110,118 +1506,189 @@ Workshop system online
 
 <div class="modal-body">
 
+<div class="vehicle-hero">
 
-<div class="modal-grid">
+<div>
 
-
-<div class="modal-detail">
-
-<small>
-    Customer
-</small>
-
-<strong>
-    John Smith
-</strong>
-
+<div class="vehicle-label">
+    Active Job
 </div>
 
-
-<div class="modal-detail">
-
-<small>
-    Phone
-</small>
-
-<strong>
-    021 555 1234
-</strong>
-
-</div>
-
-
-<div class="modal-detail">
-
-<small>
-    Vehicle
-</small>
-
-<strong>
+<h3>
     2018 BMW M3
-</strong>
+</h3>
+
+<div class="vehicle-subtitle">
+    John Smith • Job #PG-1048
+</div>
+
+</div>
+
+<div class="job-status">
+    Awaiting Approval
+</div>
 
 </div>
 
 
-<div class="modal-detail">
+<!-- VEHICLE DETAILS -->
 
-<small>
-    Registration
-</small>
+<div class="vehicle-grid">
 
-<strong>
-    ABC123
-</strong>
+<div class="vehicle-card">
+    <small>Registration</small>
+    <strong>ABC123</strong>
+</div>
+
+<div class="vehicle-card">
+    <small>Mileage</small>
+    <strong>84,210 km</strong>
+</div>
+
+<div class="vehicle-card">
+    <small>Engine</small>
+    <strong>3.0L Twin Turbo</strong>
+</div>
+
+<div class="vehicle-card">
+    <small>Service</small>
+    <strong>Diagnostics</strong>
+</div>
+
+<div class="vehicle-card">
+    <small>Appointment</small>
+    <strong>Tomorrow 10:00 AM</strong>
+</div>
+
+<div class="vehicle-card">
+    <small>Quote</small>
+    <strong>$1,170</strong>
+</div>
 
 </div>
 
 
-<div class="modal-detail">
+<!-- CUSTOMER NOTE -->
 
-<small>
-    Service
-</small>
+<div class="profile-section">
 
-<strong>
-    Diagnostics
-</strong>
+<h4>
+    Customer Complaint
+</h4>
 
-</div>
-
-
-<div class="modal-detail">
-
-<small>
-    Appointment
-</small>
-
-<strong>
-    Tomorrow • 10:00 AM
-</strong>
-
-</div>
-
-
-</div>
-
-
-<div class="modal-note">
-
-<small>
-    Customer Note
-</small>
+<div class="note-box">
 
 <p>
-    Check engine light has come on intermittently.
-    Customer would like the vehicle diagnosed before
-    making any repairs.
+    Check engine light has been coming on
+    intermittently. Customer would like the vehicle
+    diagnosed before approving any repairs.
 </p>
 
 </div>
 
+</div>
 
-<div class="modal-actions">
+
+<!-- SERVICE HISTORY -->
+
+<div class="profile-section">
+
+<h4>
+    Service History
+</h4>
+
+<div class="history-item">
+
+<div class="history-main">
+    <strong>Oil & Filter Service</strong>
+    <p>Engine oil and filter replaced.</p>
+</div>
+
+<div class="history-date">
+    Mar 2026
+</div>
+
+</div>
+
+<div class="history-item">
+
+<div class="history-main">
+    <strong>Brake Inspection</strong>
+    <p>Front pads showing wear.</p>
+</div>
+
+<div class="history-date">
+    Nov 2025
+</div>
+
+</div>
+
+<div class="history-item">
+
+<div class="history-main">
+    <strong>General Service</strong>
+    <p>Routine maintenance completed.</p>
+</div>
+
+<div class="history-date">
+    Jul 2025
+</div>
+
+</div>
+
+</div>
+
+
+<!-- JOB PHOTOS -->
+
+<div class="profile-section">
+
+<h4>
+    Job Photos
+</h4>
+
+<div class="photo-grid">
+
+<div class="photo-box">
+    📷<br>
+    Diagnostic Photo
+</div>
+
+<div class="photo-box">
+    📷<br>
+    Brake Inspection
+</div>
+
+<div class="photo-box">
+    + Add Photo
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ACTIONS -->
+
+<div class="profile-actions">
 
 <button
     class="quote-btn primary"
-    onclick="closeBooking(); scrollToQuote();"
+    onclick="closeVehicleProfile(); scrollToQuote();"
 >
-    Create Repair Quote
+    View Repair Quote
 </button>
 
 <button
     class="quote-btn"
-    onclick="closeBooking()"
+    onclick="alert('Job notes opened.')"
+>
+    Job Notes
+</button>
+
+<button
+    class="quote-btn"
+    onclick="closeVehicleProfile()"
 >
     Close
 </button>
@@ -2237,73 +1704,57 @@ Workshop system online
 
 <script>
 
-/* =========================
-   BOOKING
-========================= */
+/* VEHICLE PROFILE */
 
-function openBooking(){
-
+function openVehicleProfile() {
     document
-        .getElementById("bookingModal")
+        .getElementById("vehicleModal")
         .classList.add("active");
-
 }
 
-function closeBooking(){
-
+function closeVehicleProfile() {
     document
-        .getElementById("bookingModal")
+        .getElementById("vehicleModal")
         .classList.remove("active");
-
 }
 
-function confirmBooking(button){
+
+/* BOOKING */
+
+function confirmBooking(button) {
 
     const booking =
         button.closest(".booking");
 
     const status =
-        booking.querySelector(
-            ".booking-status"
-        );
+        booking.querySelector(".booking-status");
 
-    status.textContent =
-        "Confirmed";
+    status.textContent = "Confirmed";
 
     status.className =
         "booking-status status-confirmed";
 
-    button.textContent =
-        "Confirmed";
+    button.textContent = "Confirmed";
 
-    button.disabled =
-        true;
+    button.disabled = true;
 
-    button.style.opacity =
-        ".5";
+    button.style.opacity = ".5";
 
     alert(
         "Booking confirmed. Customer confirmation workflow triggered."
     );
-
 }
 
 
-/* =========================
-   QUOTE
-========================= */
+/* QUOTE */
 
-function sendQuote(){
+function sendQuote() {
 
     const status =
-        document.getElementById(
-            "quoteStatus"
-        );
+        document.getElementById("quoteStatus");
 
     const button =
-        document.getElementById(
-            "sendQuoteBtn"
-        );
+        document.getElementById("sendQuoteBtn");
 
     status.textContent =
         "Sent to customer";
@@ -2317,28 +1768,20 @@ function sendQuote(){
     button.textContent =
         "Quote Sent ✓";
 
-    button.classList.add(
-        "approved"
-    );
+    button.classList.add("approved");
 
     alert(
         "Repair quote sent to John Smith. Customer approval is now pending."
     );
-
 }
 
-
-function approveQuote(){
+function approveQuote() {
 
     const status =
-        document.getElementById(
-            "quoteStatus"
-        );
+        document.getElementById("quoteStatus");
 
     const button =
-        document.getElementById(
-            "approveQuoteBtn"
-        );
+        document.getElementById("approveQuoteBtn");
 
     status.textContent =
         "Approved";
@@ -2352,103 +1795,78 @@ function approveQuote(){
     button.textContent =
         "Approved ✓";
 
-    button.classList.add(
-        "approved"
-    );
+    button.classList.add("approved");
 
     alert(
         "Customer approved the $1,170 repair quote. Job is ready to proceed."
     );
-
 }
 
 
-/* =========================
-   NAVIGATION
-========================= */
+/* NAVIGATION */
 
-function scrollToBookings(){
+function topPage() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
 
+function scrollToBookings() {
     document
         .getElementById("bookings")
         .scrollIntoView({
-            behavior:"smooth"
+            behavior: "smooth"
         });
-
 }
 
-function scrollToSchedule(){
-
+function scrollToSchedule() {
     document
         .getElementById("schedule")
         .scrollIntoView({
-            behavior:"smooth"
+            behavior: "smooth"
         });
-
 }
 
-function scrollToQuote(){
-
+function scrollToQuote() {
     document
         .getElementById("quote")
         .scrollIntoView({
-            behavior:"smooth"
+            behavior: "smooth"
         });
-
 }
 
-function scrollToAutomation(){
-
+function scrollToAutomation() {
     document
         .getElementById("automation")
         .scrollIntoView({
-            behavior:"smooth"
+            behavior: "smooth"
         });
-
 }
 
 
-/* =========================
-   MODAL OUTSIDE CLICK
-========================= */
+/* OUTSIDE CLICK */
 
 document
-    .getElementById("bookingModal")
-    .addEventListener(
-        "click",
-        function(event){
+    .getElementById("vehicleModal")
+    .addEventListener("click", function(event) {
 
-            if(
-                event.target ===
-                this
-            ){
-
-                closeBooking();
-
-            }
-
-        }
-    );
-
-
-/* =========================
-   ESCAPE KEY
-========================= */
-
-document.addEventListener(
-    "keydown",
-    function(event){
-
-        if(
-            event.key === "Escape"
-        ){
-
-            closeBooking();
-
+        if (event.target === this) {
+            closeVehicleProfile();
         }
 
+    });
+
+
+/* ESCAPE */
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+        closeVehicleProfile();
     }
-);
+
+});
 
 </script>
 
