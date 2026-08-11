@@ -9,9 +9,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>
-        Book a Service | Performance Garage
-    </title>
+    <title>Book a Service | Performance Garage</title>
 
     <meta
         name="description"
@@ -26,25 +24,16 @@
             box-sizing: border-box;
         }
 
-
         html {
             scroll-behavior: smooth;
         }
 
-
         body {
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
+            font-family: Arial, Helvetica, sans-serif;
             background: #080808;
-
             color: #ffffff;
-
             min-height: 100vh;
         }
-
 
         button,
         input,
@@ -52,11 +41,9 @@
             font: inherit;
         }
 
-
         button {
             cursor: pointer;
         }
-
 
         /* =========================
            NAVIGATION
@@ -65,50 +52,36 @@
         nav {
             height: 78px;
 
-            border-bottom:
-                1px solid #252525;
+            border-bottom: 1px solid #252525;
 
-            background:
-                rgba(8, 8, 8, 0.96);
+            background: rgba(8, 8, 8, 0.96);
 
             display: flex;
-
             align-items: center;
         }
 
-
         .nav-container {
-            width:
-                min(1100px, 90%);
-
+            width: min(1100px, 90%);
             margin: auto;
 
             display: flex;
-
             align-items: center;
-
-            justify-content:
-                space-between;
+            justify-content: space-between;
         }
-
 
         .logo {
             color: #ffffff;
-
             text-decoration: none;
 
             font-size: 1.15rem;
-
             font-weight: 900;
 
             letter-spacing: 1px;
         }
 
-
         .logo span {
             color: #e3262e;
         }
-
 
         .back-link {
             color: #777777;
@@ -116,75 +89,59 @@
             text-decoration: none;
 
             font-size: 0.85rem;
-
             font-weight: 700;
 
             transition: 0.3s;
         }
 
-
         .back-link:hover {
             color: #ffffff;
         }
-
 
         /* =========================
            PAGE
         ========================= */
 
         .page {
-            width:
-                min(900px, 92%);
-
+            width: min(900px, 92%);
             margin: auto;
 
-            padding:
-                70px 0 100px;
+            padding: 70px 0 100px;
         }
-
 
         .intro {
             text-align: center;
-
             margin-bottom: 45px;
         }
-
 
         .eyebrow {
             display: inline-flex;
 
             align-items: center;
-
             gap: 9px;
 
             color: #e3262e;
 
             font-size: 0.75rem;
-
             font-weight: 900;
 
             letter-spacing: 2px;
-
             text-transform: uppercase;
 
             margin-bottom: 18px;
         }
 
-
         .eyebrow::before {
             content: "";
 
             width: 28px;
-
             height: 2px;
 
             background: #e3262e;
         }
 
-
         .intro h1 {
-            font-size:
-                clamp(2.8rem, 7vw, 5rem);
+            font-size: clamp(2.8rem, 7vw, 5rem);
 
             line-height: 0.95;
 
@@ -195,11 +152,9 @@
             margin-bottom: 18px;
         }
 
-
         .intro h1 span {
             color: #e3262e;
         }
-
 
         .intro p {
             color: #777777;
@@ -209,7 +164,6 @@
             margin: auto;
         }
 
-
         /* =========================
            PROGRESS
         ========================= */
@@ -217,14 +171,12 @@
         .progress {
             display: grid;
 
-            grid-template-columns:
-                repeat(4, 1fr);
+            grid-template-columns: repeat(4, 1fr);
 
             gap: 8px;
 
             margin-bottom: 16px;
         }
-
 
         .progress-step {
             height: 4px;
@@ -236,17 +188,14 @@
             transition: 0.3s;
         }
 
-
         .progress-step.active {
             background: #e3262e;
         }
 
-
         .step-labels {
             display: flex;
 
-            justify-content:
-                space-between;
+            justify-content: space-between;
 
             color: #555555;
 
@@ -259,11 +208,9 @@
             margin-bottom: 25px;
         }
 
-
         .step-labels .active {
             color: #ffffff;
         }
-
 
         /* =========================
            BOOKING CARD
@@ -272,51 +219,39 @@
         .booking-card {
             background: #101010;
 
-            border:
-                1px solid #252525;
+            border: 1px solid #252525;
 
             border-radius: 10px;
 
-            padding:
-                clamp(25px, 5vw, 45px);
+            padding: clamp(25px, 5vw, 45px);
 
             box-shadow:
-                0 25px 80px
-                rgba(0, 0, 0, 0.35);
+                0 25px 80px rgba(0, 0, 0, 0.35);
         }
-
 
         .booking-step {
             display: none;
         }
 
-
         .booking-step.active {
             display: block;
 
-            animation:
-                fadeIn 0.3s ease;
+            animation: fadeIn 0.3s ease;
         }
-
 
         @keyframes fadeIn {
 
             from {
                 opacity: 0;
-
-                transform:
-                    translateY(8px);
+                transform: translateY(8px);
             }
 
             to {
                 opacity: 1;
-
-                transform:
-                    translateY(0);
+                transform: translateY(0);
             }
 
         }
-
 
         /* =========================
            HEADINGS
@@ -326,19 +261,16 @@
             margin-bottom: 30px;
         }
 
-
         .step-heading small {
             color: #e3262e;
 
             font-size: 0.7rem;
-
             font-weight: 900;
 
             letter-spacing: 2px;
 
             text-transform: uppercase;
         }
-
 
         .step-heading h2 {
             font-size: 2rem;
@@ -348,13 +280,11 @@
             margin-top: 7px;
         }
 
-
         .step-heading p {
             color: #777777;
 
             margin-top: 8px;
         }
-
 
         /* =========================
            FORM
@@ -363,12 +293,10 @@
         .form-grid {
             display: grid;
 
-            grid-template-columns:
-                repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr);
 
             gap: 18px;
         }
-
 
         .field {
             display: flex;
@@ -378,11 +306,9 @@
             gap: 7px;
         }
 
-
         .field.full {
             grid-column: 1 / -1;
         }
-
 
         .field label {
             color: #aaaaaa;
@@ -396,18 +322,15 @@
             letter-spacing: 0.5px;
         }
 
-
         .field input,
         .field select {
             width: 100%;
 
-            padding:
-                14px 15px;
+            padding: 14px 15px;
 
             background: #090909;
 
-            border:
-                1px solid #292929;
+            border: 1px solid #292929;
 
             border-radius: 6px;
 
@@ -418,7 +341,6 @@
             transition: 0.2s;
         }
 
-
         .field input:focus,
         .field select:focus {
             border-color: #e3262e;
@@ -428,11 +350,9 @@
                 rgba(227, 38, 46, 0.08);
         }
 
-
         .field input::placeholder {
             color: #444444;
         }
-
 
         /* =========================
            SERVICES
@@ -441,17 +361,14 @@
         .options {
             display: grid;
 
-            grid-template-columns:
-                repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr);
 
             gap: 12px;
         }
 
-
         .option {
             position: relative;
         }
-
 
         .option input {
             position: absolute;
@@ -459,14 +376,12 @@
             opacity: 0;
         }
 
-
         .option label {
             display: block;
 
             background: #0b0b0b;
 
-            border:
-                1px solid #292929;
+            border: 1px solid #292929;
 
             border-radius: 7px;
 
@@ -476,7 +391,6 @@
 
             transition: 0.25s;
         }
-
 
         .option label strong {
             display: block;
@@ -488,18 +402,15 @@
             margin-bottom: 4px;
         }
 
-
         .option label span {
             color: #666666;
 
             font-size: 0.78rem;
         }
 
-
         .option label:hover {
             border-color: #555555;
         }
-
 
         .option input:checked + label {
             border-color: #e3262e;
@@ -510,7 +421,6 @@
                 0 0 0 1px #e3262e;
         }
 
-
         /* =========================
            BUTTONS
         ========================= */
@@ -518,28 +428,24 @@
         .actions {
             display: flex;
 
-            justify-content:
-                space-between;
+            justify-content: space-between;
 
             gap: 12px;
 
             margin-top: 35px;
         }
 
-
         .btn {
             display: inline-flex;
 
             align-items: center;
-
             justify-content: center;
 
             border: none;
 
             border-radius: 6px;
 
-            padding:
-                15px 24px;
+            padding: 15px 24px;
 
             font-weight: 900;
 
@@ -550,7 +456,6 @@
             transition: 0.25s;
         }
 
-
         .btn-primary {
             background: #e3262e;
 
@@ -559,33 +464,27 @@
             margin-left: auto;
         }
 
-
         .btn-primary:hover {
             background: #ffffff;
 
             color: #080808;
 
-            transform:
-                translateY(-2px);
+            transform: translateY(-2px);
         }
-
 
         .btn-secondary {
             background: transparent;
 
-            border:
-                1px solid #333333;
+            border: 1px solid #333333;
 
             color: #aaaaaa;
         }
-
 
         .btn-secondary:hover {
             border-color: #ffffff;
 
             color: #ffffff;
         }
-
 
         /* =========================
            CONFIRMATION
@@ -596,30 +495,24 @@
 
             text-align: center;
 
-            padding:
-                15px 0 5px;
+            padding: 15px 0 5px;
         }
-
 
         .confirmation.active {
             display: block;
 
-            animation:
-                fadeIn 0.4s ease;
+            animation: fadeIn 0.4s ease;
         }
-
 
         .success-icon {
             width: 72px;
-
             height: 72px;
 
             display: grid;
 
             place-items: center;
 
-            margin:
-                0 auto 25px;
+            margin: 0 auto 25px;
 
             border-radius: 50%;
 
@@ -634,7 +527,6 @@
                 rgba(227, 38, 46, 0.2);
         }
 
-
         .confirmation h2 {
             font-size:
                 clamp(2rem, 5vw, 2.8rem);
@@ -646,22 +538,18 @@
             margin-bottom: 15px;
         }
 
-
         .confirmation > p {
             color: #777777;
 
             max-width: 530px;
 
-            margin:
-                0 auto 30px;
+            margin: 0 auto 30px;
         }
-
 
         .booking-summary {
             background: #090909;
 
-            border:
-                1px solid #242424;
+            border: 1px solid #242424;
 
             border-radius: 8px;
 
@@ -674,27 +562,21 @@
             margin: auto;
         }
 
-
         .summary-row {
             display: flex;
 
-            justify-content:
-                space-between;
+            justify-content: space-between;
 
             gap: 20px;
 
-            padding:
-                13px 0;
+            padding: 13px 0;
 
-            border-bottom:
-                1px solid #1d1d1d;
+            border-bottom: 1px solid #1d1d1d;
         }
-
 
         .summary-row:last-child {
             border-bottom: none;
         }
-
 
         .summary-row span:first-child {
             color: #666666;
@@ -706,23 +588,19 @@
             letter-spacing: 0.5px;
         }
 
-
         .summary-row span:last-child {
             text-align: right;
 
             font-weight: 800;
         }
 
-
         .send-area {
             margin-top: 30px;
 
             padding-top: 25px;
 
-            border-top:
-                1px solid #222222;
+            border-top: 1px solid #222222;
         }
-
 
         .send-area h3 {
             font-size: 1rem;
@@ -732,7 +610,6 @@
             margin-bottom: 7px;
         }
 
-
         .send-area p {
             color: #666666;
 
@@ -740,7 +617,6 @@
 
             margin-bottom: 18px;
         }
-
 
         .send-button {
             width: 100%;
@@ -752,7 +628,6 @@
             cursor: pointer;
         }
 
-
         .demo-note {
             margin-top: 20px;
 
@@ -760,7 +635,6 @@
 
             font-size: 0.72rem;
         }
-
 
         /* =========================
            MOBILE
@@ -772,60 +646,48 @@
                 height: 68px;
             }
 
-
             .back-link {
                 font-size: 0.75rem;
             }
-
 
             .page {
                 padding-top: 50px;
             }
 
-
             .intro h1 {
                 letter-spacing: -2px;
             }
-
 
             .options,
             .form-grid {
                 grid-template-columns: 1fr;
             }
 
-
             .field.full {
                 grid-column: auto;
             }
-
 
             .step-labels {
                 font-size: 0.56rem;
             }
 
-
             .actions {
-                flex-direction:
-                    column-reverse;
+                flex-direction: column-reverse;
             }
-
 
             .btn {
                 width: 100%;
             }
 
-
             .btn-primary {
                 margin-left: 0;
             }
-
 
             .summary-row {
                 flex-direction: column;
 
                 gap: 4px;
             }
-
 
             .summary-row span:last-child {
                 text-align: left;
@@ -875,8 +737,6 @@
 
     <main class="page">
 
-
-        <!-- INTRO -->
 
         <div class="intro">
 
@@ -935,14 +795,14 @@
         </div>
 
 
-        <!-- BOOKING CARD -->
+        <!-- =========================
+             BOOKING CARD
+        ========================= -->
 
         <div class="booking-card">
 
 
-            <!-- =========================
-                 STEP 1
-            ========================= -->
+            <!-- STEP 1 -->
 
             <div
                 class="booking-step active"
@@ -982,49 +842,17 @@
                                 Select make
                             </option>
 
-                            <option>
-                                Audi
-                            </option>
-
-                            <option>
-                                BMW
-                            </option>
-
-                            <option>
-                                Ford
-                            </option>
-
-                            <option>
-                                Honda
-                            </option>
-
-                            <option>
-                                Infiniti
-                            </option>
-
-                            <option>
-                                Lexus
-                            </option>
-
-                            <option>
-                                Mercedes-Benz
-                            </option>
-
-                            <option>
-                                Nissan
-                            </option>
-
-                            <option>
-                                Toyota
-                            </option>
-
-                            <option>
-                                Volkswagen
-                            </option>
-
-                            <option>
-                                Other
-                            </option>
+                            <option>Audi</option>
+                            <option>BMW</option>
+                            <option>Ford</option>
+                            <option>Honda</option>
+                            <option>Infiniti</option>
+                            <option>Lexus</option>
+                            <option>Mercedes-Benz</option>
+                            <option>Nissan</option>
+                            <option>Toyota</option>
+                            <option>Volkswagen</option>
+                            <option>Other</option>
 
                         </select>
 
@@ -1098,9 +926,7 @@
             </div>
 
 
-            <!-- =========================
-                 STEP 2
-            ========================= -->
+            <!-- STEP 2 -->
 
             <div
                 class="booking-step"
@@ -1136,7 +962,6 @@
                             value="General Service"
                         >
 
-
                         <label for="service1">
 
                             <strong>
@@ -1160,7 +985,6 @@
                             id="service2"
                             value="Diagnostics"
                         >
-
 
                         <label for="service2">
 
@@ -1186,7 +1010,6 @@
                             value="Brakes"
                         >
 
-
                         <label for="service3">
 
                             <strong>
@@ -1210,7 +1033,6 @@
                             id="service4"
                             value="Suspension"
                         >
-
 
                         <label for="service4">
 
@@ -1236,7 +1058,6 @@
                             value="Performance"
                         >
 
-
                         <label for="service5">
 
                             <strong>
@@ -1260,7 +1081,6 @@
                             id="service6"
                             value="WOF"
                         >
-
 
                         <label for="service6">
 
@@ -1303,9 +1123,7 @@
             </div>
 
 
-            <!-- =========================
-                 STEP 3
-            ========================= -->
+            <!-- STEP 3 -->
 
             <div
                 class="booking-step"
@@ -1360,41 +1178,15 @@
                                 Select a time
                             </option>
 
-                            <option>
-                                8:00 AM
-                            </option>
-
-                            <option>
-                                9:00 AM
-                            </option>
-
-                            <option>
-                                10:00 AM
-                            </option>
-
-                            <option>
-                                11:00 AM
-                            </option>
-
-                            <option>
-                                12:00 PM
-                            </option>
-
-                            <option>
-                                1:00 PM
-                            </option>
-
-                            <option>
-                                2:00 PM
-                            </option>
-
-                            <option>
-                                3:00 PM
-                            </option>
-
-                            <option>
-                                4:00 PM
-                            </option>
+                            <option>8:00 AM</option>
+                            <option>9:00 AM</option>
+                            <option>10:00 AM</option>
+                            <option>11:00 AM</option>
+                            <option>12:00 PM</option>
+                            <option>1:00 PM</option>
+                            <option>2:00 PM</option>
+                            <option>3:00 PM</option>
+                            <option>4:00 PM</option>
 
                         </select>
 
@@ -1427,9 +1219,7 @@
             </div>
 
 
-            <!-- =========================
-                 STEP 4
-            ========================= -->
+            <!-- STEP 4 -->
 
             <div
                 class="booking-step"
@@ -1762,7 +1552,6 @@
 
         function nextStep() {
 
-
             if (currentStep === 1) {
 
                 const make =
@@ -1971,40 +1760,40 @@
 
 
             /* =========================
-               SAVE BOOKING DATA
+               STORE BOOKING
             ========================= */
 
             window.demoBooking = {
 
-                name,
+                name: name,
 
-                phone,
+                phone: phone,
 
-                email,
+                email: email,
 
-                make,
+                make: make,
 
-                model,
+                model: model,
 
-                year,
+                year: year,
 
-                rego,
+                rego: rego,
 
                 service: serviceName,
 
                 date: formattedDate,
 
-                time,
+                time: time,
 
-                appointment,
+                appointment: appointment,
 
-                vehicle
+                vehicle: vehicle
 
             };
 
 
             /* =========================
-               CONFIRMATION
+               CONFIRMATION DETAILS
             ========================= */
 
             document.getElementById(
@@ -2036,6 +1825,10 @@
             ).textContent =
                 phone;
 
+
+            /* =========================
+               SHOW CONFIRMATION
+            ========================= */
 
             document
                 .querySelectorAll(
@@ -2070,7 +1863,8 @@
             document
                 .querySelector(
                     ".step-labels"
-                ).style.display =
+                )
+                .style.display =
                     "none";
 
 
@@ -2086,7 +1880,7 @@
 
 
         /* =========================
-           SEND SMS
+           SEND BOOKING TO MESSAGES
         ========================= */
 
         function sendBookingSMS() {
@@ -2127,31 +1921,65 @@ Submitted via ManaU Digital demo.`;
 
 
             /*
-             * iPhone Messages handoff.
-             *
-             * The number below is the
-             * private demo receiving number.
+             * Demo receiving number.
              */
 
             const recipient =
                 "+642108839107";
 
 
+            /*
+             * iPhone Messages URL.
+             *
+             * IMPORTANT:
+             * iOS uses the &body format
+             * for SMS links.
+             */
+
             const smsURL =
                 "sms:" +
                 recipient +
-                "?body=" +
+                "&body=" +
                 encodeURIComponent(message);
 
 
             /*
-             * Force the browser to hand
-             * the request to the native
-             * Messages application.
+             * Create a real temporary
+             * link and trigger it from
+             * the user's button tap.
              */
 
-            window.location.assign(
-                smsURL
+            const smsLink =
+                document.createElement("a");
+
+
+            smsLink.href =
+                smsURL;
+
+
+            smsLink.style.display =
+                "none";
+
+
+            document.body.appendChild(
+                smsLink
+            );
+
+
+            smsLink.click();
+
+
+            /*
+             * Clean up the temporary link.
+             */
+
+            setTimeout(
+                () => {
+
+                    smsLink.remove();
+
+                },
+                1000
             );
 
         }
