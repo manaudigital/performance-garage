@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Performance Garage | Automotive Specialists</title>
+    <title>ManaU Digital | Modern Websites for Modern Businesses</title>
 
     <meta
         name="description"
-        content="Performance Garage provides performance servicing, diagnostics, repairs and automotive solutions."
+        content="ManaU Digital creates modern, professional websites for local businesses."
     >
 
     <style>
@@ -35,19 +35,12 @@
             text-decoration: none;
         }
 
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
         .container {
-            width: min(1150px, 90%);
+            width: min(1100px, 90%);
             margin: auto;
         }
 
-        /* =========================
-           NAVIGATION
-        ========================= */
+        /* NAVIGATION */
 
         nav {
             position: fixed;
@@ -55,14 +48,14 @@
             width: 100%;
             z-index: 1000;
 
-            background: rgba(8, 8, 8, 0.92);
+            background: rgba(8, 8, 8, 0.88);
             backdrop-filter: blur(12px);
 
-            border-bottom: 1px solid #252525;
+            border-bottom: 1px solid #222;
         }
 
         .nav-container {
-            height: 78px;
+            height: 75px;
 
             display: flex;
             align-items: center;
@@ -70,14 +63,12 @@
         }
 
         .logo {
-            font-size: 1.15rem;
-            font-weight: 900;
-
-            letter-spacing: 1px;
+            font-size: 1.35rem;
+            font-weight: 800;
         }
 
         .logo span {
-            color: #e3262e;
+            color: #8cff00;
         }
 
         .nav-links {
@@ -85,43 +76,19 @@
             gap: 30px;
 
             list-style: none;
-
-            font-size: 0.9rem;
-            font-weight: 700;
+            font-size: 0.95rem;
         }
 
         .nav-links a {
             color: #aaa;
-
             transition: 0.3s;
         }
 
         .nav-links a:hover {
-            color: #e3262e;
-        }
-
-        .nav-button {
-            background: #e3262e;
             color: #ffffff;
-
-            padding: 11px 18px;
-
-            border-radius: 5px;
-
-            font-size: 0.85rem;
-            font-weight: 800;
-
-            transition: 0.3s;
         }
 
-        .nav-button:hover {
-            background: #ffffff;
-            color: #080808;
-        }
-
-        /* =========================
-           HERO
-        ========================= */
+        /* HERO */
 
         .hero {
             min-height: 100vh;
@@ -129,305 +96,304 @@
             display: flex;
             align-items: center;
 
-            padding-top: 78px;
-
-            position: relative;
-
-            overflow: hidden;
+            padding-top: 75px;
 
             background:
-                linear-gradient(
-                    90deg,
-                    rgba(0, 0, 0, 0.96) 0%,
-                    rgba(0, 0, 0, 0.78) 45%,
-                    rgba(0, 0, 0, 0.35) 100%
+                radial-gradient(
+                    circle at 80% 30%,
+                    rgba(140, 255, 0, 0.12),
+                    transparent 30%
                 ),
-                url("hero.PNG");
-
-            background-size: cover;
-            background-position: center;
-        }
-
-        .hero::after {
-            content: "";
-
-            position: absolute;
-
-            left: 0;
-            right: 0;
-            bottom: 0;
-
-            height: 180px;
-
-            background:
-                linear-gradient(
-                    transparent,
-                    #080808
+                radial-gradient(
+                    circle at 20% 80%,
+                    rgba(140, 255, 0, 0.06),
+                    transparent 25%
                 );
         }
 
         .hero-content {
-            position: relative;
-            z-index: 2;
-
-            max-width: 700px;
+            max-width: 800px;
         }
 
         .eyebrow {
-            display: inline-flex;
+            display: inline-block;
 
-            align-items: center;
-            gap: 9px;
+            color: #8cff00;
 
-            color: #e3262e;
+            border: 1px solid rgba(140, 255, 0, 0.35);
 
-            font-size: 0.78rem;
-            font-weight: 900;
+            padding: 7px 14px;
 
-            letter-spacing: 2px;
+            border-radius: 50px;
 
-            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 700;
 
-            margin-bottom: 22px;
-        }
-
-        .eyebrow::before {
-            content: "";
-
-            width: 30px;
-            height: 2px;
-
-            background: #e3262e;
-        }
-
-        .hero h1 {
-            font-size: clamp(3.4rem, 8vw, 7rem);
-
-            line-height: 0.9;
-
-            letter-spacing: -5px;
+            margin-bottom: 25px;
 
             text-transform: uppercase;
-
-            margin-bottom: 28px;
+            letter-spacing: 1px;
         }
 
-        .hero h1 span {
-            color: #e3262e;
+        h1 {
+            font-size: clamp(3rem, 8vw, 6.5rem);
+
+            line-height: 0.95;
+
+            letter-spacing: -4px;
+
+            margin-bottom: 30px;
         }
 
-        .hero-text {
-            color: #b5b5b5;
+        h1 span {
+            color: #8cff00;
+        }
 
-            max-width: 560px;
+        .hero p {
+            max-width: 620px;
 
-            font-size: 1.08rem;
+            color: #aaa;
+
+            font-size: 1.15rem;
 
             margin-bottom: 35px;
         }
 
-        .hero-buttons {
+        .buttons {
             display: flex;
 
-            gap: 14px;
+            gap: 15px;
 
             flex-wrap: wrap;
         }
 
         .btn {
-            display: inline-block;
+            padding: 14px 24px;
 
-            padding: 15px 24px;
+            border-radius: 8px;
 
-            border-radius: 5px;
-
-            font-weight: 900;
+            font-weight: 700;
 
             transition: 0.3s;
+
+            display: inline-block;
         }
 
         .btn-primary {
-            background: #e3262e;
-            color: #ffffff;
+            background: #8cff00;
+
+            color: #000;
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
 
             box-shadow:
-                0 12px 35px
-                rgba(227, 38, 46, 0.25);
+                0 10px 30px
+                rgba(140, 255, 0, 0.2);
         }
 
         .btn-secondary {
-            border: 1px solid #444;
+            border: 1px solid #333;
 
-            color: #ffffff;
+            color: #fff;
         }
 
         .btn-secondary:hover {
-            border-color: #e3262e;
+            border-color: #8cff00;
 
-            color: #e3262e;
+            color: #8cff00;
         }
 
-        /* =========================
-           STATS
-        ========================= */
-
-        .stats {
-            background: #0d0d0d;
-
-            border-top: 1px solid #222;
-            border-bottom: 1px solid #222;
-        }
-
-        .stats-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-        }
-
-        .stat {
-            padding: 35px 20px;
-
-            border-right: 1px solid #222;
-
-            text-align: center;
-        }
-
-        .stat:last-child {
-            border-right: none;
-        }
-
-        .stat-number {
-            color: #ffffff;
-
-            font-size: 2rem;
-
-            font-weight: 900;
-        }
-
-        .stat-label {
-            color: #777;
-
-            font-size: 0.78rem;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-        }
-
-        /* =========================
-           GENERAL SECTIONS
-        ========================= */
+        /* GENERAL SECTIONS */
 
         section {
             padding: 110px 0;
         }
 
         .section-label {
-            color: #e3262e;
+            color: #8cff00;
 
-            font-size: 0.78rem;
+            font-size: 0.8rem;
 
-            font-weight: 900;
-
-            letter-spacing: 2px;
+            font-weight: 800;
 
             text-transform: uppercase;
+
+            letter-spacing: 2px;
 
             margin-bottom: 12px;
         }
 
         .section-title {
-            font-size: clamp(2.2rem, 5vw, 4rem);
-
-            line-height: 1;
+            font-size: clamp(2rem, 5vw, 3.5rem);
 
             letter-spacing: -2px;
 
-            text-transform: uppercase;
-
             margin-bottom: 20px;
+
+            line-height: 1.05;
         }
 
         .section-intro {
-            color: #888;
+            color: #999;
 
-            max-width: 620px;
+            max-width: 600px;
 
             margin-bottom: 50px;
         }
 
-        /* =========================
-           SERVICES
-        ========================= */
+        /* SERVICES */
 
         .services-grid {
             display: grid;
 
             grid-template-columns:
-                repeat(2, 1fr);
+                repeat(3, 1fr);
 
-            gap: 18px;
+            gap: 20px;
         }
 
-        .service {
+        .card {
             background: #101010;
 
             border: 1px solid #222;
 
-            padding: 32px;
+            border-radius: 16px;
 
-            border-radius: 8px;
+            padding: 30px;
 
             transition: 0.3s;
         }
 
-        .service:hover {
-            border-color: #e3262e;
+        .card:hover {
+            transform: translateY(-5px);
 
-            transform: translateY(-4px);
+            border-color: #8cff00;
         }
 
-        .service-number {
-            color: #e3262e;
+        .card-number {
+            color: #8cff00;
 
-            font-size: 0.8rem;
-
-            font-weight: 900;
+            font-weight: 800;
 
             margin-bottom: 25px;
         }
 
-        .service h3 {
-            font-size: 1.35rem;
+        .card h3 {
+            font-size: 1.3rem;
+
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #999;
+
+            font-size: 0.95rem;
+        }
+
+        .business-types {
+            margin-top: 35px;
+
+            color: #777;
+
+            font-size: 0.9rem;
+        }
+
+        .business-types span {
+            color: #fff;
+        }
+
+        /* PORTFOLIO */
+
+        .portfolio-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .project {
+            background: #111;
+
+            border: 1px solid #222;
+
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            position: relative;
+
+            transition: 0.3s;
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+
+            border-color: #8cff00;
+        }
+
+        .project-image {
+            width: 100%;
+
+            aspect-ratio: 16 / 9;
+
+            object-fit: cover;
+
+            object-position: center;
+
+            display: block;
+        }
+
+        .project-content {
+            padding: 22px;
+
+            background: #111;
+
+            flex: 1;
+        }
+
+        .project-tag {
+            color: #8cff00;
+
+            font-size: 0.75rem;
+
+            font-weight: 800;
 
             text-transform: uppercase;
 
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
-        .service p {
-            color: #888;
+        .project h3 {
+            font-size: 1.4rem;
 
-            font-size: 0.94rem;
+            margin-bottom: 6px;
         }
 
-        /* =========================
-           WHY US
-        ========================= */
+        .project-link {
+            color: #999;
 
-        .why {
+            font-size: 0.85rem;
+        }
+
+        /* ABOUT */
+
+        .about {
             background: #0d0d0d;
 
             border-top: 1px solid #222;
+
             border-bottom: 1px solid #222;
         }
 
-        .why-grid {
+        .about-grid {
             display: grid;
 
             grid-template-columns:
@@ -438,297 +404,89 @@
             align-items: center;
         }
 
-        .why-text p {
+        .about-text p {
             color: #999;
 
             margin-bottom: 18px;
         }
 
-        .feature-list {
-            display: grid;
+        .about-highlight {
+            border-left:
+                2px solid #8cff00;
 
-            gap: 15px;
+            padding-left: 25px;
 
-            margin-top: 30px;
+            color: #ddd;
+
+            font-size: 1.1rem;
         }
 
-        .feature {
-            display: flex;
-
-            gap: 15px;
-
-            align-items: flex-start;
-        }
-
-        .feature-icon {
-            width: 32px;
-            height: 32px;
-
-            flex-shrink: 0;
-
-            display: grid;
-            place-items: center;
-
-            background: #e3262e;
-
-            color: #ffffff;
-
-            border-radius: 4px;
-
-            font-weight: 900;
-        }
-
-        .feature h4 {
-            margin-bottom: 2px;
-        }
-
-        .feature p {
-            color: #777;
-
-            font-size: 0.88rem;
-        }
-
-        .why-box {
-            min-height: 450px;
-
-            border: 1px solid #282828;
-
-            border-radius: 8px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #151515,
-                    #090909
-                );
-
-            display: flex;
-
-            align-items: flex-end;
-
-            padding: 35px;
-        }
-
-        .why-box-text {
-            border-left: 3px solid #e3262e;
-
-            padding-left: 20px;
-        }
-
-        .why-box-text strong {
-            display: block;
-
-            font-size: 2rem;
-
-            line-height: 1;
-
-            text-transform: uppercase;
-        }
-
-        .why-box-text span {
-            color: #777;
-
-            font-size: 0.8rem;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-        }
-
-        /* =========================
-           REVIEWS
-        ========================= */
-
-        .reviews-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 18px;
-        }
-
-        .review {
-            background: #101010;
-
-            border: 1px solid #222;
-
-            border-radius: 8px;
-
-            padding: 28px;
-        }
-
-        .stars {
-            color: #e3262e;
-
-            letter-spacing: 3px;
-
-            margin-bottom: 18px;
-        }
-
-        .review p {
-            color: #aaa;
-
-            margin-bottom: 20px;
-        }
-
-        .review-name {
-            font-weight: 900;
-        }
-
-        .review-type {
-            color: #666;
-
-            font-size: 0.78rem;
-        }
-
-        /* =========================
-           CTA
-        ========================= */
+        /* CONTACT */
 
         .cta {
             text-align: center;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #111111,
-                    #080808
-                );
         }
 
         .cta p {
-            color: #888;
+            color: #999;
 
             max-width: 550px;
 
-            margin: 0 auto 30px;
+            margin:
+                0 auto 30px;
         }
 
-        /* =========================
-           CONTACT
-        ========================= */
-
-        .contact-grid {
-            display: grid;
-
-            grid-template-columns:
-                1fr 1fr;
-
-            gap: 20px;
-        }
-
-        .contact-card {
-            background: #101010;
-
-            border: 1px solid #222;
-
-            border-radius: 8px;
-
-            padding: 30px;
-        }
-
-        .contact-card h3 {
-            text-transform: uppercase;
-
-            margin-bottom: 10px;
-        }
-
-        .contact-card p,
-        .contact-card a {
-            color: #888;
-        }
-
-        .contact-card a:hover {
-            color: #e3262e;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
+        /* FOOTER */
 
         footer {
             padding: 35px 0;
 
-            border-top: 1px solid #222;
-
             color: #666;
 
-            font-size: 0.82rem;
+            font-size: 0.85rem;
+
+            border-top: 1px solid #222;
         }
 
         .footer-container {
             display: flex;
 
-            align-items: center;
-
-            justify-content: space-between;
+            justify-content:
+                space-between;
 
             gap: 20px;
         }
 
-        .footer-brand {
-            color: #ffffff;
-
-            font-weight: 900;
-        }
-
-        .footer-brand span {
-            color: #e3262e;
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
+        /* MOBILE */
 
         @media (max-width: 800px) {
 
-            .nav-links,
-            .nav-button {
+            .nav-links {
                 display: none;
             }
 
-            .hero {
-                background-position: center;
-            }
-
-            .hero h1 {
-                letter-spacing: -3px;
-            }
-
-            .stats-grid {
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-            .stat:nth-child(2) {
-                border-right: none;
-            }
-
-            .stat:nth-child(-n+2) {
-                border-bottom: 1px solid #222;
-            }
-
             .services-grid,
-            .reviews-grid,
-            .why-grid,
-            .contact-grid {
+            .portfolio-grid,
+            .about-grid {
                 grid-template-columns: 1fr;
             }
 
-            .why-box {
-                min-height: 320px;
-            }
-
-            .footer-container {
-                flex-direction: column;
-
-                align-items: flex-start;
+            h1 {
+                letter-spacing: -2px;
             }
 
             section {
                 padding: 80px 0;
             }
+
+            .footer-container {
+                flex-direction: column;
+            }
+
+            .about-grid {
+                gap: 35px;
+            }
+
         }
 
     </style>
@@ -743,7 +501,7 @@
         <div class="container nav-container">
 
             <a href="#" class="logo">
-                PERFORMANCE<span>.</span>
+                ManaU<span>.</span>
             </a>
 
             <ul class="nav-links">
@@ -755,14 +513,14 @@
                 </li>
 
                 <li>
-                    <a href="#why">
-                        Why Us
+                    <a href="#work">
+                        Our Work
                     </a>
                 </li>
 
                 <li>
-                    <a href="#reviews">
-                        Reviews
+                    <a href="#about">
+                        About
                     </a>
                 </li>
 
@@ -773,13 +531,6 @@
                 </li>
 
             </ul>
-
-            <a
-                href="#contact"
-                class="nav-button"
-            >
-                Book a Service
-            </a>
 
         </div>
 
@@ -795,34 +546,35 @@
             <div class="hero-content">
 
                 <div class="eyebrow">
-                    Automotive Specialists
+                    ManaU Digital
                 </div>
 
                 <h1>
-                    Built To
-                    <span>Perform.</span>
+                    Your business deserves a
+                    <span>better website.</span>
                 </h1>
 
-                <p class="hero-text">
-                    Performance servicing, diagnostics
-                    and automotive solutions for drivers
-                    who expect more from their vehicles.
+                <p>
+                    We build modern, professional websites
+                    that help local businesses look credible,
+                    get discovered and turn visitors into
+                    customers.
                 </p>
 
-                <div class="hero-buttons">
+                <div class="buttons">
 
                     <a
-                        href="#contact"
+                        href="#work"
                         class="btn btn-primary"
                     >
-                        Book a Service
+                        View Our Work
                     </a>
 
                     <a
-                        href="#services"
+                        href="#contact"
                         class="btn btn-secondary"
                     >
-                        Explore Services
+                        Get a Free Quote
                     </a>
 
                 </div>
@@ -832,69 +584,6 @@
         </div>
 
     </header>
-
-
-    <!-- STATS -->
-
-    <section class="stats">
-
-        <div class="container">
-
-            <div class="stats-grid">
-
-                <div class="stat">
-
-                    <div class="stat-number">
-                        10+
-                    </div>
-
-                    <div class="stat-label">
-                        Years Experience
-                    </div>
-
-                </div>
-
-                <div class="stat">
-
-                    <div class="stat-number">
-                        1K+
-                    </div>
-
-                    <div class="stat-label">
-                        Vehicles Serviced
-                    </div>
-
-                </div>
-
-                <div class="stat">
-
-                    <div class="stat-number">
-                        5★
-                    </div>
-
-                    <div class="stat-label">
-                        Customer Rating
-                    </div>
-
-                </div>
-
-                <div class="stat">
-
-                    <div class="stat-number">
-                        24/7
-                    </div>
-
-                    <div class="stat-label">
-                        Support
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
 
 
     <!-- SERVICES -->
@@ -908,94 +597,86 @@
             </div>
 
             <h2 class="section-title">
-                Serious work.<br>
-                Serious results.
+                We build your online presence.
             </h2>
 
             <p class="section-intro">
-                From routine maintenance to performance
-                upgrades, our workshop is built around
-                quality workmanship and reliable results.
+                Everything you need to look professional
+                online, attract more customers and give
+                your business a digital presence you're
+                proud of.
             </p>
-
 
             <div class="services-grid">
 
+                <div class="card">
 
-                <div class="service">
-
-                    <div class="service-number">
+                    <div class="card-number">
                         01
                     </div>
 
                     <h3>
-                        Performance
+                        Website Design
                     </h3>
 
                     <p>
-                        Performance upgrades, tuning
-                        preparation, intake and exhaust
-                        solutions designed around your goals.
+                        Modern, responsive websites designed
+                        around your business, your customers
+                        and your goals.
                     </p>
 
                 </div>
 
 
-                <div class="service">
+                <div class="card">
 
-                    <div class="service-number">
+                    <div class="card-number">
                         02
                     </div>
 
                     <h3>
-                        Diagnostics
+                        Website Redesign
                     </h3>
 
                     <p>
-                        Advanced diagnostics to identify
-                        warning lights, drivability problems
-                        and electrical faults.
+                        Already have a website? We'll give it
+                        a cleaner design, better structure
+                        and a stronger customer experience.
                     </p>
 
                 </div>
 
 
-                <div class="service">
+                <div class="card">
 
-                    <div class="service-number">
+                    <div class="card-number">
                         03
                     </div>
 
                     <h3>
-                        Servicing
+                        Google Review Systems
                     </h3>
 
                     <p>
-                        Scheduled maintenance and servicing
-                        to keep your vehicle running reliably
-                        and efficiently.
+                        Make it easy for happy customers to
+                        leave Google reviews with simple
+                        NFC-enabled review cards.
                     </p>
 
                 </div>
 
+            </div>
 
-                <div class="service">
 
-                    <div class="service-number">
-                        04
-                    </div>
+            <div class="business-types">
 
-                    <h3>
-                        Brakes & Suspension
-                    </h3>
+                Perfect for:
 
-                    <p>
-                        Brake, steering and suspension work
-                        designed to keep your vehicle safe,
-                        stable and ready for the road.
-                    </p>
-
-                </div>
+                <span>Automotive</span> ·
+                <span>Barbers</span> ·
+                <span>Restaurants</span> ·
+                <span>Trades</span> ·
+                <span>Local Businesses</span>
 
             </div>
 
@@ -1004,260 +685,193 @@
     </section>
 
 
-    <!-- WHY US -->
+    <!-- PORTFOLIO -->
+
+    <section id="work">
+
+        <div class="container">
+
+            <div class="section-label">
+                Selected Work
+            </div>
+
+            <h2 class="section-title">
+                Built for businesses.
+            </h2>
+
+            <p class="section-intro">
+                Explore our concept projects and see what
+                your business could look like online.
+            </p>
+
+
+            <div class="portfolio-grid">
+
+
+                <!-- AUTOMOTIVE -->
+
+                <a
+                    href="https://manaudigital.github.io/performance-garage/"
+                    class="project"
+                >
+
+                    <img
+                        src="automotive.PNG"
+                        alt="Performance Garage"
+                        class="project-image"
+                    >
+
+                    <div class="project-content">
+
+                        <div class="project-tag">
+                            Automotive
+                        </div>
+
+                        <h3>
+                            Performance Garage
+                        </h3>
+
+                        <div class="project-link">
+                            View Demo →
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- BARBERSHOP -->
+
+                <a
+                    href="#"
+                    class="project"
+                >
+
+                    <img
+                        src="barbershop. PNG"
+                        alt="Modern Barber Co."
+                        class="project-image"
+                    >
+
+                    <div class="project-content">
+
+                        <div class="project-tag">
+                            Barbershop
+                        </div>
+
+                        <h3>
+                            Modern Barber Co.
+                        </h3>
+
+                        <div class="project-link">
+                            View Demo →
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- RESTAURANT -->
+
+                <a
+                    href="#"
+                    class="project"
+                >
+
+                    <img
+                        src="restaurant.PNG"
+                        alt="Local Kitchen"
+                        class="project-image"
+                    >
+
+                    <div class="project-content">
+
+                        <div class="project-tag">
+                            Restaurant
+                        </div>
+
+                        <h3>
+                            Local Kitchen
+                        </h3>
+
+                        <div class="project-link">
+                            View Demo →
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
 
     <section
-        id="why"
-        class="why"
+        id="about"
+        class="about"
     >
 
         <div class="container">
 
-            <div class="why-grid">
+            <div class="about-grid">
 
-                <div class="why-text">
+                <div>
 
                     <div class="section-label">
-                        Why Performance Garage
+                        About ManaU
                     </div>
 
                     <h2 class="section-title">
-                        Built around<br>
-                        your vehicle.
+
+                        Your business.
+                        <br>
+
+                        Your brand.
+                        <br>
+
+                        Your website.
+
                     </h2>
 
-                    <p>
-                        We believe automotive work should be
-                        straightforward. You deserve to know
-                        what your vehicle needs, why it needs
-                        it and what it will cost.
-                    </p>
-
-                    <div class="feature-list">
-
-
-                        <div class="feature">
-
-                            <div class="feature-icon">
-                                ✓
-                            </div>
-
-                            <div>
-
-                                <h4>
-                                    Experienced Technicians
-                                </h4>
-
-                                <p>
-                                    Skilled hands and
-                                    attention to detail.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="feature">
-
-                            <div class="feature-icon">
-                                ✓
-                            </div>
-
-                            <div>
-
-                                <h4>
-                                    Quality Parts
-                                </h4>
-
-                                <p>
-                                    Quality components without
-                                    unnecessary compromises.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="feature">
-
-                            <div class="feature-icon">
-                                ✓
-                            </div>
-
-                            <div>
-
-                                <h4>
-                                    Honest Advice
-                                </h4>
-
-                                <p>
-                                    Clear recommendations
-                                    without the sales pitch.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
                 </div>
 
 
-                <div class="why-box">
+                <div class="about-text">
 
-                    <div class="why-box-text">
+                    <p>
+                        ManaU Digital helps local businesses
+                        build a stronger presence online
+                        through modern, practical website
+                        design.
+                    </p>
 
-                        <strong>
-                            Driven by<br>
-                            performance.
-                        </strong>
+                    <p>
+                        We focus on clean design, simple
+                        experiences and websites that make it
+                        easy for customers to understand what
+                        you offer.
+                    </p>
 
-                        <span>
-                            Automotive specialists
-                        </span>
+                    <div class="about-highlight">
+
+                        No bloated websites.
+                        No unnecessary clutter.
+
+                        Just a digital presence built to
+                        represent your business properly.
 
                     </div>
 
                 </div>
 
             </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- REVIEWS -->
-
-    <section id="reviews">
-
-        <div class="container">
-
-            <div class="section-label">
-                Customer Reviews
-            </div>
-
-            <h2 class="section-title">
-                Don't take our<br>
-                word for it.
-            </h2>
-
-            <p class="section-intro">
-                A strong workshop is built on the people
-                who trust it with their vehicles.
-            </p>
-
-
-            <div class="reviews-grid">
-
-
-                <div class="review">
-
-                    <div class="stars">
-                        ★★★★★
-                    </div>
-
-                    <p>
-                        "Great communication from start to
-                        finish. They explained everything
-                        clearly and the car drives perfectly."
-                    </p>
-
-                    <div class="review-name">
-                        Jordan M.
-                    </div>
-
-                    <div class="review-type">
-                        Performance Upgrade
-                    </div>
-
-                </div>
-
-
-                <div class="review">
-
-                    <div class="stars">
-                        ★★★★★
-                    </div>
-
-                    <p>
-                        "Finally found a workshop that actually
-                        takes the time to diagnose the problem
-                        properly."
-                    </p>
-
-                    <div class="review-name">
-                        Daniel R.
-                    </div>
-
-                    <div class="review-type">
-                        Diagnostics
-                    </div>
-
-                </div>
-
-
-                <div class="review">
-
-                    <div class="stars">
-                        ★★★★★
-                    </div>
-
-                    <p>
-                        "Professional service, fair pricing
-                        and the team clearly knows their stuff.
-                        Will definitely be back."
-                    </p>
-
-                    <div class="review-name">
-                        Marcus T.
-                    </div>
-
-                    <div class="review-type">
-                        General Service
-                    </div>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CTA -->
-
-    <section class="cta">
-
-        <div class="container">
-
-            <div class="section-label">
-                Ready To Get Started?
-            </div>
-
-            <h2 class="section-title">
-                Your car.<br>
-                Our expertise.
-            </h2>
-
-            <p>
-                Whether it's routine maintenance or your
-                next performance project, let's talk about
-                what your vehicle needs.
-            </p>
-
-            <a
-                href="#contact"
-                class="btn btn-primary"
-            >
-                Book a Service
-            </a>
 
         </div>
 
@@ -1266,81 +880,32 @@
 
     <!-- CONTACT -->
 
-    <section id="contact">
+    <section
+        id="contact"
+        class="cta"
+    >
 
         <div class="container">
 
             <div class="section-label">
-                Contact
+                Start a Project
             </div>
 
             <h2 class="section-title">
-                Let's get<br>
-                your car sorted.
+                Ready to look better online?
             </h2>
 
-            <p class="section-intro">
-                Contact Performance Garage to book a
-                service or talk through your vehicle's needs.
+            <p>
+                Tell us what you need and let's build
+                something your customers will remember.
             </p>
 
-
-            <div class="contact-grid">
-
-
-                <div class="contact-card">
-
-                    <h3>
-                        Call Us
-                    </h3>
-
-                    <p>
-                        09 555 0123
-                    </p>
-
-                </div>
-
-
-                <div class="contact-card">
-
-                    <h3>
-                        Email
-                    </h3>
-
-                    <a href="mailto:hello@performancegarage.co.nz">
-                        hello@performancegarage.co.nz
-                    </a>
-
-                </div>
-
-
-                <div class="contact-card">
-
-                    <h3>
-                        Workshop
-                    </h3>
-
-                    <p>
-                        Auckland, New Zealand
-                    </p>
-
-                </div>
-
-
-                <div class="contact-card">
-
-                    <h3>
-                        Opening Hours
-                    </h3>
-
-                    <p>
-                        Monday - Friday: 8:00 AM - 5:30 PM
-                    </p>
-
-                </div>
-
-
-            </div>
+            <a
+                href="mailto:manaudigitalnz@gmail.com"
+                class="btn btn-primary"
+            >
+                Get a Free Quote
+            </a>
 
         </div>
 
@@ -1353,16 +918,12 @@
 
         <div class="container footer-container">
 
-            <div class="footer-brand">
-                PERFORMANCE<span>.</span>
+            <div>
+                © 2026 ManaU Digital
             </div>
 
             <div>
-                © 2026 Performance Garage
-            </div>
-
-            <div>
-                Demo website by ManaU Digital
+                manaudigitalnz@gmail.com
             </div>
 
         </div>
