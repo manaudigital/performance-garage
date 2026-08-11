@@ -2,700 +2,857 @@
 <html lang="en">
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Book a Service | Performance Garage</title>
+
+<meta
+    name="description"
+    content="Book your vehicle service with Performance Garage."
+>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #080808;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+a {
+    color: inherit;
+    text-decoration: none;
+}
 
-    <title>Book a Service | Performance Garage</title>
+/* =========================
+   NAVIGATION
+========================= */
 
-    <meta
-        name="description"
-        content="Book your vehicle service with Performance Garage."
-    >
+nav {
+    height: 78px;
+    border-bottom: 1px solid #252525;
+    background: rgba(8, 8, 8, 0.96);
+
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    width: min(1100px, 90%);
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-    <style>
+.logo {
+    color: #ffffff;
+    font-size: 1.15rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+.logo span {
+    color: #e3262e;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+.back-link {
+    color: #777777;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: 0.3s;
+}
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #080808;
-            color: #ffffff;
-            min-height: 100vh;
-        }
+.back-link:hover {
+    color: #ffffff;
+}
 
-        button,
-        input,
-        select {
-            font: inherit;
-        }
+/* =========================
+   PAGE
+========================= */
 
-        button {
-            cursor: pointer;
-        }
+.page {
+    width: min(950px, 92%);
+    margin: auto;
 
-        /* =========================
-           NAVIGATION
-        ========================= */
+    padding: 70px 0 100px;
+}
 
-        nav {
-            height: 78px;
+.intro {
+    text-align: center;
+    margin-bottom: 45px;
+}
 
-            border-bottom: 1px solid #252525;
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
 
-            background: rgba(8, 8, 8, 0.96);
+    color: #e3262e;
 
-            display: flex;
-            align-items: center;
-        }
+    font-size: 0.75rem;
+    font-weight: 900;
 
-        .nav-container {
-            width: min(1100px, 90%);
-            margin: auto;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+    margin-bottom: 18px;
+}
 
-        .logo {
-            color: #ffffff;
-            text-decoration: none;
+.eyebrow::before {
+    content: "";
 
-            font-size: 1.15rem;
-            font-weight: 900;
+    width: 28px;
+    height: 2px;
 
-            letter-spacing: 1px;
-        }
+    background: #e3262e;
+}
 
-        .logo span {
-            color: #e3262e;
-        }
+.intro h1 {
+    font-size: clamp(2.8rem, 7vw, 5rem);
 
-        .back-link {
-            color: #777777;
+    line-height: 0.95;
 
-            text-decoration: none;
+    letter-spacing: -3px;
 
-            font-size: 0.85rem;
-            font-weight: 700;
+    text-transform: uppercase;
 
-            transition: 0.3s;
-        }
+    margin-bottom: 18px;
+}
 
-        .back-link:hover {
-            color: #ffffff;
-        }
+.intro h1 span {
+    color: #e3262e;
+}
 
-        /* =========================
-           PAGE
-        ========================= */
+.intro p {
+    color: #777777;
+    max-width: 550px;
+    margin: auto;
+}
 
-        .page {
-            width: min(900px, 92%);
-            margin: auto;
+/* =========================
+   PROGRESS
+========================= */
 
-            padding: 70px 0 100px;
-        }
+.progress {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 
-        .intro {
-            text-align: center;
-            margin-bottom: 45px;
-        }
+    gap: 8px;
 
-        .eyebrow {
-            display: inline-flex;
+    margin-bottom: 16px;
+}
 
-            align-items: center;
-            gap: 9px;
+.progress-step {
+    height: 4px;
 
-            color: #e3262e;
+    background: #242424;
 
-            font-size: 0.75rem;
-            font-weight: 900;
+    border-radius: 20px;
 
-            letter-spacing: 2px;
-            text-transform: uppercase;
+    transition: 0.3s;
+}
 
-            margin-bottom: 18px;
-        }
+.progress-step.active {
+    background: #e3262e;
+}
 
-        .eyebrow::before {
-            content: "";
+.step-labels {
+    display: flex;
+    justify-content: space-between;
 
-            width: 28px;
-            height: 2px;
+    color: #555555;
 
-            background: #e3262e;
-        }
+    font-size: 0.68rem;
 
-        .intro h1 {
-            font-size: clamp(2.8rem, 7vw, 5rem);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 
-            line-height: 0.95;
+    margin-bottom: 25px;
+}
 
-            letter-spacing: -3px;
+.step-labels .active {
+    color: #ffffff;
+}
 
-            text-transform: uppercase;
+/* =========================
+   BOOKING CARD
+========================= */
 
-            margin-bottom: 18px;
-        }
+.booking-card {
+    background: #101010;
 
-        .intro h1 span {
-            color: #e3262e;
-        }
+    border: 1px solid #252525;
 
-        .intro p {
-            color: #777777;
+    border-radius: 10px;
 
-            max-width: 550px;
+    padding: clamp(25px, 5vw, 45px);
 
-            margin: auto;
-        }
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.35);
+}
 
-        /* =========================
-           PROGRESS
-        ========================= */
+.booking-step {
+    display: none;
+}
 
-        .progress {
-            display: grid;
+.booking-step.active {
+    display: block;
 
-            grid-template-columns: repeat(4, 1fr);
+    animation: fadeIn 0.3s ease;
+}
 
-            gap: 8px;
+@keyframes fadeIn {
 
-            margin-bottom: 16px;
-        }
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
 
-        .progress-step {
-            height: 4px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
-            background: #242424;
+}
 
-            border-radius: 20px;
+/* =========================
+   HEADINGS
+========================= */
 
-            transition: 0.3s;
-        }
+.step-heading {
+    margin-bottom: 30px;
+}
 
-        .progress-step.active {
-            background: #e3262e;
-        }
+.step-heading small {
+    color: #e3262e;
 
-        .step-labels {
-            display: flex;
+    font-size: 0.7rem;
+    font-weight: 900;
 
-            justify-content: space-between;
+    letter-spacing: 2px;
 
-            color: #555555;
+    text-transform: uppercase;
+}
 
-            font-size: 0.68rem;
+.step-heading h2 {
+    font-size: 2rem;
 
-            text-transform: uppercase;
+    text-transform: uppercase;
 
-            letter-spacing: 1px;
+    margin-top: 7px;
+}
 
-            margin-bottom: 25px;
-        }
+.step-heading p {
+    color: #777777;
 
-        .step-labels .active {
-            color: #ffffff;
-        }
+    margin-top: 8px;
+}
 
-        /* =========================
-           BOOKING CARD
-        ========================= */
+/* =========================
+   FORM
+========================= */
 
-        .booking-card {
-            background: #101010;
+.form-grid {
+    display: grid;
 
-            border: 1px solid #252525;
+    grid-template-columns: repeat(2, 1fr);
 
-            border-radius: 10px;
+    gap: 18px;
+}
 
-            padding: clamp(25px, 5vw, 45px);
+.field {
+    display: flex;
 
-            box-shadow:
-                0 25px 80px rgba(0, 0, 0, 0.35);
-        }
+    flex-direction: column;
 
-        .booking-step {
-            display: none;
-        }
+    gap: 7px;
+}
 
-        .booking-step.active {
-            display: block;
+.field.full {
+    grid-column: 1 / -1;
+}
 
-            animation: fadeIn 0.3s ease;
-        }
+.field label {
+    color: #aaaaaa;
 
-        @keyframes fadeIn {
+    font-size: 0.78rem;
 
-            from {
-                opacity: 0;
-                transform: translateY(8px);
-            }
+    font-weight: 800;
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+    text-transform: uppercase;
 
-        }
+    letter-spacing: 0.5px;
+}
 
-        /* =========================
-           HEADINGS
-        ========================= */
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
 
-        .step-heading {
-            margin-bottom: 30px;
-        }
+    padding: 14px 15px;
 
-        .step-heading small {
-            color: #e3262e;
+    background: #090909;
 
-            font-size: 0.7rem;
-            font-weight: 900;
+    border: 1px solid #292929;
 
-            letter-spacing: 2px;
+    border-radius: 6px;
 
-            text-transform: uppercase;
-        }
+    color: #ffffff;
 
-        .step-heading h2 {
-            font-size: 2rem;
+    outline: none;
 
-            text-transform: uppercase;
+    transition: 0.2s;
+}
 
-            margin-top: 7px;
-        }
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    border-color: #e3262e;
 
-        .step-heading p {
-            color: #777777;
+    box-shadow:
+        0 0 0 2px
+        rgba(227, 38, 46, 0.08);
+}
 
-            margin-top: 8px;
-        }
+.field input::placeholder,
+.field textarea::placeholder {
+    color: #444444;
+}
 
-        /* =========================
-           FORM
-        ========================= */
+.field textarea {
+    min-height: 115px;
 
-        .form-grid {
-            display: grid;
+    resize: vertical;
+}
 
-            grid-template-columns: repeat(2, 1fr);
+/* =========================
+   OPTIONAL FIELD
+========================= */
 
-            gap: 18px;
-        }
+.optional {
+    color: #555555;
 
-        .field {
-            display: flex;
+    font-size: 0.62rem;
 
-            flex-direction: column;
+    font-weight: 700;
 
-            gap: 7px;
-        }
+    margin-left: 5px;
 
-        .field.full {
-            grid-column: 1 / -1;
-        }
+    text-transform: none;
+}
 
-        .field label {
-            color: #aaaaaa;
+/* =========================
+   SERVICES
+========================= */
 
-            font-size: 0.78rem;
+.options {
+    display: grid;
 
-            font-weight: 800;
+    grid-template-columns: repeat(2, 1fr);
 
-            text-transform: uppercase;
+    gap: 12px;
+}
 
-            letter-spacing: 0.5px;
-        }
+.option {
+    position: relative;
+}
 
-        .field input,
-        .field select {
-            width: 100%;
+.option input {
+    position: absolute;
 
-            padding: 14px 15px;
+    opacity: 0;
+}
 
-            background: #090909;
+.option label {
+    display: block;
 
-            border: 1px solid #292929;
+    background: #0b0b0b;
 
-            border-radius: 6px;
+    border: 1px solid #292929;
 
-            color: #ffffff;
+    border-radius: 7px;
 
-            outline: none;
+    padding: 20px;
 
-            transition: 0.2s;
-        }
+    cursor: pointer;
 
-        .field input:focus,
-        .field select:focus {
-            border-color: #e3262e;
+    transition: 0.25s;
+}
 
-            box-shadow:
-                0 0 0 2px
-                rgba(227, 38, 46, 0.08);
-        }
+.option label strong {
+    display: block;
 
-        .field input::placeholder {
-            color: #444444;
-        }
+    font-size: 0.95rem;
 
-        /* =========================
-           SERVICES
-        ========================= */
+    text-transform: uppercase;
 
-        .options {
-            display: grid;
+    margin-bottom: 4px;
+}
 
-            grid-template-columns: repeat(2, 1fr);
+.option label span {
+    color: #666666;
 
-            gap: 12px;
-        }
+    font-size: 0.78rem;
+}
 
-        .option {
-            position: relative;
-        }
+.option label:hover {
+    border-color: #555555;
+}
 
-        .option input {
-            position: absolute;
+.option input:checked + label {
+    border-color: #e3262e;
 
-            opacity: 0;
-        }
+    background: #160b0c;
 
-        .option label {
-            display: block;
+    box-shadow:
+        0 0 0 1px #e3262e;
+}
 
-            background: #0b0b0b;
+/* =========================
+   PHOTO UPLOAD
+========================= */
 
-            border: 1px solid #292929;
+.photo-upload {
+    position: relative;
 
-            border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-            padding: 20px;
+    min-height: 120px;
 
-            cursor: pointer;
+    padding: 20px;
 
-            transition: 0.25s;
-        }
+    border: 1px dashed #333333;
 
-        .option label strong {
-            display: block;
+    border-radius: 7px;
 
-            font-size: 0.95rem;
+    background: #0b0b0b;
 
-            text-transform: uppercase;
+    text-align: center;
 
-            margin-bottom: 4px;
-        }
+    transition: 0.25s;
+}
 
-        .option label span {
-            color: #666666;
+.photo-upload:hover {
+    border-color: #e3262e;
+}
 
-            font-size: 0.78rem;
-        }
+.photo-upload input {
+    position: absolute;
 
-        .option label:hover {
-            border-color: #555555;
-        }
+    inset: 0;
 
-        .option input:checked + label {
-            border-color: #e3262e;
+    width: 100%;
+    height: 100%;
 
-            background: #160b0c;
+    opacity: 0;
 
-            box-shadow:
-                0 0 0 1px #e3262e;
-        }
+    cursor: pointer;
+}
 
-        /* =========================
-           BUTTONS
-        ========================= */
+.photo-content {
+    pointer-events: none;
+}
 
-        .actions {
-            display: flex;
+.photo-icon {
+    display: block;
 
-            justify-content: space-between;
+    font-size: 1.5rem;
 
-            gap: 12px;
+    margin-bottom: 8px;
+}
 
-            margin-top: 35px;
-        }
+.photo-content strong {
+    display: block;
 
-        .btn {
-            display: inline-flex;
+    font-size: 0.7rem;
 
-            align-items: center;
-            justify-content: center;
+    text-transform: uppercase;
+}
 
-            border: none;
+.photo-content span {
+    display: block;
 
-            border-radius: 6px;
+    color: #555555;
 
-            padding: 15px 24px;
+    font-size: 0.62rem;
 
-            font-weight: 900;
+    margin-top: 4px;
+}
 
-            text-transform: uppercase;
+.photo-name {
+    color: #38c172 !important;
 
-            text-decoration: none;
+    margin-top: 8px !important;
+}
 
-            transition: 0.25s;
-        }
+/* =========================
+   BUTTONS
+========================= */
 
-        .btn-primary {
-            background: #e3262e;
+.actions {
+    display: flex;
 
-            color: #ffffff;
+    justify-content: space-between;
 
-            margin-left: auto;
-        }
+    gap: 12px;
 
-        .btn-primary:hover {
-            background: #ffffff;
+    margin-top: 35px;
+}
 
-            color: #080808;
+.btn {
+    display: inline-flex;
 
-            transform: translateY(-2px);
-        }
+    align-items: center;
+    justify-content: center;
 
-        .btn-secondary {
-            background: transparent;
+    border: none;
 
-            border: 1px solid #333333;
+    border-radius: 6px;
 
-            color: #aaaaaa;
-        }
+    padding: 15px 24px;
 
-        .btn-secondary:hover {
-            border-color: #ffffff;
+    font-weight: 900;
 
-            color: #ffffff;
-        }
+    text-transform: uppercase;
 
-        /* =========================
-           CONFIRMATION
-        ========================= */
+    text-decoration: none;
 
-        .confirmation {
-            display: none;
+    transition: 0.25s;
+}
 
-            text-align: center;
+.btn-primary {
+    background: #e3262e;
 
-            padding: 15px 0 5px;
-        }
+    color: #ffffff;
 
-        .confirmation.active {
-            display: block;
+    margin-left: auto;
+}
 
-            animation: fadeIn 0.4s ease;
-        }
+.btn-primary:hover {
+    background: #ffffff;
 
-        .success-icon {
-            width: 72px;
-            height: 72px;
+    color: #080808;
 
-            display: grid;
+    transform: translateY(-2px);
+}
 
-            place-items: center;
+.btn-secondary {
+    background: transparent;
 
-            margin: 0 auto 25px;
+    border: 1px solid #333333;
 
-            border-radius: 50%;
+    color: #aaaaaa;
+}
 
-            background: #e3262e;
+.btn-secondary:hover {
+    border-color: #ffffff;
 
-            font-size: 2rem;
+    color: #ffffff;
+}
 
-            font-weight: 900;
+/* =========================
+   LIVE SUMMARY
+========================= */
 
-            box-shadow:
-                0 15px 40px
-                rgba(227, 38, 46, 0.2);
-        }
+.live-summary {
+    margin-top: 25px;
 
-        .confirmation h2 {
-            font-size:
-                clamp(2rem, 5vw, 2.8rem);
+    padding: 18px;
 
-            line-height: 1;
+    background: #0b0b0b;
 
-            text-transform: uppercase;
+    border: 1px solid #222222;
 
-            margin-bottom: 15px;
-        }
+    border-radius: 7px;
+}
 
-        .confirmation > p {
-            color: #777777;
+.live-summary-title {
+    color: #e3262e;
 
-            max-width: 530px;
+    font-size: 0.65rem;
 
-            margin: 0 auto 30px;
-        }
+    font-weight: 900;
 
-        .booking-summary {
-            background: #090909;
+    letter-spacing: 1.5px;
 
-            border: 1px solid #242424;
+    text-transform: uppercase;
 
-            border-radius: 8px;
+    margin-bottom: 12px;
+}
 
-            padding: 25px;
+.live-summary-grid {
+    display: grid;
 
-            text-align: left;
+    grid-template-columns: repeat(2, 1fr);
 
-            max-width: 540px;
+    gap: 12px;
+}
 
-            margin: auto;
-        }
+.live-item small {
+    display: block;
 
-        .summary-row {
-            display: flex;
+    color: #555555;
 
-            justify-content: space-between;
+    font-size: 0.58rem;
 
-            gap: 20px;
+    font-weight: 900;
 
-            padding: 13px 0;
+    text-transform: uppercase;
 
-            border-bottom: 1px solid #1d1d1d;
-        }
+    margin-bottom: 3px;
+}
 
-        .summary-row:last-child {
-            border-bottom: none;
-        }
+.live-item strong {
+    color: #cccccc;
 
-        .summary-row span:first-child {
-            color: #666666;
+    font-size: 0.7rem;
+}
 
-            font-size: 0.72rem;
+/* =========================
+   CONFIRMATION
+========================= */
 
-            text-transform: uppercase;
+.confirmation {
+    display: none;
 
-            letter-spacing: 0.5px;
-        }
+    text-align: center;
 
-        .summary-row span:last-child {
-            text-align: right;
+    padding: 15px 0 5px;
+}
 
-            font-weight: 800;
-        }
+.confirmation.active {
+    display: block;
 
-        .send-area {
-            margin-top: 30px;
+    animation: fadeIn 0.4s ease;
+}
 
-            padding-top: 25px;
+.success-icon {
+    width: 72px;
+    height: 72px;
 
-            border-top: 1px solid #222222;
-        }
+    display: grid;
 
-        .send-area h3 {
-            font-size: 1rem;
+    place-items: center;
 
-            text-transform: uppercase;
+    margin: 0 auto 25px;
 
-            margin-bottom: 7px;
-        }
+    border-radius: 50%;
 
-        .send-area p {
-            color: #666666;
+    background: #e3262e;
 
-            font-size: 0.8rem;
+    font-size: 2rem;
 
-            margin-bottom: 18px;
-        }
+    font-weight: 900;
 
-        .send-button {
-            width: 100%;
+    box-shadow:
+        0 15px 40px
+        rgba(227, 38, 46, 0.2);
+}
 
-            appearance: none;
+.confirmation h2 {
+    font-size:
+        clamp(2rem, 5vw, 2.8rem);
 
-            -webkit-appearance: none;
+    line-height: 1;
 
-            cursor: pointer;
-        }
+    text-transform: uppercase;
 
-        .demo-note {
-            margin-top: 20px;
+    margin-bottom: 15px;
+}
 
-            color: #444444;
+.confirmation > p {
+    color: #777777;
 
-            font-size: 0.72rem;
-        }
+    max-width: 530px;
 
-        /* =========================
-           MOBILE
-        ========================= */
+    margin: 0 auto 30px;
+}
 
-        @media (max-width: 650px) {
+.booking-summary {
+    background: #090909;
 
-            nav {
-                height: 68px;
-            }
+    border: 1px solid #242424;
 
-            .back-link {
-                font-size: 0.75rem;
-            }
+    border-radius: 8px;
 
-            .page {
-                padding-top: 50px;
-            }
+    padding: 25px;
 
-            .intro h1 {
-                letter-spacing: -2px;
-            }
+    text-align: left;
 
-            .options,
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
+    max-width: 540px;
 
-            .field.full {
-                grid-column: auto;
-            }
+    margin: auto;
+}
 
-            .step-labels {
-                font-size: 0.56rem;
-            }
+.summary-row {
+    display: flex;
 
-            .actions {
-                flex-direction: column-reverse;
-            }
+    justify-content: space-between;
 
-            .btn {
-                width: 100%;
-            }
+    gap: 20px;
 
-            .btn-primary {
-                margin-left: 0;
-            }
+    padding: 13px 0;
 
-            .summary-row {
-                flex-direction: column;
+    border-bottom: 1px solid #1d1d1d;
+}
 
-                gap: 4px;
-            }
+.summary-row:last-child {
+    border-bottom: none;
+}
 
-            .summary-row span:last-child {
-                text-align: left;
-            }
+.summary-row span:first-child {
+    color: #666666;
 
-        }
+    font-size: 0.72rem;
 
-    </style>
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+}
+
+.summary-row span:last-child {
+    text-align: right;
+
+    font-weight: 800;
+}
+
+.send-area {
+    margin-top: 30px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #222222;
+}
+
+.send-area h3 {
+    font-size: 1rem;
+
+    text-transform: uppercase;
+
+    margin-bottom: 7px;
+}
+
+.send-area p {
+    color: #666666;
+
+    font-size: 0.8rem;
+
+    margin-bottom: 18px;
+}
+
+.send-button {
+    width: 100%;
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    cursor: pointer;
+}
+
+.demo-note {
+    margin-top: 20px;
+
+    color: #444444;
+
+    font-size: 0.72rem;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+    nav {
+        height: 68px;
+    }
+
+    .back-link {
+        font-size: 0.75rem;
+    }
+
+    .page {
+        padding-top: 50px;
+    }
+
+    .intro h1 {
+        letter-spacing: -2px;
+    }
+
+    .options,
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .field.full {
+        grid-column: auto;
+    }
+
+    .step-labels {
+        font-size: 0.56rem;
+    }
+
+    .actions {
+        flex-direction: column-reverse;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .btn-primary {
+        margin-left: 0;
+    }
+
+    .summary-row {
+        flex-direction: column;
+
+        gap: 4px;
+    }
+
+    .summary-row span:last-child {
+        text-align: left;
+    }
+
+    .live-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -703,1308 +860,1768 @@
 <body>
 
 
-    <!-- =========================
-         NAVIGATION
-    ========================= -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
-    <nav>
+<nav>
 
-        <div class="nav-container">
+<div class="nav-container">
 
-            <a
-                href="index.html"
-                class="logo"
-            >
-                PERFORMANCE<span>.</span>
-            </a>
+<a
+    href="index.html"
+    class="logo"
+>
+    PERFORMANCE<span>.</span>
+</a>
 
+<a
+    href="index.html"
+    class="back-link"
+>
+    ← Back to website
+</a>
 
-            <a
-                href="index.html"
-                class="back-link"
-            >
-                ← Back to website
-            </a>
+</div>
 
-        </div>
+</nav>
 
-    </nav>
 
+<!-- =========================
+     MAIN
+========================= -->
 
-    <!-- =========================
-         MAIN
-    ========================= -->
+<main class="page">
 
-    <main class="page">
 
+<div class="intro">
 
-        <div class="intro">
+<div class="eyebrow">
+    Online Booking
+</div>
 
-            <div class="eyebrow">
-                Online Booking
-            </div>
+<h1>
+    Book Your<br>
+    <span>Service.</span>
+</h1>
 
+<p>
+    Tell us about your vehicle and what it needs.
+    We'll take care of the rest.
+</p>
 
-            <h1>
-                Book Your<br>
-                <span>Service.</span>
-            </h1>
+</div>
 
 
-            <p>
-                Tell us about your vehicle and what it needs.
-                We'll take care of the rest.
-            </p>
+<!-- PROGRESS -->
 
-        </div>
+<div class="progress">
 
+<div class="progress-step active"></div>
+<div class="progress-step"></div>
+<div class="progress-step"></div>
+<div class="progress-step"></div>
 
-        <!-- PROGRESS -->
+</div>
 
-        <div class="progress">
 
-            <div class="progress-step active"></div>
+<div class="step-labels">
 
-            <div class="progress-step"></div>
+<span class="active">
+    Vehicle
+</span>
 
-            <div class="progress-step"></div>
+<span>
+    Service
+</span>
 
-            <div class="progress-step"></div>
+<span>
+    Appointment
+</span>
 
-        </div>
+<span>
+    Details
+</span>
 
+</div>
 
-        <div class="step-labels">
 
-            <span class="active">
-                Vehicle
-            </span>
+<!-- =========================
+     BOOKING CARD
+========================= -->
 
-            <span>
-                Service
-            </span>
+<div class="booking-card">
 
-            <span>
-                Appointment
-            </span>
 
-            <span>
-                Details
-            </span>
+<!-- STEP 1 -->
 
-        </div>
+<div
+    class="booking-step active"
+    data-step="1"
+>
 
+<div class="step-heading">
 
-        <!-- =========================
-             BOOKING CARD
-        ========================= -->
+<small>
+    Step 01
+</small>
 
-        <div class="booking-card">
+<h2>
+    Your Vehicle
+</h2>
 
+<p>
+    What are we working on?
+</p>
 
-            <!-- STEP 1 -->
+</div>
 
-            <div
-                class="booking-step active"
-                data-step="1"
-            >
 
-                <div class="step-heading">
+<div class="form-grid">
 
-                    <small>
-                        Step 01
-                    </small>
 
-                    <h2>
-                        Your Vehicle
-                    </h2>
+<div class="field">
 
-                    <p>
-                        What are we working on?
-                    </p>
+<label for="make">
+    Make
+</label>
 
-                </div>
+<select id="make">
 
+<option value="">
+    Select make
+</option>
 
-                <div class="form-grid">
+<option>Audi</option>
+<option>BMW</option>
+<option>Ford</option>
+<option>Honda</option>
+<option>Infiniti</option>
+<option>Lexus</option>
+<option>Mercedes-Benz</option>
+<option>Nissan</option>
+<option>Toyota</option>
+<option>Volkswagen</option>
+<option>Mazda</option>
+<option>Mitsubishi</option>
+<option>Subaru</option>
+<option>Holden</option>
+<option>Hyundai</option>
+<option>Kia</option>
+<option>Land Rover</option>
+<option>Jeep</option>
+<option>Jaguar</option>
+<option>Porsche</option>
+<option>Other</option>
 
+</select>
 
-                    <div class="field">
+</div>
 
-                        <label for="make">
-                            Make
-                        </label>
 
+<div class="field">
 
-                        <select id="make">
+<label for="model">
+    Model
+</label>
 
-                            <option value="">
-                                Select make
-                            </option>
+<input
+    id="model"
+    type="text"
+    placeholder="e.g. Q50"
+>
 
-                            <option>Audi</option>
-                            <option>BMW</option>
-                            <option>Ford</option>
-                            <option>Honda</option>
-                            <option>Infiniti</option>
-                            <option>Lexus</option>
-                            <option>Mercedes-Benz</option>
-                            <option>Nissan</option>
-                            <option>Toyota</option>
-                            <option>Volkswagen</option>
-                            <option>Other</option>
+</div>
 
-                        </select>
 
-                    </div>
+<div class="field">
 
+<label for="year">
+    Year
+</label>
 
-                    <div class="field">
+<input
+    id="year"
+    type="number"
+    placeholder="e.g. 2018"
+    min="1950"
+    max="2026"
+>
 
-                        <label for="model">
-                            Model
-                        </label>
+</div>
 
 
-                        <input
-                            id="model"
-                            type="text"
-                            placeholder="e.g. Q50"
-                        >
+<div class="field">
 
-                    </div>
+<label for="rego">
+    Registration
+</label>
 
+<input
+    id="rego"
+    type="text"
+    placeholder="e.g. ABC123"
+>
 
-                    <div class="field">
+</div>
 
-                        <label for="year">
-                            Year
-                        </label>
 
+<div class="field full">
 
-                        <input
-                            id="year"
-                            type="number"
-                            placeholder="e.g. 2018"
-                            min="1950"
-                            max="2026"
-                        >
+<label for="mileage">
+    Current Mileage
+    <span class="optional">
+        Optional
+    </span>
+</label>
 
-                    </div>
+<input
+    id="mileage"
+    type="text"
+    placeholder="e.g. 84,210 km"
+>
 
+</div>
 
-                    <div class="field">
 
-                        <label for="rego">
-                            Registration
-                        </label>
+</div>
 
 
-                        <input
-                            id="rego"
-                            type="text"
-                            placeholder="e.g. ABC123"
-                        >
+<div class="live-summary">
 
-                    </div>
+<div class="live-summary-title">
+    Vehicle Preview
+</div>
 
-                </div>
+<div class="live-summary-grid">
 
+<div class="live-item">
 
-                <div class="actions">
+<small>
+    Vehicle
+</small>
 
-                    <button
-                        type="button"
-                        class="btn btn-primary"
-                        onclick="nextStep()"
-                    >
-                        Continue →
-                    </button>
+<strong id="previewVehicle">
+    Not entered
+</strong>
 
-                </div>
+</div>
 
-            </div>
+<div class="live-item">
 
+<small>
+    Registration
+</small>
 
-            <!-- STEP 2 -->
+<strong id="previewRego">
+    Not entered
+</strong>
 
-            <div
-                class="booking-step"
-                data-step="2"
-            >
+</div>
 
-                <div class="step-heading">
+</div>
 
-                    <small>
-                        Step 02
-                    </small>
+</div>
 
-                    <h2>
-                        Choose a Service
-                    </h2>
 
-                    <p>
-                        What does your vehicle need?
-                    </p>
+<div class="actions">
 
-                </div>
+<button
+    type="button"
+    class="btn btn-primary"
+    onclick="nextStep()"
+>
+    Continue →
+</button>
 
+</div>
 
-                <div class="options">
+</div>
 
 
-                    <div class="option">
+<!-- STEP 2 -->
 
-                        <input
-                            type="radio"
-                            name="service"
-                            id="service1"
-                            value="General Service"
-                        >
+<div
+    class="booking-step"
+    data-step="2"
+>
 
-                        <label for="service1">
+<div class="step-heading">
 
-                            <strong>
-                                General Service
-                            </strong>
+<small>
+    Step 02
+</small>
 
-                            <span>
-                                Scheduled maintenance
-                            </span>
+<h2>
+    Choose a Service
+</h2>
 
-                        </label>
+<p>
+    What does your vehicle need?
+</p>
 
-                    </div>
+</div>
 
 
-                    <div class="option">
+<div class="options">
 
-                        <input
-                            type="radio"
-                            name="service"
-                            id="service2"
-                            value="Diagnostics"
-                        >
 
-                        <label for="service2">
+<div class="option">
 
-                            <strong>
-                                Diagnostics
-                            </strong>
+<input
+    type="radio"
+    name="service"
+    id="service1"
+    value="General Service"
+>
 
-                            <span>
-                                Warning lights & faults
-                            </span>
+<label for="service1">
 
-                        </label>
+<strong>
+    General Service
+</strong>
 
-                    </div>
+<span>
+    Scheduled maintenance
+</span>
 
+</label>
 
-                    <div class="option">
+</div>
 
-                        <input
-                            type="radio"
-                            name="service"
-                            id="service3"
-                            value="Brakes"
-                        >
 
-                        <label for="service3">
+<div class="option">
 
-                            <strong>
-                                Brakes
-                            </strong>
+<input
+    type="radio"
+    name="service"
+    id="service2"
+    value="Diagnostics"
+>
 
-                            <span>
-                                Inspection & repairs
-                            </span>
+<label for="service2">
 
-                        </label>
+<strong>
+    Diagnostics
+</strong>
 
-                    </div>
+<span>
+    Warning lights & faults
+</span>
 
+</label>
 
-                    <div class="option">
+</div>
 
-                        <input
-                            type="radio"
-                            name="service"
-                            id="service4"
-                            value="Suspension"
-                        >
 
-                        <label for="service4">
+<div class="option">
 
-                            <strong>
-                                Suspension
-                            </strong>
+<input
+    type="radio"
+    name="service"
+    id="service3"
+    value="Brakes"
+>
 
-                            <span>
-                                Steering & handling
-                            </span>
+<label for="service3">
 
-                        </label>
+<strong>
+    Brakes
+</strong>
 
-                    </div>
+<span>
+    Inspection & repairs
+</span>
 
+</label>
 
-                    <div class="option">
+</div>
 
-                        <input
-                            type="radio"
-                            name="service"
-                            id="service5"
-                            value="Performance"
-                        >
 
-                        <label for="service5">
+<div class="option">
 
-                            <strong>
-                                Performance
-                            </strong>
+<input
+    type="radio"
+    name="service"
+    id="service4"
+    value="Suspension"
+>
 
-                            <span>
-                                Upgrades & modifications
-                            </span>
+<label for="service4">
 
-                        </label>
+<strong>
+    Suspension
+</strong>
 
-                    </div>
+<span>
+    Steering & handling
+</span>
 
+</label>
 
-                    <div class="option">
+</div>
 
-                        <input
-                            type="radio"
-                            name="service"
-                            id="service6"
-                            value="WOF"
-                        >
 
-                        <label for="service6">
+<div class="option">
 
-                            <strong>
-                                WOF
-                            </strong>
+<input
+    type="radio"
+    name="service"
+    id="service5"
+    value="Performance"
+>
 
-                            <span>
-                                Warrant of Fitness
-                            </span>
+<label for="service5">
 
-                        </label>
+<strong>
+    Performance
+</strong>
 
-                    </div>
+<span>
+    Upgrades & modifications
+</span>
 
-                </div>
+</label>
 
+</div>
 
-                <div class="actions">
 
-                    <button
-                        type="button"
-                        class="btn btn-secondary"
-                        onclick="previousStep()"
-                    >
-                        ← Back
-                    </button>
+<div class="option">
 
+<input
+    type="radio"
+    name="service"
+    id="service6"
+    value="WOF"
+>
 
-                    <button
-                        type="button"
-                        class="btn btn-primary"
-                        onclick="nextStep()"
-                    >
-                        Continue →
-                    </button>
+<label for="service6">
 
-                </div>
+<strong>
+    WOF
+</strong>
 
-            </div>
+<span>
+    Warrant of Fitness
+</span>
 
+</label>
 
-            <!-- STEP 3 -->
+</div>
 
-            <div
-                class="booking-step"
-                data-step="3"
-            >
+</div>
 
-                <div class="step-heading">
 
-                    <small>
-                        Step 03
-                    </small>
+<div class="actions">
 
-                    <h2>
-                        Appointment
-                    </h2>
+<button
+    type="button"
+    class="btn btn-secondary"
+    onclick="previousStep()"
+>
+    ← Back
+</button>
 
-                    <p>
-                        Choose your preferred date and time.
-                    </p>
+<button
+    type="button"
+    class="btn btn-primary"
+    onclick="nextStep()"
+>
+    Continue →
+</button>
 
-                </div>
+</div>
 
+</div>
 
-                <div class="form-grid">
 
+<!-- STEP 3 -->
 
-                    <div class="field">
+<div
+    class="booking-step"
+    data-step="3"
+>
 
-                        <label for="date">
-                            Preferred Date
-                        </label>
+<div class="step-heading">
 
+<small>
+    Step 03
+</small>
 
-                        <input
-                            id="date"
-                            type="date"
-                        >
+<h2>
+    Appointment
+</h2>
 
-                    </div>
+<p>
+    Choose your preferred date and time.
+</p>
 
+</div>
 
-                    <div class="field">
 
-                        <label for="time">
-                            Preferred Time
-                        </label>
+<div class="form-grid">
 
 
-                        <select id="time">
+<div class="field">
 
-                            <option value="">
-                                Select a time
-                            </option>
+<label for="date">
+    Preferred Date
+</label>
 
-                            <option>8:00 AM</option>
-                            <option>9:00 AM</option>
-                            <option>10:00 AM</option>
-                            <option>11:00 AM</option>
-                            <option>12:00 PM</option>
-                            <option>1:00 PM</option>
-                            <option>2:00 PM</option>
-                            <option>3:00 PM</option>
-                            <option>4:00 PM</option>
+<input
+    id="date"
+    type="date"
+>
 
-                        </select>
+</div>
 
-                    </div>
 
-                </div>
+<div class="field">
 
+<label for="time">
+    Preferred Time
+</label>
 
-                <div class="actions">
+<select id="time">
 
-                    <button
-                        type="button"
-                        class="btn btn-secondary"
-                        onclick="previousStep()"
-                    >
-                        ← Back
-                    </button>
+<option value="">
+    Select a time
+</option>
 
+<option>8:00 AM</option>
+<option>9:00 AM</option>
+<option>10:00 AM</option>
+<option>11:00 AM</option>
+<option>12:00 PM</option>
+<option>1:00 PM</option>
+<option>2:00 PM</option>
+<option>3:00 PM</option>
+<option>4:00 PM</option>
 
-                    <button
-                        type="button"
-                        class="btn btn-primary"
-                        onclick="nextStep()"
-                    >
-                        Continue →
-                    </button>
+</select>
 
-                </div>
+</div>
 
-            </div>
 
+<div class="field full">
 
-            <!-- STEP 4 -->
+<label for="issue">
+    Tell Us What's Happening
+    <span class="optional">
+        Optional
+    </span>
+</label>
 
-            <div
-                class="booking-step"
-                data-step="4"
-            >
+<textarea
+    id="issue"
+    placeholder="Example: Check engine light has appeared, car feels rough under acceleration..."
+></textarea>
 
-                <div class="step-heading">
+</div>
 
-                    <small>
-                        Step 04
-                    </small>
 
-                    <h2>
-                        Your Details
-                    </h2>
+<div class="field full">
 
-                    <p>
-                        Where can we contact you?
-                    </p>
+<label>
+    Add a Photo
+    <span class="optional">
+        Optional
+    </span>
+</label>
 
-                </div>
+<div class="photo-upload">
 
+<input
+    type="file"
+    id="photo"
+    accept="image/*"
+>
 
-                <div class="form-grid">
+<div class="photo-content">
 
+<span class="photo-icon">
+    📷
+</span>
 
-                    <div class="field">
+<strong>
+    Add a vehicle photo
+</strong>
 
-                        <label for="name">
-                            Full Name
-                        </label>
+<span>
+    Warning light, damage or anything you'd like us to see
+</span>
 
+<span
+    class="photo-name"
+    id="photoName"
+>
+</span>
 
-                        <input
-                            id="name"
-                            type="text"
-                            placeholder="Your name"
-                        >
+</div>
 
-                    </div>
+</div>
 
+</div>
 
-                    <div class="field">
+</div>
 
-                        <label for="phone">
-                            Phone
-                        </label>
 
+<div class="actions">
 
-                        <input
-                            id="phone"
-                            type="tel"
-                            placeholder="021 000 0000"
-                        >
+<button
+    type="button"
+    class="btn btn-secondary"
+    onclick="previousStep()"
+>
+    ← Back
+</button>
 
-                    </div>
+<button
+    type="button"
+    class="btn btn-primary"
+    onclick="nextStep()"
+>
+    Continue →
+</button>
 
+</div>
 
-                    <div class="field full">
+</div>
 
-                        <label for="email">
-                            Email
-                        </label>
 
+<!-- STEP 4 -->
 
-                        <input
-                            id="email"
-                            type="email"
-                            placeholder="you@example.com"
-                        >
+<div
+    class="booking-step"
+    data-step="4"
+>
 
-                    </div>
+<div class="step-heading">
 
-                </div>
+<small>
+    Step 04
+</small>
 
+<h2>
+    Your Details
+</h2>
 
-                <div class="actions">
+<p>
+    Where can we contact you?
+</p>
 
-                    <button
-                        type="button"
-                        class="btn btn-secondary"
-                        onclick="previousStep()"
-                    >
-                        ← Back
-                    </button>
+</div>
 
 
-                    <button
-                        type="button"
-                        class="btn btn-primary"
-                        onclick="submitBooking()"
-                    >
-                        Request Booking
-                    </button>
+<div class="form-grid">
 
-                </div>
 
-            </div>
+<div class="field">
 
+<label for="name">
+    Full Name
+</label>
 
-            <!-- =========================
-                 CONFIRMATION
-            ========================= -->
+<input
+    id="name"
+    type="text"
+    placeholder="Your name"
+>
 
-            <div
-                class="confirmation"
-                id="confirmation"
-            >
+</div>
 
-                <div class="success-icon">
-                    ✓
-                </div>
 
+<div class="field">
 
-                <h2>
-                    Booking Request<br>
-                    Received.
-                </h2>
+<label for="phone">
+    Phone
+</label>
 
+<input
+    id="phone"
+    type="tel"
+    placeholder="021 000 0000"
+>
 
-                <p>
-                    Thanks,
-                    <span id="confirmName">
-                        there
-                    </span>.
+</div>
 
-                    Your booking request is ready
-                    to be sent to Performance Garage.
-                </p>
 
+<div class="field full">
 
-                <div class="booking-summary">
+<label for="email">
+    Email
+</label>
 
+<input
+    id="email"
+    type="email"
+    placeholder="you@example.com"
+>
 
-                    <div class="summary-row">
+</div>
 
-                        <span>
-                            Vehicle
-                        </span>
+</div>
 
-                        <span id="confirmVehicle">
-                            -
-                        </span>
 
-                    </div>
+<div class="live-summary">
 
+<div class="live-summary-title">
+    Booking Preview
+</div>
 
-                    <div class="summary-row">
+<div class="live-summary-grid">
 
-                        <span>
-                            Service
-                        </span>
+<div class="live-item">
 
-                        <span id="confirmService">
-                            -
-                        </span>
+<small>
+    Vehicle
+</small>
 
-                    </div>
+<strong id="finalVehicle">
+    -
+</strong>
 
+</div>
 
-                    <div class="summary-row">
+<div class="live-item">
 
-                        <span>
-                            Appointment
-                        </span>
+<small>
+    Service
+</small>
 
-                        <span id="confirmAppointment">
-                            -
-                        </span>
+<strong id="finalService">
+    -
+</strong>
 
-                    </div>
+</div>
 
+<div class="live-item">
 
-                    <div class="summary-row">
+<small>
+    Appointment
+</small>
 
-                        <span>
-                            Customer
-                        </span>
+<strong id="finalAppointment">
+    -
+</strong>
 
-                        <span id="confirmContact">
-                            -
-                        </span>
+</div>
 
-                    </div>
+<div class="live-item">
 
+<small>
+    Photo
+</small>
 
-                    <div class="send-area">
+<strong id="finalPhoto">
+    None
+</strong>
 
-                        <h3>
-                            Send Booking Enquiry
-                        </h3>
+</div>
 
+</div>
 
-                        <p>
-                            This demo will open your phone's
-                            Messages app with the booking
-                            information ready to send.
-                        </p>
+</div>
 
 
-                        <button
-                            type="button"
-                            id="sendEnquiryButton"
-                            class="btn btn-primary send-button"
-                            onclick="sendBookingSMS()"
-                        >
-                            📱 Send Booking Enquiry
-                        </button>
+<div class="actions">
 
-                    </div>
+<button
+    type="button"
+    class="btn btn-secondary"
+    onclick="previousStep()"
+>
+    ← Back
+</button>
 
-                </div>
+<button
+    type="button"
+    class="btn btn-primary"
+    onclick="submitBooking()"
+>
+    Request Booking
+</button>
 
+</div>
 
-                <div class="demo-note">
-                    Demo booking workflow powered by ManaU Digital.
-                </div>
+</div>
 
-            </div>
 
-        </div>
+<!-- =========================
+     CONFIRMATION
+========================= -->
 
-    </main>
+<div
+    class="confirmation"
+    id="confirmation"
+>
 
+<div class="success-icon">
+    ✓
+</div>
 
-    <script>
 
-        /* =========================
-           BOOKING STATE
-        ========================= */
+<h2>
+    Booking Request<br>
+    Received.
+</h2>
 
-        let currentStep = 1;
 
+<p>
 
-        /* =========================
-           PROGRESS
-        ========================= */
+Thanks,
+<span id="confirmName">
+    there
+</span>.
 
-        function updateProgress() {
+Your booking request is ready
+to be sent to Performance Garage.
 
-            const progressSteps =
-                document.querySelectorAll(
-                    ".progress-step"
-                );
+</p>
 
 
-            const labels =
-                document.querySelectorAll(
-                    ".step-labels span"
-                );
+<div class="booking-summary">
 
 
-            progressSteps.forEach(
-                (step, index) => {
+<div class="summary-row">
 
-                    step.classList.toggle(
-                        "active",
-                        index < currentStep
-                    );
+<span>
+    Vehicle
+</span>
 
+<span id="confirmVehicle">
+    -
+</span>
+
+</div>
+
+
+<div class="summary-row">
+
+<span>
+    Service
+</span>
+
+<span id="confirmService">
+    -
+</span>
+
+</div>
+
+
+<div class="summary-row">
+
+<span>
+    Appointment
+</span>
+
+<span id="confirmAppointment">
+    -
+</span>
+
+</div>
+
+
+<div class="summary-row">
+
+<span>
+    Issue
+</span>
+
+<span id="confirmIssue">
+    -
+</span>
+
+</div>
+
+
+<div class="summary-row">
+
+<span>
+    Customer
+</span>
+
+<span id="confirmContact">
+    -
+</span>
+
+</div>
+
+
+<div class="send-area">
+
+<h3>
+    Send Booking Enquiry
+</h3>
+
+
+<p>
+    This demo will open your phone's
+    Messages app with the booking
+    information ready to send.
+</p>
+
+
+<button
+    type="button"
+    id="sendEnquiryButton"
+    class="btn btn-primary send-button"
+    onclick="sendBookingSMS()"
+>
+    📱 Send Booking Enquiry
+</button>
+
+</div>
+
+</div>
+
+
+<div class="demo-note">
+    Demo booking workflow powered by ManaU Digital.
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+
+<script>
+
+/* =========================
+   BOOKING STATE
+========================= */
+
+let currentStep = 1;
+
+
+/* =========================
+   UPDATE PROGRESS
+========================= */
+
+function updateProgress() {
+
+    const progressSteps =
+        document.querySelectorAll(
+            ".progress-step"
+        );
+
+    const labels =
+        document.querySelectorAll(
+            ".step-labels span"
+        );
+
+
+    progressSteps.forEach(
+        (step, index) => {
+
+            step.classList.toggle(
+                "active",
+                index < currentStep
+            );
+
+        }
+    );
+
+
+    labels.forEach(
+        (label, index) => {
+
+            label.classList.toggle(
+                "active",
+                index === currentStep - 1
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================
+   SHOW STEP
+========================= */
+
+function showStep(step) {
+
+    document
+        .querySelectorAll(
+            ".booking-step"
+        )
+        .forEach(section => {
+
+            section.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    const selectedStep =
+        document.querySelector(
+            `[data-step="${step}"]`
+        );
+
+
+    if (selectedStep) {
+
+        selectedStep.classList.add(
+            "active"
+        );
+
+    }
+
+
+    currentStep = step;
+
+
+    updateProgress();
+
+
+    updateFinalPreview();
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================
+   NEXT STEP
+========================= */
+
+function nextStep() {
+
+    if (currentStep === 1) {
+
+        const make =
+            document.getElementById(
+                "make"
+            ).value;
+
+        const model =
+            document.getElementById(
+                "model"
+            ).value.trim();
+
+
+        if (!make || !model) {
+
+            alert(
+                "Please enter your vehicle make and model."
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    if (currentStep === 2) {
+
+        const service =
+            document.querySelector(
+                'input[name="service"]:checked'
+            );
+
+
+        if (!service) {
+
+            alert(
+                "Please select a service."
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    if (currentStep === 3) {
+
+        const date =
+            document.getElementById(
+                "date"
+            ).value;
+
+        const time =
+            document.getElementById(
+                "time"
+            ).value;
+
+
+        if (!date || !time) {
+
+            alert(
+                "Please select a preferred date and time."
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    if (currentStep < 4) {
+
+        showStep(
+            currentStep + 1
+        );
+
+    }
+
+}
+
+
+/* =========================
+   PREVIOUS STEP
+========================= */
+
+function previousStep() {
+
+    if (currentStep > 1) {
+
+        showStep(
+            currentStep - 1
+        );
+
+    }
+
+}
+
+
+/* =========================
+   VEHICLE PREVIEW
+========================= */
+
+function updateVehiclePreview() {
+
+    const make =
+        document.getElementById(
+            "make"
+        ).value;
+
+    const model =
+        document.getElementById(
+            "model"
+        ).value.trim();
+
+    const year =
+        document.getElementById(
+            "year"
+        ).value;
+
+    const rego =
+        document.getElementById(
+            "rego"
+        ).value.trim();
+
+
+    const vehicleParts = [];
+
+    if (year) {
+        vehicleParts.push(year);
+    }
+
+    if (make) {
+        vehicleParts.push(make);
+    }
+
+    if (model) {
+        vehicleParts.push(model);
+    }
+
+
+    document.getElementById(
+        "previewVehicle"
+    ).textContent =
+        vehicleParts.length
+            ? vehicleParts.join(" ")
+            : "Not entered";
+
+
+    document.getElementById(
+        "previewRego"
+    ).textContent =
+        rego || "Not entered";
+
+}
+
+
+/* =========================
+   FINAL PREVIEW
+========================= */
+
+function updateFinalPreview() {
+
+    const make =
+        document.getElementById(
+            "make"
+        ).value;
+
+    const model =
+        document.getElementById(
+            "model"
+        ).value.trim();
+
+    const year =
+        document.getElementById(
+            "year"
+        ).value;
+
+    const service =
+        document.querySelector(
+            'input[name="service"]:checked'
+        );
+
+    const date =
+        document.getElementById(
+            "date"
+        ).value;
+
+    const time =
+        document.getElementById(
+            "time"
+        ).value;
+
+    const photo =
+        document.getElementById(
+            "photo"
+        ).files[0];
+
+
+    const vehicle =
+        `${year || ""} ${make || ""} ${model || ""}`
+            .trim();
+
+
+    document.getElementById(
+        "finalVehicle"
+    ).textContent =
+        vehicle || "-";
+
+
+    document.getElementById(
+        "finalService"
+    ).textContent =
+        service
+            ? service.value
+            : "-";
+
+
+    let appointment = "-";
+
+
+    if (date && time) {
+
+        const formattedDate =
+            new Date(
+                date + "T00:00:00"
+            ).toLocaleDateString(
+                "en-NZ",
+                {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric"
                 }
             );
 
 
-            labels.forEach(
-                (label, index) => {
+        appointment =
+            `${formattedDate} • ${time}`;
 
-                    label.classList.toggle(
-                        "active",
-                        index === currentStep - 1
-                    );
+    }
 
-                }
+
+    document.getElementById(
+        "finalAppointment"
+    ).textContent =
+        appointment;
+
+
+    document.getElementById(
+        "finalPhoto"
+    ).textContent =
+        photo
+            ? "Attached ✓"
+            : "None";
+
+}
+
+
+/* =========================
+   LIVE LISTENERS
+========================= */
+
+document
+    .getElementById("make")
+    .addEventListener(
+        "change",
+        updateVehiclePreview
+    );
+
+
+document
+    .getElementById("model")
+    .addEventListener(
+        "input",
+        updateVehiclePreview
+    );
+
+
+document
+    .getElementById("year")
+    .addEventListener(
+        "input",
+        updateVehiclePreview
+    );
+
+
+document
+    .getElementById("rego")
+    .addEventListener(
+        "input",
+        updateVehiclePreview
+    );
+
+
+document
+    .getElementById("photo")
+    .addEventListener(
+        "change",
+        function() {
+
+            const file =
+                this.files[0];
+
+            document.getElementById(
+                "photoName"
+            ).textContent =
+                file
+                    ? `Selected: ${file.name}`
+                    : "";
+
+            updateFinalPreview();
+
+        }
+    );
+
+
+document
+    .querySelectorAll(
+        'input[name="service"]'
+    )
+    .forEach(
+        radio => {
+
+            radio.addEventListener(
+                "change",
+                updateFinalPreview
             );
 
         }
+    );
 
 
-        /* =========================
-           SHOW STEP
-        ========================= */
-
-        function showStep(step) {
-
-            document
-                .querySelectorAll(
-                    ".booking-step"
-                )
-                .forEach(section => {
-
-                    section.classList.remove(
-                        "active"
-                    );
-
-                });
+document
+    .getElementById("date")
+    .addEventListener(
+        "change",
+        updateFinalPreview
+    );
 
 
-            const selectedStep =
-                document.querySelector(
-                    `[data-step="${step}"]`
-                );
+document
+    .getElementById("time")
+    .addEventListener(
+        "change",
+        updateFinalPreview
+    );
 
 
-            if (selectedStep) {
+/* =========================
+   SUBMIT BOOKING
+========================= */
 
-                selectedStep.classList.add(
-                    "active"
-                );
+function submitBooking() {
 
+    const name =
+        document.getElementById(
+            "name"
+        ).value.trim();
+
+    const phone =
+        document.getElementById(
+            "phone"
+        ).value.trim();
+
+    const email =
+        document.getElementById(
+            "email"
+        ).value.trim();
+
+
+    if (!name || !phone || !email) {
+
+        alert(
+            "Please complete your contact details."
+        );
+
+        return;
+
+    }
+
+
+    const make =
+        document.getElementById(
+            "make"
+        ).value;
+
+    const model =
+        document.getElementById(
+            "model"
+        ).value.trim();
+
+    const year =
+        document.getElementById(
+            "year"
+        ).value;
+
+    const rego =
+        document.getElementById(
+            "rego"
+        ).value.trim();
+
+    const mileage =
+        document.getElementById(
+            "mileage"
+        ).value.trim();
+
+    const issue =
+        document.getElementById(
+            "issue"
+        ).value.trim();
+
+    const service =
+        document.querySelector(
+            'input[name="service"]:checked'
+        );
+
+
+    const date =
+        document.getElementById(
+            "date"
+        ).value;
+
+    const time =
+        document.getElementById(
+            "time"
+        ).value;
+
+
+    const formattedDate =
+        new Date(
+            date + "T00:00:00"
+        ).toLocaleDateString(
+            "en-NZ",
+            {
+                day: "numeric",
+                month: "long",
+                year: "numeric"
             }
+        );
 
 
-            currentStep = step;
+    const vehicle =
+        `${year || ""} ${make} ${model}`
+            .trim();
 
 
-            updateProgress();
+    const serviceName =
+        service
+            ? service.value
+            : "-";
 
 
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+    const appointment =
+        `${formattedDate} • ${time}`;
 
-        }
 
+    const photo =
+        document.getElementById(
+            "photo"
+        ).files[0];
 
-        /* =========================
-           NEXT STEP
-        ========================= */
 
-        function nextStep() {
+    /* =========================
+       STORE DEMO BOOKING
+    ========================= */
 
-            if (currentStep === 1) {
+    window.demoBooking = {
 
-                const make =
-                    document.getElementById(
-                        "make"
-                    ).value;
+        name,
+        phone,
+        email,
 
+        make,
+        model,
+        year,
+        rego,
+        mileage,
 
-                const model =
-                    document.getElementById(
-                        "model"
-                    ).value.trim();
+        service:
+            serviceName,
 
+        date:
+            formattedDate,
 
-                if (!make || !model) {
+        time,
 
-                    alert(
-                        "Please enter your vehicle make and model."
-                    );
+        appointment,
 
-                    return;
+        vehicle,
 
-                }
+        issue,
 
-            }
+        photo:
+            photo
+                ? photo.name
+                : ""
 
+    };
 
-            if (currentStep === 2) {
 
-                const service =
-                    document.querySelector(
-                        'input[name="service"]:checked'
-                    );
+    /* =========================
+       CONFIRMATION
+    ========================= */
 
+    document.getElementById(
+        "confirmName"
+    ).textContent =
+        name;
 
-                if (!service) {
 
-                    alert(
-                        "Please select a service."
-                    );
+    document.getElementById(
+        "confirmVehicle"
+    ).textContent =
+        `${vehicle}${rego ? " • " + rego : ""}`;
 
-                    return;
 
-                }
+    document.getElementById(
+        "confirmService"
+    ).textContent =
+        serviceName;
 
-            }
 
+    document.getElementById(
+        "confirmAppointment"
+    ).textContent =
+        appointment;
 
-            if (currentStep === 3) {
 
-                const date =
-                    document.getElementById(
-                        "date"
-                    ).value;
+    document.getElementById(
+        "confirmIssue"
+    ).textContent =
+        issue || "No issue provided";
 
 
-                const time =
-                    document.getElementById(
-                        "time"
-                    ).value;
+    document.getElementById(
+        "confirmContact"
+    ).textContent =
+        phone;
 
 
-                if (!date || !time) {
+    document
+        .querySelectorAll(
+            ".booking-step"
+        )
+        .forEach(section => {
 
-                    alert(
-                        "Please select a preferred date and time."
-                    );
+            section.classList.remove(
+                "active"
+            );
 
-                    return;
+        });
 
-                }
 
-            }
+    document
+        .getElementById(
+            "confirmation"
+        )
+        .classList.add(
+            "active"
+        );
 
 
-            if (currentStep < 4) {
+    document.querySelector(
+        ".progress"
+    ).style.display =
+        "none";
 
-                showStep(
-                    currentStep + 1
-                );
 
-            }
+    document.querySelector(
+        ".step-labels"
+    ).style.display =
+        "none";
 
-        }
 
+    window.scrollTo({
 
-        /* =========================
-           PREVIOUS STEP
-        ========================= */
+        top: 0,
 
-        function previousStep() {
+        behavior: "smooth"
 
-            if (currentStep > 1) {
+    });
 
-                showStep(
-                    currentStep - 1
-                );
+}
 
-            }
 
-        }
+/* =========================
+   SEND SMS
+========================= */
 
+function sendBookingSMS() {
 
-        /* =========================
-           SUBMIT BOOKING
-        ========================= */
+    if (!window.demoBooking) {
 
-        function submitBooking() {
+        alert(
+            "Please complete a booking first."
+        );
 
-            const name =
-                document.getElementById(
-                    "name"
-                ).value.trim();
+        return;
 
+    }
 
-            const phone =
-                document.getElementById(
-                    "phone"
-                ).value.trim();
 
+    const booking =
+        window.demoBooking;
 
-            const email =
-                document.getElementById(
-                    "email"
-                ).value.trim();
 
-
-            if (!name || !phone || !email) {
-
-                alert(
-                    "Please complete your contact details."
-                );
-
-                return;
-
-            }
-
-
-            const make =
-                document.getElementById(
-                    "make"
-                ).value;
-
-
-            const model =
-                document.getElementById(
-                    "model"
-                ).value.trim();
-
-
-            const year =
-                document.getElementById(
-                    "year"
-                ).value;
-
-
-            const rego =
-                document.getElementById(
-                    "rego"
-                ).value.trim();
-
-
-            const service =
-                document.querySelector(
-                    'input[name="service"]:checked'
-                );
-
-
-            const date =
-                document.getElementById(
-                    "date"
-                ).value;
-
-
-            const time =
-                document.getElementById(
-                    "time"
-                ).value;
-
-
-            const formattedDate =
-                new Date(
-                    date + "T00:00:00"
-                ).toLocaleDateString(
-                    "en-NZ",
-                    {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric"
-                    }
-                );
-
-
-            const vehicle =
-                `${year || ""} ${make} ${model}${rego ? " • " + rego : ""}`;
-
-
-            const serviceName =
-                service
-                    ? service.value
-                    : "-";
-
-
-            const appointment =
-                `${formattedDate} • ${time}`;
-
-
-            /* =========================
-               STORE BOOKING
-            ========================= */
-
-            window.demoBooking = {
-
-                name: name,
-
-                phone: phone,
-
-                email: email,
-
-                make: make,
-
-                model: model,
-
-                year: year,
-
-                rego: rego,
-
-                service: serviceName,
-
-                date: formattedDate,
-
-                time: time,
-
-                appointment: appointment,
-
-                vehicle: vehicle
-
-            };
-
-
-            /* =========================
-               CONFIRMATION DETAILS
-            ========================= */
-
-            document.getElementById(
-                "confirmName"
-            ).textContent =
-                name;
-
-
-            document.getElementById(
-                "confirmVehicle"
-            ).textContent =
-                vehicle;
-
-
-            document.getElementById(
-                "confirmService"
-            ).textContent =
-                serviceName;
-
-
-            document.getElementById(
-                "confirmAppointment"
-            ).textContent =
-                appointment;
-
-
-            document.getElementById(
-                "confirmContact"
-            ).textContent =
-                phone;
-
-
-            /* =========================
-               SHOW CONFIRMATION
-            ========================= */
-
-            document
-                .querySelectorAll(
-                    ".booking-step"
-                )
-                .forEach(section => {
-
-                    section.classList.remove(
-                        "active"
-                    );
-
-                });
-
-
-            document
-                .getElementById(
-                    "confirmation"
-                )
-                .classList.add(
-                    "active"
-                );
-
-
-            document
-                .querySelector(
-                    ".progress"
-                )
-                .style.display =
-                    "none";
-
-
-            document
-                .querySelector(
-                    ".step-labels"
-                )
-                .style.display =
-                    "none";
-
-
-            window.scrollTo({
-
-                top: 0,
-
-                behavior: "smooth"
-
-            });
-
-        }
-
-
-        /* =========================
-           SEND BOOKING TO MESSAGES
-        ========================= */
-
-        function sendBookingSMS() {
-
-            if (!window.demoBooking) {
-
-                alert(
-                    "Please complete a booking first."
-                );
-
-                return;
-
-            }
-
-
-            const booking =
-                window.demoBooking;
-
-
-            const message =
+    const message =
 `🚗 PERFORMANCE GARAGE
 NEW BOOKING REQUEST
 
-Customer: ${booking.name}
-Phone: ${booking.phone}
-Email: ${booking.email}
+CUSTOMER
+${booking.name}
+${booking.phone}
+${booking.email}
 
-Vehicle: ${booking.vehicle}
+VEHICLE
+${booking.vehicle}
+Registration: ${booking.rego || "Not provided"}
+Mileage: ${booking.mileage || "Not provided"}
 
-Service: ${booking.service}
+SERVICE
+${booking.service}
 
-Preferred appointment:
+PREFERRED APPOINTMENT
 ${booking.appointment}
 
-Registration: ${booking.rego || "Not provided"}
+CUSTOMER MESSAGE
+${booking.issue || "No additional message provided."}
+
+PHOTO
+${booking.photo || "No photo attached"}
 
 Submitted via ManaU Digital demo.`;
 
 
-            /*
-             * Demo receiving number.
-             */
+    /*
+     * Demo receiving number.
+     */
 
-            const recipient =
-                "+642108839107";
-
-
-            /*
-             * iPhone Messages URL.
-             *
-             * IMPORTANT:
-             * iOS uses the &body format
-             * for SMS links.
-             */
-
-            const smsURL =
-                "sms:" +
-                recipient +
-                "&body=" +
-                encodeURIComponent(message);
+    const recipient =
+        "+642108839107";
 
 
-            /*
-             * Create a real temporary
-             * link and trigger it from
-             * the user's button tap.
-             */
+    /*
+     * iOS Messages link.
+     */
 
-            const smsLink =
-                document.createElement("a");
-
-
-            smsLink.href =
-                smsURL;
-
-
-            smsLink.style.display =
-                "none";
+    const smsURL =
+        "sms:" +
+        recipient +
+        "&body=" +
+        encodeURIComponent(
+            message
+        );
 
 
-            document.body.appendChild(
-                smsLink
-            );
+    /*
+     * Trigger from the user's
+     * button interaction.
+     */
+
+    const smsLink =
+        document.createElement(
+            "a"
+        );
 
 
-            smsLink.click();
+    smsLink.href =
+        smsURL;
 
 
-            /*
-             * Clean up the temporary link.
-             */
-
-            setTimeout(
-                () => {
-
-                    smsLink.remove();
-
-                },
-                1000
-            );
-
-        }
+    smsLink.style.display =
+        "none";
 
 
-        /* =========================
-           MINIMUM DATE
-        ========================= */
-
-        const dateInput =
-            document.getElementById(
-                "date"
-            );
+    document.body.appendChild(
+        smsLink
+    );
 
 
-        const today =
-            new Date()
-                .toISOString()
-                .split("T")[0];
+    smsLink.click();
 
 
-        dateInput.min =
-            today;
+    setTimeout(
+        () => {
 
-    </script>
+            smsLink.remove();
+
+        },
+        1000
+    );
+
+}
+
+
+/* =========================
+   MINIMUM DATE
+========================= */
+
+const dateInput =
+    document.getElementById(
+        "date"
+    );
+
+
+const today =
+    new Date()
+        .toISOString()
+        .split("T")[0];
+
+
+dateInput.min =
+    today;
+
+
+/* =========================
+   INITIALISE
+========================= */
+
+updateVehiclePreview();
+
+updateFinalPreview();
+
+</script>
 
 </body>
 </html>
