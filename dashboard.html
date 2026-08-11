@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -290,10 +291,16 @@ a{
 .booking{
     padding:20px 22px;
     border-bottom:1px solid #1d1d1d;
+    transition:.25s;
 }
 
 .booking:last-child{
     border-bottom:none;
+}
+
+.booking.new-highlight{
+    background:#12090a;
+    box-shadow:inset 3px 0 #e3262e;
 }
 
 .booking-top{
@@ -344,6 +351,11 @@ a{
 .status-confirmed{
     background:#0d2118;
     color:#38c172;
+}
+
+.status-progress{
+    background:#201b0e;
+    color:#d6a93d;
 }
 
 .booking-details{
@@ -875,7 +887,7 @@ a{
 }
 
 /* =========================
-   JOB PHOTOS
+   PHOTOS
 ========================= */
 
 .photo-grid{
@@ -914,13 +926,65 @@ a{
 }
 
 /* =========================
-   JOB ACTIONS
+   ACTIONS
 ========================= */
 
 .profile-actions{
     display:flex;
     gap:10px;
     margin-top:24px;
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+
+    max-width:340px;
+
+    padding:16px 18px;
+
+    background:#151515;
+
+    border:1px solid #333;
+
+    border-left:3px solid #e3262e;
+
+    border-radius:7px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.45);
+
+    transform:translateY(120px);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.3s;
+
+    z-index:1000;
+}
+
+.toast.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+.toast-title{
+    font-size:.72rem;
+    font-weight:900;
+    text-transform:uppercase;
+    margin-bottom:4px;
+}
+
+.toast-copy{
+    color:#777;
+    font-size:.64rem;
 }
 
 /* =========================
@@ -1081,6 +1145,16 @@ a{
 <button onclick="scrollToBookings()">
     <span class="nav-icon">◫</span>
     Bookings
+    <span
+        id="bookingNavCount"
+        style="
+            margin-left:auto;
+            color:#e3262e;
+            font-size:.6rem;
+        "
+    >
+        3
+    </span>
 </button>
 
 <button onclick="scrollToSchedule()">
@@ -1171,7 +1245,9 @@ a{
 </div>
 
 <div class="date-display">
-    Tuesday, 18 August 2026
+    <span id="liveDate">
+        Loading...
+    </span>
 </div>
 
 </div>
@@ -1187,7 +1263,10 @@ a{
     Today's Bookings
 </div>
 
-<div class="stat-number">
+<div
+    class="stat-number"
+    id="todayBookings"
+>
     12
 </div>
 
@@ -1204,7 +1283,10 @@ a{
     Pending
 </div>
 
-<div class="stat-number">
+<div
+    class="stat-number"
+    id="pendingBookings"
+>
     4
 </div>
 
@@ -1264,7 +1346,7 @@ a{
     New Bookings
 </h2>
 
-<span>
+<span id="bookingCountLabel">
     3 recent
 </span>
 
@@ -1273,7 +1355,10 @@ a{
 
 <!-- JOHN -->
 
-<div class="booking">
+<div
+    class="booking new-highlight"
+    data-customer="John Smith"
+>
 
 <div class="booking-top">
 
@@ -1370,7 +1455,10 @@ a{
 
 <!-- SARAH -->
 
-<div class="booking">
+<div
+    class="booking"
+    data-customer="Sarah Williams"
+>
 
 <div class="booking-top">
 
@@ -1446,7 +1534,10 @@ a{
 
 <button
     class="small-btn primary"
-    onclick="alert('Sarah Williams vehicle profile opened.')"
+    onclick="showToast(
+        'Vehicle profile',
+        'Sarah Williams vehicle profile opened.'
+    )"
 >
     View Vehicle
 </button>
@@ -1465,7 +1556,10 @@ a{
 
 <!-- MARCUS -->
 
-<div class="booking">
+<div
+    class="booking"
+    data-customer="Marcus Taylor"
+>
 
 <div class="booking-top">
 
@@ -2053,8 +2147,6 @@ a{
 <div class="modal-body">
 
 
-<!-- VEHICLE HEADER -->
-
 <div class="vehicle-hero">
 
 <div>
@@ -2083,10 +2175,7 @@ a{
 </div>
 
 
-<!-- VEHICLE DETAILS -->
-
 <div class="vehicle-grid">
-
 
 <div class="vehicle-card">
 
@@ -2165,13 +2254,8 @@ a{
 
 </div>
 
-
 </div>
 
-
-<!-- =========================
-     JOB STATUS
-========================= -->
 
 <div class="profile-section">
 
@@ -2272,8 +2356,6 @@ Completed
 </div>
 
 
-<!-- CUSTOMER NOTE -->
-
 <div class="profile-section">
 
 <h4>
@@ -2292,8 +2374,6 @@ Completed
 
 </div>
 
-
-<!-- SERVICE HISTORY -->
 
 <div class="profile-section">
 
@@ -2366,10 +2446,6 @@ Completed
 
 </div>
 
-
-<!-- =========================
-     JOB PHOTOS
-========================= -->
 
 <div class="profile-section">
 
@@ -2457,8 +2533,6 @@ Completed
 </div>
 
 
-<!-- ACTIONS -->
-
 <div class="profile-actions">
 
 
@@ -2496,7 +2570,112 @@ Completed
 </div>
 
 
+<!-- =========================
+     TOAST
+========================= -->
+
+<div
+    class="toast"
+    id="toast"
+>
+
+<div
+    class="toast-title"
+    id="toastTitle"
+>
+    Updated
+</div>
+
+<div
+    class="toast-copy"
+    id="toastCopy"
+>
+    Action completed.
+</div>
+
+</div>
+
+
 <script>
+
+/* =========================
+   LIVE DATE
+========================= */
+
+function updateDate(){
+
+    const now =
+        new Date();
+
+    const formatted =
+        now.toLocaleDateString(
+            "en-NZ",
+            {
+                weekday:"long",
+                day:"numeric",
+                month:"long",
+                year:"numeric"
+            }
+        );
+
+    document
+        .getElementById("liveDate")
+        .textContent =
+            formatted;
+
+}
+
+updateDate();
+
+
+/* =========================
+   TOAST
+========================= */
+
+let toastTimer;
+
+function showToast(title,copy){
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+    document.getElementById(
+        "toastTitle"
+    ).textContent =
+        title;
+
+    document.getElementById(
+        "toastCopy"
+    ).textContent =
+        copy;
+
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        toastTimer
+    );
+
+
+    toastTimer =
+        setTimeout(
+            function(){
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            3500
+        );
+
+}
+
 
 /* =========================
    VEHICLE PROFILE
@@ -2505,16 +2684,25 @@ Completed
 function openVehicleProfile(){
 
     document
-        .getElementById("vehicleModal")
-        .classList.add("active");
+        .getElementById(
+            "vehicleModal"
+        )
+        .classList.add(
+            "active"
+        );
 
 }
+
 
 function closeVehicleProfile(){
 
     document
-        .getElementById("vehicleModal")
-        .classList.remove("active");
+        .getElementById(
+            "vehicleModal"
+        )
+        .classList.remove(
+            "active"
+        );
 
 }
 
@@ -2523,29 +2711,45 @@ function closeVehicleProfile(){
    JOB STATUS
 ========================= */
 
-function setJobStatus(index,status){
+function setJobStatus(
+    index,
+    status
+){
 
     const steps =
         document.querySelectorAll(
             ".status-step"
         );
 
-    steps.forEach(function(step,i){
 
-        step.classList.remove(
-            "active",
-            "done"
-        );
+    steps.forEach(
+        function(step,i){
 
-        if(i < index){
-            step.classList.add("done");
+            step.classList.remove(
+                "active",
+                "done"
+            );
+
+
+            if(i < index){
+
+                step.classList.add(
+                    "done"
+                );
+
+            }
+
+
+            if(i === index){
+
+                step.classList.add(
+                    "active"
+                );
+
+            }
+
         }
-
-        if(i === index){
-            step.classList.add("active");
-        }
-
-    });
+    );
 
 
     const badge =
@@ -2553,11 +2757,15 @@ function setJobStatus(index,status){
             "jobStatusBadge"
         );
 
+
     badge.textContent =
         status;
 
 
-    if(status === "Completed"){
+    if(
+        status === "Completed" ||
+        status === "Approved"
+    ){
 
         badge.style.background =
             "#0d2118";
@@ -2566,16 +2774,9 @@ function setJobStatus(index,status){
             "#38c172";
 
     }
-    else if(status === "Approved"){
-
-        badge.style.background =
-            "#0d2118";
-
-        badge.style.color =
-            "#38c172";
-
-    }
-    else if(status === "Awaiting Approval"){
+    else if(
+        status === "Awaiting Approval"
+    ){
 
         badge.style.background =
             "#201b0e";
@@ -2594,6 +2795,12 @@ function setJobStatus(index,status){
 
     }
 
+
+    showToast(
+        "Job status updated",
+        `Job moved to ${status}.`
+    );
+
 }
 
 
@@ -2603,8 +2810,9 @@ function setJobStatus(index,status){
 
 function addPhoto(){
 
-    alert(
-        "Photo upload demo: technician can attach inspection or repair photos to this job."
+    showToast(
+        "Photo upload",
+        "Technician photo attachment workflow opened."
     );
 
 }
@@ -2621,15 +2829,17 @@ function jobComplete(){
         "Completed"
     );
 
-    alert(
-        "Job completed. Customer follow-up and review workflow can now be triggered."
+
+    showToast(
+        "Job completed",
+        "Customer follow-up and review workflow is ready."
     );
 
 }
 
 
 /* =========================
-   BOOKING
+   BOOKING CONFIRM
 ========================= */
 
 function confirmBooking(button){
@@ -2639,29 +2849,75 @@ function confirmBooking(button){
             ".booking"
         );
 
+
     const status =
         booking.querySelector(
             ".booking-status"
         );
 
+
     status.textContent =
         "Confirmed";
+
 
     status.className =
         "booking-status status-confirmed";
 
+
     button.textContent =
-        "Confirmed";
+        "Confirmed ✓";
+
 
     button.disabled =
         true;
 
+
     button.style.opacity =
         ".5";
 
-    alert(
-        "Booking confirmed. Customer confirmation workflow triggered."
+
+    booking.classList.remove(
+        "new-highlight"
     );
+
+
+    updatePendingCount();
+
+
+    showToast(
+        "Booking confirmed",
+        "Customer confirmation workflow triggered."
+    );
+
+}
+
+
+/* =========================
+   PENDING COUNT
+========================= */
+
+function updatePendingCount(){
+
+    const pending =
+        document.querySelectorAll(
+            ".status-new"
+        ).length;
+
+
+    document
+        .getElementById(
+            "pendingBookings"
+        )
+        .textContent =
+            pending;
+
+
+    document
+        .getElementById(
+            "bookingNavCount"
+        )
+        .textContent =
+            pending;
 
 }
 
@@ -2677,29 +2933,37 @@ function sendQuote(){
             "quoteStatus"
         );
 
+
     const button =
         document.getElementById(
             "sendQuoteBtn"
         );
 
+
     status.textContent =
         "Sent to customer";
+
 
     status.style.background =
         "#0d2118";
 
+
     status.style.color =
         "#38c172";
 
+
     button.textContent =
         "Quote Sent ✓";
+
 
     button.classList.add(
         "approved"
     );
 
-    alert(
-        "Repair quote sent to John Smith. Customer approval is now pending."
+
+    showToast(
+        "Quote sent",
+        "John Smith has been sent the $1,170 repair estimate."
     );
 
 }
@@ -2712,29 +2976,37 @@ function approveQuote(){
             "quoteStatus"
         );
 
+
     const button =
         document.getElementById(
             "approveQuoteBtn"
         );
 
+
     status.textContent =
         "Approved";
+
 
     status.style.background =
         "#0d2118";
 
+
     status.style.color =
         "#38c172";
 
+
     button.textContent =
         "Approved ✓";
+
 
     button.classList.add(
         "approved"
     );
 
-    alert(
-        "Customer approved the $1,170 repair quote. Job is ready to proceed."
+
+    showToast(
+        "Quote approved",
+        "Customer approved the $1,170 repair quote."
     );
 
 }
@@ -2753,40 +3025,52 @@ function topPage(){
 
 }
 
+
 function scrollToBookings(){
 
     document
-        .getElementById("bookings")
+        .getElementById(
+            "bookings"
+        )
         .scrollIntoView({
             behavior:"smooth"
         });
 
 }
+
 
 function scrollToSchedule(){
 
     document
-        .getElementById("schedule")
+        .getElementById(
+            "schedule"
+        )
         .scrollIntoView({
             behavior:"smooth"
         });
 
 }
+
 
 function scrollToQuote(){
 
     document
-        .getElementById("quote")
+        .getElementById(
+            "quote"
+        )
         .scrollIntoView({
             behavior:"smooth"
         });
 
 }
 
+
 function scrollToAutomation(){
 
     document
-        .getElementById("automation")
+        .getElementById(
+            "automation"
+        )
         .scrollIntoView({
             behavior:"smooth"
         });
@@ -2799,7 +3083,9 @@ function scrollToAutomation(){
 ========================= */
 
 document
-    .getElementById("vehicleModal")
+    .getElementById(
+        "vehicleModal"
+    )
     .addEventListener(
         "click",
         function(event){
@@ -2835,7 +3121,15 @@ document.addEventListener(
     }
 );
 
+
+/* =========================
+   INITIALISE
+========================= */
+
+updatePendingCount();
+
 </script>
 
 </body>
+
 </html>
