@@ -1,2950 +1,2456 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <title>
-        Workshop Dashboard | Performance Garage
-    </title>
+<title>
+    Workshop Dashboard | Performance Garage
+</title>
 
-    <meta
-        name="description"
-        content="Performance Garage workshop management dashboard demo."
-    >
+<style>
 
-    <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#080808;
+    color:#fff;
+    min-height:100vh;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+button{
+    font:inherit;
+    cursor:pointer;
+}
 
-        body {
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
+a{
+    color:inherit;
+    text-decoration:none;
+}
 
-            background: #080808;
+/* =========================
+   SIDEBAR
+========================= */
 
-            color: #ffffff;
+.sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
 
-            min-height: 100vh;
-        }
+    width:240px;
 
-        button,
-        input,
-        select {
-            font: inherit;
-        }
+    background:#0d0d0d;
+    border-right:1px solid #222;
 
-        button {
-            cursor: pointer;
-        }
+    padding:28px 18px;
 
-        /* =========================
-           SIDEBAR
-        ========================= */
+    z-index:100;
+}
 
-        .sidebar {
-            position: fixed;
+.brand{
+    display:block;
 
-            top: 0;
-            left: 0;
-            bottom: 0;
+    padding:0 12px 30px;
 
-            width: 240px;
+    font-size:1.05rem;
+    font-weight:900;
+    letter-spacing:1px;
+}
 
-            background: #0d0d0d;
+.brand span{
+    color:#e3262e;
+}
 
-            border-right:
-                1px solid #222222;
+.nav-label{
+    color:#444;
 
-            padding: 28px 18px;
+    font-size:.62rem;
+    font-weight:900;
+    letter-spacing:1.5px;
 
-            z-index: 100;
-        }
+    text-transform:uppercase;
 
-        .brand {
-            display: block;
+    padding:0 12px 10px;
+}
 
-            color: #ffffff;
+.side-nav{
+    display:grid;
+    gap:5px;
+}
 
-            text-decoration: none;
+.side-nav button{
+    width:100%;
 
-            font-size: 1.05rem;
+    display:flex;
+    align-items:center;
+    gap:12px;
 
-            font-weight: 900;
+    padding:12px;
 
-            letter-spacing: 1px;
+    border:none;
+    border-radius:6px;
 
-            padding:
-                0 12px 30px;
-        }
+    background:transparent;
 
-        .brand span {
-            color: #e3262e;
-        }
+    color:#777;
 
-        .demo-badge {
-            display: inline-block;
+    text-align:left;
 
-            margin-left: 12px;
+    font-size:.82rem;
+    font-weight:700;
 
-            padding:
-                4px 7px;
+    transition:.2s;
+}
 
-            border:
-                1px solid #3a2022;
+.side-nav button:hover,
+.side-nav button.active{
+    background:#171717;
+    color:#fff;
+}
 
-            border-radius: 4px;
+.side-nav button.active{
+    box-shadow:inset 3px 0 #e3262e;
+}
 
-            color: #e3262e;
+.nav-icon{
+    width:22px;
+    color:#555;
+    text-align:center;
+}
 
-            font-size: 0.55rem;
+.side-nav button.active .nav-icon{
+    color:#e3262e;
+}
 
-            font-weight: 900;
+.sidebar-bottom{
+    position:absolute;
+    left:18px;
+    right:18px;
+    bottom:25px;
 
-            letter-spacing: 1px;
+    padding-top:20px;
 
-            text-transform: uppercase;
-        }
+    border-top:1px solid #222;
+}
 
-        .nav-label {
-            color: #444444;
+.workshop-status{
+    display:flex;
+    align-items:center;
+    gap:9px;
 
-            font-size: 0.62rem;
+    color:#777;
+    font-size:.72rem;
+}
 
-            font-weight: 900;
+.status-dot{
+    width:7px;
+    height:7px;
 
-            letter-spacing: 1.5px;
+    border-radius:50%;
 
-            text-transform: uppercase;
+    background:#38c172;
 
-            padding:
-                0 12px 10px;
-        }
+    box-shadow:0 0 10px rgba(56,193,114,.45);
+}
 
-        .side-nav {
-            display: grid;
+/* =========================
+   MAIN
+========================= */
 
-            gap: 5px;
-        }
+.main{
+    margin-left:240px;
+    min-height:100vh;
+}
 
-        .side-nav button {
-            width: 100%;
+.topbar{
+    height:76px;
 
-            display: flex;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
-            align-items: center;
+    padding:0 38px;
 
-            gap: 12px;
+    border-bottom:1px solid #222;
 
-            padding:
-                12px;
+    background:rgba(8,8,8,.94);
+}
 
-            border: none;
+.topbar-left{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
 
-            border-radius: 6px;
+.topbar-left span{
+    color:#555;
+    font-size:.8rem;
+}
 
-            background: transparent;
+.topbar-left strong{
+    font-size:.85rem;
+}
 
-            color: #777777;
+.avatar{
+    width:34px;
+    height:34px;
 
-            text-align: left;
+    display:grid;
+    place-items:center;
 
-            font-size: 0.82rem;
+    border-radius:50%;
 
-            font-weight: 700;
+    background:#202020;
 
-            transition: 0.2s;
-        }
+    font-size:.72rem;
+    font-weight:900;
+}
 
-        .side-nav button:hover,
-        .side-nav button.active {
-            background: #171717;
+/* =========================
+   CONTENT
+========================= */
 
-            color: #ffffff;
-        }
+.content{
+    width:min(1400px,92%);
+    margin:auto;
 
-        .side-nav button.active {
-            box-shadow:
-                inset 3px 0 #e3262e;
-        }
+    padding:38px 0 70px;
+}
 
-        .nav-icon {
-            width: 22px;
+.page-heading{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
 
-            color: #555555;
+    gap:20px;
 
-            font-size: 0.9rem;
+    margin-bottom:30px;
+}
 
-            text-align: center;
-        }
+.eyebrow{
+    color:#e3262e;
 
-        .side-nav button.active
-        .nav-icon {
-            color: #e3262e;
-        }
+    font-size:.68rem;
+    font-weight:900;
+    letter-spacing:2px;
 
-        .sidebar-bottom {
-            position: absolute;
+    text-transform:uppercase;
 
-            left: 18px;
-            right: 18px;
-            bottom: 25px;
+    margin-bottom:7px;
+}
 
-            padding-top: 20px;
+.page-heading h1{
+    font-size:clamp(2rem,4vw,3rem);
 
-            border-top:
-                1px solid #222222;
-        }
+    line-height:1;
 
-        .workshop-status {
-            display: flex;
+    letter-spacing:-1.5px;
 
-            align-items: center;
+    text-transform:uppercase;
+}
 
-            gap: 9px;
+.page-heading p{
+    color:#666;
+    margin-top:8px;
+    font-size:.85rem;
+}
 
-            color: #777777;
+.date-display{
+    color:#777;
+    font-size:.75rem;
+    text-align:right;
+}
 
-            font-size: 0.72rem;
-        }
+/* =========================
+   STATS
+========================= */
 
-        .status-dot {
-            width: 7px;
-            height: 7px;
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
 
-            border-radius: 50%;
+    gap:14px;
 
-            background: #38c172;
+    margin-bottom:25px;
+}
 
-            box-shadow:
-                0 0 10px
-                rgba(56, 193, 114, 0.45);
-        }
+.stat-card{
+    background:#101010;
 
-        /* =========================
-           MAIN
-        ========================= */
+    border:1px solid #242424;
 
-        .main {
-            margin-left: 240px;
+    border-radius:8px;
 
-            min-height: 100vh;
-        }
+    padding:22px;
+}
 
-        .topbar {
-            height: 76px;
+.stat-label{
+    color:#666;
 
-            display: flex;
+    font-size:.65rem;
+    font-weight:900;
+    letter-spacing:1px;
 
-            align-items: center;
+    text-transform:uppercase;
 
-            justify-content:
-                space-between;
+    margin-bottom:10px;
+}
 
-            padding:
-                0 38px;
+.stat-number{
+    font-size:2rem;
+    font-weight:900;
+}
 
-            border-bottom:
-                1px solid #222222;
+.stat-change{
+    color:#38c172;
+    font-size:.68rem;
+    margin-top:10px;
+}
 
-            background:
-                rgba(8, 8, 8, 0.94);
-        }
+.stat-change.neutral{
+    color:#666;
+}
 
-        .topbar-left {
-            display: flex;
+/* =========================
+   PANELS
+========================= */
 
-            align-items: center;
+.panel{
+    background:#101010;
 
-            gap: 10px;
-        }
+    border:1px solid #242424;
 
-        .topbar-left span {
-            color: #555555;
+    border-radius:8px;
 
-            font-size: 0.8rem;
-        }
+    overflow:hidden;
+}
 
-        .topbar-left strong {
-            font-size: 0.85rem;
-        }
+.panel-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
-        .topbar-right {
-            display: flex;
+    padding:20px 22px;
 
-            align-items: center;
+    border-bottom:1px solid #222;
+}
 
-            gap: 20px;
-        }
+.panel-header h2{
+    font-size:.95rem;
+    text-transform:uppercase;
+}
 
-        .notification {
-            position: relative;
+.panel-header span{
+    color:#555;
+    font-size:.68rem;
+}
 
-            color: #888888;
+.dashboard-grid{
+    display:grid;
 
-            font-size: 1.1rem;
-        }
+    grid-template-columns:
+        minmax(0,1.6fr)
+        minmax(280px,.9fr);
 
-        .notification-badge {
-            position: absolute;
+    gap:18px;
+}
 
-            top: -7px;
-            right: -8px;
+/* =========================
+   BOOKINGS
+========================= */
 
-            min-width: 15px;
-            height: 15px;
+.booking{
+    padding:20px 22px;
 
-            display: grid;
+    border-bottom:1px solid #1d1d1d;
+}
 
-            place-items: center;
+.booking:last-child{
+    border-bottom:none;
+}
 
-            border-radius: 50%;
+.booking-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:15px;
+}
 
-            background: #e3262e;
+.customer{
+    display:flex;
+    gap:13px;
+}
 
-            color: #ffffff;
+.customer-avatar{
+    width:38px;
+    height:38px;
 
-            font-size: 0.55rem;
+    display:grid;
+    place-items:center;
 
-            font-weight: 900;
-        }
+    border-radius:6px;
 
-        .avatar {
-            width: 34px;
-            height: 34px;
+    background:#1b1b1b;
 
-            display: grid;
+    font-size:.7rem;
+    font-weight:900;
+}
 
-            place-items: center;
+.customer-name{
+    font-size:.86rem;
+    font-weight:900;
+}
 
-            border-radius: 50%;
+.customer-contact{
+    color:#555;
+    font-size:.68rem;
+}
 
-            background: #202020;
+.booking-status{
+    padding:5px 8px;
 
-            color: #ffffff;
+    border-radius:4px;
 
-            font-size: 0.72rem;
+    font-size:.58rem;
+    font-weight:900;
+    letter-spacing:.7px;
 
-            font-weight: 900;
-        }
+    text-transform:uppercase;
+}
 
-        /* =========================
-           CONTENT
-        ========================= */
+.status-new{
+    background:#261012;
+    color:#e3262e;
+}
 
-        .content {
-            width: min(1400px, 92%);
+.status-confirmed{
+    background:#0d2118;
+    color:#38c172;
+}
 
-            margin: auto;
+.booking-details{
+    display:grid;
 
-            padding:
-                38px 0 70px;
-        }
+    grid-template-columns:repeat(3,1fr);
 
-        .page-heading {
-            display: flex;
+    gap:15px;
 
-            align-items: flex-end;
+    margin:18px 0 0 51px;
 
-            justify-content:
-                space-between;
+    padding-top:15px;
 
-            gap: 20px;
+    border-top:1px solid #1d1d1d;
+}
 
-            margin-bottom: 30px;
-        }
+.detail-label{
+    color:#4d4d4d;
 
-        .eyebrow {
-            color: #e3262e;
+    font-size:.58rem;
+    font-weight:900;
+    letter-spacing:.8px;
 
-            font-size: 0.68rem;
+    text-transform:uppercase;
 
-            font-weight: 900;
+    margin-bottom:4px;
+}
 
-            letter-spacing: 2px;
+.detail-value{
+    color:#ccc;
 
-            text-transform: uppercase;
+    font-size:.73rem;
+    font-weight:700;
+}
 
-            margin-bottom: 7px;
-        }
+.booking-actions{
+    display:flex;
 
-        .page-heading h1 {
-            font-size:
-                clamp(2rem, 4vw, 3rem);
+    gap:8px;
 
-            line-height: 1;
+    margin:15px 0 0 51px;
+}
 
-            letter-spacing: -1.5px;
+.small-btn{
+    padding:8px 12px;
 
-            text-transform: uppercase;
-        }
+    border:1px solid #2c2c2c;
+    border-radius:4px;
 
-        .page-heading p {
-            color: #666666;
+    background:transparent;
+    color:#888;
 
-            margin-top: 8px;
+    font-size:.62rem;
+    font-weight:900;
 
-            font-size: 0.85rem;
-        }
+    text-transform:uppercase;
+}
 
-        .date-display {
-            color: #777777;
+.small-btn:hover{
+    border-color:#e3262e;
+    color:#fff;
+}
 
-            font-size: 0.75rem;
+.small-btn.primary{
+    border-color:#e3262e;
+    background:#e3262e;
+    color:#fff;
+}
 
-            text-align: right;
-        }
+/* =========================
+   AUTOMATION
+========================= */
 
-        /* =========================
-           STATS
-        ========================= */
+.automation{
+    padding:22px;
+}
 
-        .stats-grid {
-            display: grid;
+.automation-intro{
+    color:#666;
+    font-size:.73rem;
+    line-height:1.6;
+    margin-bottom:25px;
+}
 
-            grid-template-columns:
-                repeat(4, 1fr);
+.timeline{
+    position:relative;
+    padding-left:30px;
+}
 
-            gap: 14px;
+.timeline::before{
+    content:"";
 
-            margin-bottom: 25px;
-        }
+    position:absolute;
 
-        .stat-card {
-            background: #101010;
+    top:7px;
+    bottom:7px;
+    left:7px;
 
-            border:
-                1px solid #242424;
+    width:1px;
 
-            border-radius: 8px;
+    background:#2a2a2a;
+}
 
-            padding: 22px;
+.timeline-item{
+    position:relative;
+    padding-bottom:24px;
+}
 
-            position: relative;
+.timeline-item:last-child{
+    padding-bottom:0;
+}
 
-            overflow: hidden;
-        }
+.timeline-dot{
+    position:absolute;
 
-        .stat-card::after {
-            content: "";
+    top:4px;
+    left:-27px;
 
-            position: absolute;
+    width:15px;
+    height:15px;
 
-            top: 0;
-            right: 0;
+    border-radius:50%;
 
-            width: 45px;
-            height: 45px;
+    border:3px solid #101010;
 
-            border-top:
-                1px solid #3a1b1d;
+    background:#303030;
 
-            border-right:
-                1px solid #3a1b1d;
-        }
+    box-shadow:0 0 0 1px #333;
+}
 
-        .stat-label {
-            color: #666666;
+.timeline-item.complete .timeline-dot{
+    background:#38c172;
+    box-shadow:0 0 0 1px #38c172;
+}
 
-            font-size: 0.65rem;
+.timeline-item.current .timeline-dot{
+    background:#e3262e;
+    box-shadow:
+        0 0 0 1px #e3262e,
+        0 0 12px rgba(227,38,46,.35);
+}
 
-            font-weight: 900;
+.timeline-title{
+    font-size:.75rem;
+    font-weight:900;
+}
 
-            letter-spacing: 1px;
+.timeline-copy{
+    color:#555;
+    font-size:.66rem;
+    line-height:1.5;
+}
 
-            text-transform: uppercase;
+/* =========================
+   QUOTE PANEL
+========================= */
 
-            margin-bottom: 10px;
-        }
+.quote-panel{
+    margin-top:18px;
+}
 
-        .stat-number {
-            font-size: 2rem;
+.quote-body{
+    padding:22px;
+}
 
-            font-weight: 900;
+.quote-customer{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
 
-            line-height: 1;
-        }
+    padding-bottom:18px;
 
-        .stat-change {
-            color: #38c172;
+    border-bottom:1px solid #222;
+}
 
-            font-size: 0.68rem;
+.quote-customer h3{
+    font-size:.9rem;
+}
 
-            margin-top: 10px;
-        }
+.quote-customer p{
+    color:#666;
+    font-size:.68rem;
+    margin-top:4px;
+}
 
-        .stat-change.neutral {
-            color: #666666;
-        }
+.quote-status{
+    padding:6px 9px;
 
-        /* =========================
-           MAIN GRID
-        ========================= */
+    border-radius:4px;
 
-        .dashboard-grid {
-            display: grid;
+    background:#201b0e;
+    color:#d6a93d;
 
-            grid-template-columns:
-                minmax(0, 1.65fr)
-                minmax(280px, 0.85fr);
+    font-size:.58rem;
+    font-weight:900;
 
-            gap: 18px;
-        }
+    text-transform:uppercase;
+}
 
-        .panel {
-            background: #101010;
+.quote-line{
+    display:flex;
 
-            border:
-                1px solid #242424;
+    justify-content:space-between;
 
-            border-radius: 8px;
+    padding:13px 0;
 
-            overflow: hidden;
-        }
+    border-bottom:1px solid #1c1c1c;
 
-        .panel-header {
-            display: flex;
+    color:#aaa;
 
-            align-items: center;
+    font-size:.73rem;
+}
 
-            justify-content:
-                space-between;
+.quote-line span:last-child{
+    color:#fff;
+    font-weight:800;
+}
 
-            padding:
-                20px 22px;
+.quote-total{
+    display:flex;
 
-            border-bottom:
-                1px solid #222222;
-        }
+    justify-content:space-between;
 
-        .panel-header h2 {
-            font-size: 0.95rem;
+    padding:18px 0;
 
-            text-transform: uppercase;
-        }
+    font-size:.85rem;
+    font-weight:900;
+}
 
-        .panel-header span {
-            color: #555555;
+.quote-total span:last-child{
+    color:#e3262e;
 
-            font-size: 0.68rem;
-        }
+    font-size:1.25rem;
+}
 
-        .view-all {
-            border: none;
+.quote-actions{
+    display:flex;
+    gap:8px;
+}
 
-            background: transparent;
+.quote-btn{
+    flex:1;
 
-            color: #e3262e;
+    padding:11px;
 
-            font-size: 0.68rem;
+    border:1px solid #333;
+    border-radius:5px;
 
-            font-weight: 900;
+    background:transparent;
 
-            text-transform: uppercase;
-        }
+    color:#888;
 
-        /* =========================
-           BOOKINGS
-        ========================= */
+    font-size:.65rem;
+    font-weight:900;
 
-        .booking {
-            padding:
-                20px 22px;
+    text-transform:uppercase;
+}
 
-            border-bottom:
-                1px solid #1d1d1d;
+.quote-btn:hover{
+    border-color:#e3262e;
+    color:#fff;
+}
 
-            transition: 0.2s;
-        }
+.quote-btn.primary{
+    background:#e3262e;
+    border-color:#e3262e;
+    color:#fff;
+}
 
-        .booking:last-child {
-            border-bottom: none;
-        }
+.quote-btn.approved{
+    background:#38c172;
+    border-color:#38c172;
+    color:#06140b;
+}
 
-        .booking:hover {
-            background: #121212;
-        }
+/* =========================
+   LOWER GRID
+========================= */
 
-        .booking-top {
-            display: flex;
+.lower-grid{
+    display:grid;
 
-            align-items: flex-start;
+    grid-template-columns:1fr 1fr;
 
-            justify-content:
-                space-between;
+    gap:18px;
 
-            gap: 15px;
-        }
+    margin-top:18px;
+}
 
-        .customer {
-            display: flex;
+/* =========================
+   SCHEDULE
+========================= */
 
-            gap: 13px;
-        }
+.schedule-item{
+    display:grid;
 
-        .customer-avatar {
-            width: 38px;
-            height: 38px;
+    grid-template-columns:70px 1fr auto;
 
-            flex-shrink: 0;
+    align-items:center;
 
-            display: grid;
+    gap:15px;
 
-            place-items: center;
+    padding:16px 22px;
 
-            border-radius: 6px;
+    border-bottom:1px solid #1d1d1d;
+}
 
-            background: #1b1b1b;
+.schedule-item:last-child{
+    border-bottom:none;
+}
 
-            color: #cccccc;
+.schedule-time{
+    color:#e3262e;
 
-            font-size: 0.7rem;
+    font-size:.7rem;
+    font-weight:900;
+}
 
-            font-weight: 900;
-        }
+.schedule-customer{
+    font-size:.76rem;
+    font-weight:800;
+}
 
-        .customer-name {
-            font-size: 0.86rem;
+.schedule-service{
+    color:#555;
+    font-size:.63rem;
+    margin-top:3px;
+}
 
-            font-weight: 900;
+.schedule-bay{
+    color:#555;
+    font-size:.62rem;
+}
 
-            margin-bottom: 3px;
-        }
+/* =========================
+   QUICK ACTIONS
+========================= */
 
-        .customer-contact {
-            color: #555555;
+.quick-actions{
+    display:grid;
 
-            font-size: 0.68rem;
-        }
+    grid-template-columns:repeat(2,1fr);
 
-        .booking-status {
-            padding:
-                5px 8px;
+    gap:10px;
 
-            border-radius: 4px;
+    padding:22px;
+}
 
-            font-size: 0.58rem;
+.quick-action{
+    min-height:90px;
 
-            font-weight: 900;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
 
-            letter-spacing: 0.7px;
+    padding:15px;
 
-            text-transform: uppercase;
-        }
+    border:1px solid #272727;
+    border-radius:6px;
 
-        .status-new {
-            background: #261012;
+    background:#0c0c0c;
 
-            color: #e3262e;
-        }
+    color:#fff;
 
-        .status-confirmed {
-            background: #0d2118;
+    text-align:left;
+}
 
-            color: #38c172;
-        }
+.quick-action:hover{
+    border-color:#e3262e;
+    transform:translateY(-2px);
+}
 
-        .status-pending {
-            background: #201b0e;
+.quick-icon{
+    color:#e3262e;
+}
 
-            color: #d6a93d;
-        }
+.quick-action strong{
+    font-size:.67rem;
+    text-transform:uppercase;
+}
 
-        .booking-details {
-            display: grid;
+.quick-action span{
+    color:#555;
+    font-size:.58rem;
+}
 
-            grid-template-columns:
-                repeat(3, 1fr);
+/* =========================
+   MODAL
+========================= */
 
-            gap: 15px;
+.modal{
+    position:fixed;
 
-            margin:
-                18px 0 0 51px;
+    inset:0;
 
-            padding-top: 15px;
+    display:none;
 
-            border-top:
-                1px solid #1d1d1d;
-        }
+    align-items:center;
+    justify-content:center;
 
-        .detail-label {
-            color: #4d4d4d;
+    padding:20px;
 
-            font-size: 0.58rem;
+    background:rgba(0,0,0,.78);
 
-            font-weight: 900;
+    backdrop-filter:blur(8px);
 
-            letter-spacing: 0.8px;
+    z-index:500;
+}
 
-            text-transform: uppercase;
+.modal.active{
+    display:flex;
+}
 
-            margin-bottom: 4px;
-        }
+.modal-card{
+    width:min(600px,100%);
 
-        .detail-value {
-            color: #cccccc;
+    max-height:90vh;
 
-            font-size: 0.73rem;
+    overflow-y:auto;
 
-            font-weight: 700;
-        }
+    background:#111;
 
-        .booking-actions {
-            display: flex;
+    border:1px solid #2b2b2b;
 
-            gap: 8px;
+    border-radius:10px;
+}
 
-            margin:
-                15px 0 0 51px;
-        }
+.modal-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
-        .small-btn {
-            padding:
-                8px 12px;
+    padding:22px;
 
-            border:
-                1px solid #2c2c2c;
+    border-bottom:1px solid #242424;
+}
 
-            border-radius: 4px;
+.modal-header h2{
+    font-size:1rem;
+    text-transform:uppercase;
+}
 
-            background: transparent;
+.close-modal{
+    width:32px;
+    height:32px;
 
-            color: #888888;
+    border:1px solid #2d2d2d;
+    border-radius:5px;
 
-            font-size: 0.62rem;
+    background:transparent;
 
-            font-weight: 900;
+    color:#777;
 
-            text-transform: uppercase;
+    font-size:1rem;
+}
 
-            transition: 0.2s;
-        }
+.modal-body{
+    padding:25px;
+}
 
-        .small-btn:hover {
-            border-color: #e3262e;
+.modal-grid{
+    display:grid;
 
-            color: #ffffff;
-        }
+    grid-template-columns:repeat(2,1fr);
 
-        .small-btn.primary {
-            border-color: #e3262e;
+    gap:15px;
+}
 
-            background: #e3262e;
+.modal-detail{
+    padding:15px;
 
-            color: #ffffff;
-        }
+    background:#0b0b0b;
 
-        .small-btn.primary:hover {
-            background: #ffffff;
+    border:1px solid #222;
 
-            color: #080808;
+    border-radius:6px;
+}
 
-            border-color: #ffffff;
-        }
+.modal-detail small{
+    display:block;
 
-        /* =========================
-           AUTOMATION
-        ========================= */
+    color:#555;
 
-        .automation {
-            padding: 22px;
-        }
+    font-size:.58rem;
+    font-weight:900;
+    letter-spacing:1px;
 
-        .automation-intro {
-            color: #666666;
+    text-transform:uppercase;
 
-            font-size: 0.73rem;
+    margin-bottom:6px;
+}
 
-            line-height: 1.6;
+.modal-detail strong{
+    font-size:.75rem;
+}
 
-            margin-bottom: 25px;
-        }
+.modal-note{
+    margin-top:15px;
 
-        .timeline {
-            position: relative;
+    padding:15px;
 
-            padding-left: 30px;
-        }
+    background:#0b0b0b;
 
-        .timeline::before {
-            content: "";
+    border:1px solid #222;
 
-            position: absolute;
+    border-left:2px solid #e3262e;
 
-            top: 7px;
-            bottom: 7px;
-            left: 7px;
+    border-radius:5px;
+}
 
-            width: 1px;
+.modal-note small{
+    display:block;
 
-            background: #2a2a2a;
-        }
+    color:#555;
 
-        .timeline-item {
-            position: relative;
+    font-size:.58rem;
+    font-weight:900;
 
-            padding-bottom: 24px;
-        }
+    text-transform:uppercase;
 
-        .timeline-item:last-child {
-            padding-bottom: 0;
-        }
+    margin-bottom:6px;
+}
 
-        .timeline-dot {
-            position: absolute;
+.modal-note p{
+    color:#999;
 
-            top: 4px;
-            left: -27px;
+    font-size:.75rem;
 
-            width: 15px;
-            height: 15px;
+    line-height:1.6;
+}
 
-            border-radius: 50%;
+.modal-actions{
+    display:flex;
 
-            border:
-                3px solid #101010;
+    gap:10px;
 
-            background: #303030;
+    margin-top:22px;
+}
 
-            box-shadow:
-                0 0 0 1px #333333;
-        }
+/* =========================
+   RESPONSIVE
+========================= */
 
-        .timeline-item.complete
-        .timeline-dot {
-            background: #38c172;
+@media(max-width:1050px){
 
-            box-shadow:
-                0 0 0 1px #38c172;
-        }
+    .sidebar{
+        width:210px;
+    }
 
-        .timeline-item.current
-        .timeline-dot {
-            background: #e3262e;
+    .main{
+        margin-left:210px;
+    }
 
-            box-shadow:
-                0 0 0 1px #e3262e,
-                0 0 12px
-                rgba(227, 38, 46, 0.35);
-        }
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-        .timeline-title {
-            font-size: 0.75rem;
+    .dashboard-grid{
+        grid-template-columns:1fr;
+    }
+}
 
-            font-weight: 900;
+@media(max-width:760px){
 
-            margin-bottom: 3px;
-        }
+    .sidebar{
+        position:static;
 
-        .timeline-copy {
-            color: #555555;
+        width:100%;
 
-            font-size: 0.66rem;
+        padding:15px;
 
-            line-height: 1.5;
-        }
+        border-right:none;
 
-        .automation-label {
-            display: inline-block;
+        border-bottom:1px solid #222;
+    }
 
-            margin-top: 22px;
+    .brand{
+        padding:5px 5px 18px;
+    }
 
-            padding:
-                6px 8px;
+    .side-nav{
+        display:flex;
+        overflow-x:auto;
+    }
 
-            border:
-                1px solid #292929;
+    .side-nav button{
+        width:auto;
+        white-space:nowrap;
+    }
 
-            border-radius: 4px;
+    .nav-label,
+    .sidebar-bottom{
+        display:none;
+    }
 
-            color: #666666;
+    .main{
+        margin-left:0;
+    }
 
-            font-size: 0.58rem;
+    .topbar{
+        padding:0 20px;
+    }
 
-            font-weight: 900;
+    .content{
+        width:92%;
+        padding-top:25px;
+    }
 
-            letter-spacing: 1px;
+    .page-heading{
+        align-items:flex-start;
+        flex-direction:column;
+    }
 
-            text-transform: uppercase;
-        }
+    .date-display{
+        text-align:left;
+    }
 
-        /* =========================
-           LOWER GRID
-        ========================= */
+    .stats-grid,
+    .lower-grid{
+        grid-template-columns:1fr;
+    }
+}
 
-        .lower-grid {
-            display: grid;
+@media(max-width:520px){
 
-            grid-template-columns:
-                1fr 1fr;
+    .booking-details{
+        grid-template-columns:1fr;
+        margin-left:0;
+    }
 
-            gap: 18px;
+    .booking-actions{
+        margin-left:0;
+    }
 
-            margin-top: 18px;
-        }
+    .quick-actions{
+        grid-template-columns:1fr;
+    }
 
-        /* =========================
-           TODAY'S SCHEDULE
-        ========================= */
+    .modal-grid{
+        grid-template-columns:1fr;
+    }
 
-        .schedule-item {
-            display: grid;
+    .modal-actions{
+        flex-direction:column;
+    }
+}
 
-            grid-template-columns:
-                70px 1fr auto;
-
-            align-items: center;
-
-            gap: 15px;
-
-            padding:
-                16px 22px;
-
-            border-bottom:
-                1px solid #1d1d1d;
-        }
-
-        .schedule-item:last-child {
-            border-bottom: none;
-        }
-
-        .schedule-time {
-            color: #e3262e;
-
-            font-size: 0.7rem;
-
-            font-weight: 900;
-        }
-
-        .schedule-customer {
-            font-size: 0.76rem;
-
-            font-weight: 800;
-        }
-
-        .schedule-service {
-            color: #555555;
-
-            font-size: 0.63rem;
-
-            margin-top: 3px;
-        }
-
-        .schedule-bay {
-            color: #555555;
-
-            font-size: 0.62rem;
-
-            text-align: right;
-        }
-
-        /* =========================
-           QUICK ACTIONS
-        ========================= */
-
-        .quick-actions {
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 10px;
-
-            padding: 22px;
-        }
-
-        .quick-action {
-            min-height: 90px;
-
-            display: flex;
-
-            flex-direction: column;
-
-            justify-content:
-                space-between;
-
-            padding: 15px;
-
-            border:
-                1px solid #272727;
-
-            border-radius: 6px;
-
-            background: #0c0c0c;
-
-            color: #ffffff;
-
-            text-align: left;
-
-            transition: 0.2s;
-        }
-
-        .quick-action:hover {
-            border-color: #e3262e;
-
-            transform:
-                translateY(-2px);
-        }
-
-        .quick-icon {
-            color: #e3262e;
-
-            font-size: 1rem;
-        }
-
-        .quick-action strong {
-            font-size: 0.67rem;
-
-            text-transform: uppercase;
-        }
-
-        .quick-action span {
-            color: #555555;
-
-            font-size: 0.58rem;
-        }
-
-        /* =========================
-           MODAL
-        ========================= */
-
-        .modal {
-            position: fixed;
-
-            inset: 0;
-
-            display: none;
-
-            align-items: center;
-
-            justify-content: center;
-
-            padding: 20px;
-
-            background:
-                rgba(0, 0, 0, 0.78);
-
-            backdrop-filter:
-                blur(8px);
-
-            z-index: 500;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-card {
-            width:
-                min(600px, 100%);
-
-            max-height: 90vh;
-
-            overflow-y: auto;
-
-            background: #111111;
-
-            border:
-                1px solid #2b2b2b;
-
-            border-radius: 10px;
-
-            box-shadow:
-                0 30px 100px
-                rgba(0, 0, 0, 0.65);
-        }
-
-        .modal-header {
-            display: flex;
-
-            align-items: center;
-
-            justify-content:
-                space-between;
-
-            padding: 22px;
-
-            border-bottom:
-                1px solid #242424;
-        }
-
-        .modal-header h2 {
-            font-size: 1rem;
-
-            text-transform: uppercase;
-        }
-
-        .close-modal {
-            width: 32px;
-            height: 32px;
-
-            border:
-                1px solid #2d2d2d;
-
-            border-radius: 5px;
-
-            background: transparent;
-
-            color: #777777;
-
-            font-size: 1rem;
-        }
-
-        .close-modal:hover {
-            color: #ffffff;
-
-            border-color: #ffffff;
-        }
-
-        .modal-body {
-            padding: 25px;
-        }
-
-        .modal-customer {
-            display: flex;
-
-            align-items: center;
-
-            gap: 15px;
-
-            padding-bottom: 22px;
-
-            border-bottom:
-                1px solid #222222;
-
-            margin-bottom: 20px;
-        }
-
-        .modal-avatar {
-            width: 50px;
-            height: 50px;
-
-            display: grid;
-
-            place-items: center;
-
-            border-radius: 7px;
-
-            background: #202020;
-
-            font-weight: 900;
-        }
-
-        .modal-customer h3 {
-            font-size: 1rem;
-        }
-
-        .modal-customer p {
-            color: #666666;
-
-            font-size: 0.7rem;
-
-            margin-top: 3px;
-        }
-
-        .modal-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 15px;
-        }
-
-        .modal-detail {
-            padding: 15px;
-
-            background: #0b0b0b;
-
-            border:
-                1px solid #222222;
-
-            border-radius: 6px;
-        }
-
-        .modal-detail small {
-            display: block;
-
-            color: #555555;
-
-            font-size: 0.58rem;
-
-            font-weight: 900;
-
-            letter-spacing: 1px;
-
-            text-transform: uppercase;
-
-            margin-bottom: 6px;
-        }
-
-        .modal-detail strong {
-            font-size: 0.75rem;
-        }
-
-        .modal-note {
-            margin-top: 15px;
-
-            padding: 15px;
-
-            background: #0b0b0b;
-
-            border:
-                1px solid #222222;
-
-            border-left:
-                2px solid #e3262e;
-
-            border-radius: 5px;
-        }
-
-        .modal-note small {
-            display: block;
-
-            color: #555555;
-
-            font-size: 0.58rem;
-
-            font-weight: 900;
-
-            text-transform: uppercase;
-
-            margin-bottom: 6px;
-        }
-
-        .modal-note p {
-            color: #999999;
-
-            font-size: 0.75rem;
-
-            line-height: 1.6;
-        }
-
-        .modal-actions {
-            display: flex;
-
-            gap: 10px;
-
-            margin-top: 22px;
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 1050px) {
-
-            .sidebar {
-                width: 210px;
-            }
-
-            .main {
-                margin-left: 210px;
-            }
-
-            .stats-grid {
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-            .dashboard-grid {
-                grid-template-columns: 1fr;
-            }
-
-        }
-
-
-        @media (max-width: 760px) {
-
-            .sidebar {
-                position: static;
-
-                width: 100%;
-
-                padding: 15px;
-
-                border-right: none;
-
-                border-bottom:
-                    1px solid #222222;
-            }
-
-            .brand {
-                padding:
-                    5px 5px 18px;
-            }
-
-            .side-nav {
-                display: flex;
-
-                overflow-x: auto;
-            }
-
-            .side-nav button {
-                width: auto;
-
-                white-space: nowrap;
-            }
-
-            .nav-label,
-            .sidebar-bottom {
-                display: none;
-            }
-
-            .main {
-                margin-left: 0;
-            }
-
-            .topbar {
-                padding:
-                    0 20px;
-            }
-
-            .content {
-                width: 92%;
-
-                padding-top: 25px;
-            }
-
-            .page-heading {
-                align-items: flex-start;
-
-                flex-direction: column;
-            }
-
-            .date-display {
-                text-align: left;
-            }
-
-            .stats-grid,
-            .lower-grid {
-                grid-template-columns: 1fr;
-            }
-
-        }
-
-
-        @media (max-width: 520px) {
-
-            .topbar-left span {
-                display: none;
-            }
-
-            .stats-grid {
-                gap: 9px;
-            }
-
-            .stat-card {
-                padding: 17px;
-            }
-
-            .booking-details {
-                grid-template-columns: 1fr;
-
-                margin-left: 0;
-            }
-
-            .booking-actions {
-                margin-left: 0;
-            }
-
-            .schedule-item {
-                grid-template-columns:
-                    55px 1fr;
-
-                gap: 10px;
-            }
-
-            .schedule-bay {
-                display: none;
-            }
-
-            .quick-actions {
-                grid-template-columns: 1fr;
-            }
-
-            .modal-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .modal-actions {
-                flex-direction: column;
-            }
-
-        }
-
-    </style>
+</style>
 
 </head>
-
 
 <body>
 
 
-    <!-- =========================
-         SIDEBAR
-    ========================= -->
+<!-- =========================
+     SIDEBAR
+========================= -->
 
-    <aside class="sidebar">
+<aside class="sidebar">
 
+<a
+    href="index.html"
+    class="brand"
+>
+    PERFORMANCE<span>.</span>
+</a>
 
-        <a
-            href="index.html"
-            class="brand"
-        >
-            PERFORMANCE<span>.</span>
-        </a>
+<div class="nav-label">
+    Workshop
+</div>
 
+<nav class="side-nav">
 
-        <div class="nav-label">
-            Workshop
-        </div>
+<button class="active">
+    <span class="nav-icon">▦</span>
+    Dashboard
+</button>
 
+<button onclick="scrollToBookings()">
+    <span class="nav-icon">◫</span>
+    Bookings
+</button>
 
-        <nav class="side-nav">
+<button onclick="scrollToSchedule()">
+    <span class="nav-icon">◷</span>
+    Schedule
+</button>
 
+<button onclick="scrollToQuote()">
+    <span class="nav-icon">💰</span>
+    Quotes
+</button>
 
-            <button
-                class="active"
-                onclick="showDashboard()"
-            >
+</nav>
 
-                <span class="nav-icon">
-                    ▦
-                </span>
+<div class="nav-label" style="margin-top:28px;">
+    System
+</div>
 
-                Dashboard
+<nav class="side-nav">
 
-            </button>
+<button onclick="scrollToAutomation()">
+    <span class="nav-icon">⚡</span>
+    Automations
+</button>
 
+</nav>
 
-            <button
-                onclick="showBookings()"
-            >
+<div class="sidebar-bottom">
 
-                <span class="nav-icon">
-                    ◫
-                </span>
+<div class="workshop-status">
 
-                Bookings
+<span class="status-dot"></span>
 
-            </button>
+Workshop system online
 
+</div>
 
-            <button
-                onclick="showSchedule()"
-            >
+</div>
 
-                <span class="nav-icon">
-                    ◷
-                </span>
+</aside>
 
-                Schedule
 
-            </button>
+<!-- =========================
+     MAIN
+========================= -->
 
+<main class="main">
 
-            <button
-                onclick="showCustomers()"
-            >
 
-                <span class="nav-icon">
-                    ◎
-                </span>
+<header class="topbar">
 
-                Customers
+<div class="topbar-left">
 
-            </button>
+<strong>
+    Performance Garage
+</strong>
 
+<span>
+    / Workshop Dashboard
+</span>
 
-        </nav>
+</div>
 
+<div class="avatar">
+    PG
+</div>
 
-        <div class="nav-label" style="margin-top: 28px;">
-            System
-        </div>
+</header>
 
 
-        <nav class="side-nav">
+<div class="content">
 
 
-            <button
-                onclick="showAutomations()"
-            >
+<!-- HEADING -->
 
-                <span class="nav-icon">
-                    ⚡
-                </span>
+<div class="page-heading">
 
-                Automations
+<div>
 
-            </button>
+<div class="eyebrow">
+    Workshop Overview
+</div>
 
+<h1>
+    Good morning.
+</h1>
 
-            <button
-                onclick="showSettings()"
-            >
+<p>
+    Here's what's happening in your workshop.
+</p>
 
-                <span class="nav-icon">
-                    ⚙
-                </span>
+</div>
 
-                Settings
+<div class="date-display">
+    Tuesday, 18 August 2026
+</div>
 
-            </button>
+</div>
 
 
-        </nav>
+<!-- STATS -->
 
+<div class="stats-grid">
 
-        <div class="sidebar-bottom">
 
-            <div class="workshop-status">
+<div class="stat-card">
 
-                <span class="status-dot"></span>
+<div class="stat-label">
+    Today's Bookings
+</div>
 
-                Workshop system online
+<div class="stat-number">
+    12
+</div>
 
-            </div>
+<div class="stat-change">
+    ↑ 20% from last week
+</div>
 
-        </div>
+</div>
 
-    </aside>
 
+<div class="stat-card">
 
-    <!-- =========================
-         MAIN
-    ========================= -->
+<div class="stat-label">
+    Pending
+</div>
 
-    <main class="main">
+<div class="stat-number">
+    4
+</div>
 
+<div class="stat-change neutral">
+    Require attention
+</div>
 
-        <!-- TOPBAR -->
+</div>
 
-        <header class="topbar">
 
+<div class="stat-card">
 
-            <div class="topbar-left">
+<div class="stat-label">
+    Vehicles In Workshop
+</div>
 
-                <strong>
-                    Performance Garage
-                </strong>
+<div class="stat-number">
+    2
+</div>
 
-                <span>
-                    / Workshop Dashboard
-                </span>
+<div class="stat-change neutral">
+    Currently active
+</div>
 
-            </div>
+</div>
 
 
-            <div class="topbar-right">
+<div class="stat-card">
 
-                <div class="notification">
+<div class="stat-label">
+    Completed
+</div>
 
-                    ◉
+<div class="stat-number">
+    6
+</div>
 
-                    <span class="notification-badge">
-                        3
-                    </span>
+<div class="stat-change">
+    ↑ 12% this week
+</div>
 
-                </div>
+</div>
 
 
-                <div class="avatar">
-                    PG
-                </div>
+</div>
 
-            </div>
 
-        </header>
+<!-- =========================
+     BOOKINGS + AUTOMATION
+========================= -->
 
+<div class="dashboard-grid">
 
-        <!-- =========================
-             CONTENT
-        ========================= -->
 
-        <div class="content">
+<section
+    class="panel"
+    id="bookings"
+>
 
+<div class="panel-header">
 
-            <!-- PAGE HEADING -->
+<h2>
+    New Bookings
+</h2>
 
-            <div class="page-heading">
+<span>
+    3 recent
+</span>
 
-                <div>
+</div>
 
-                    <div class="eyebrow">
-                        Workshop Overview
-                    </div>
 
+<!-- BOOKING 1 -->
 
-                    <h1>
-                        Good morning.
-                    </h1>
+<div class="booking">
 
+<div class="booking-top">
 
-                    <p>
-                        Here's what's happening in your workshop.
-                    </p>
+<div class="customer">
 
-                </div>
+<div class="customer-avatar">
+    JS
+</div>
 
+<div>
 
-                <div class="date-display">
-                    Tuesday, 18 August 2026
-                </div>
+<div class="customer-name">
+    John Smith
+</div>
 
-            </div>
+<div class="customer-contact">
+    021 555 1234
+</div>
 
+</div>
 
-            <!-- =========================
-                 STATS
-            ========================= -->
+</div>
 
-            <div class="stats-grid">
+<div class="booking-status status-new">
+    New
+</div>
 
+</div>
 
-                <div class="stat-card">
 
-                    <div class="stat-label">
-                        Today's Bookings
-                    </div>
+<div class="booking-details">
 
-                    <div class="stat-number">
-                        12
-                    </div>
+<div>
 
-                    <div class="stat-change">
-                        ↑ 20% from last week
-                    </div>
+<div class="detail-label">
+    Vehicle
+</div>
 
-                </div>
+<div class="detail-value">
+    2018 BMW M3
+</div>
 
+</div>
 
-                <div class="stat-card">
+<div>
 
-                    <div class="stat-label">
-                        Pending
-                    </div>
+<div class="detail-label">
+    Service
+</div>
 
-                    <div class="stat-number">
-                        4
-                    </div>
+<div class="detail-value">
+    Diagnostics
+</div>
 
-                    <div class="stat-change neutral">
-                        Require attention
-                    </div>
+</div>
 
-                </div>
+<div>
 
+<div class="detail-label">
+    Appointment
+</div>
 
-                <div class="stat-card">
+<div class="detail-value">
+    Tomorrow • 10:00 AM
+</div>
 
-                    <div class="stat-label">
-                        Vehicles In Workshop
-                    </div>
+</div>
 
-                    <div class="stat-number">
-                        2
-                    </div>
+</div>
 
-                    <div class="stat-change neutral">
-                        Currently active
-                    </div>
 
-                </div>
+<div class="booking-actions">
 
+<button
+    class="small-btn primary"
+    onclick="openBooking()"
+>
+    View Booking
+</button>
 
-                <div class="stat-card">
+<button
+    class="small-btn"
+    onclick="confirmBooking(this)"
+>
+    Confirm
+</button>
 
-                    <div class="stat-label">
-                        Completed
-                    </div>
+</div>
 
-                    <div class="stat-number">
-                        6
-                    </div>
+</div>
 
-                    <div class="stat-change">
-                        ↑ 12% this week
-                    </div>
 
-                </div>
+<!-- BOOKING 2 -->
 
-            </div>
+<div class="booking">
 
+<div class="booking-top">
 
-            <!-- =========================
-                 MAIN DASHBOARD
-            ========================= -->
+<div class="customer">
 
-            <div class="dashboard-grid">
+<div class="customer-avatar">
+    SW
+</div>
 
+<div>
 
-                <!-- BOOKINGS -->
+<div class="customer-name">
+    Sarah Williams
+</div>
 
-                <section class="panel">
+<div class="customer-contact">
+    021 444 7821
+</div>
 
-                    <div class="panel-header">
+</div>
 
-                        <h2>
-                            New Bookings
-                        </h2>
+</div>
 
-                        <button
-                            class="view-all"
-                            onclick="showBookings()"
-                        >
-                            View All
-                        </button>
+<div class="booking-status status-new">
+    New
+</div>
 
-                    </div>
+</div>
 
 
-                    <!-- BOOKING 1 -->
+<div class="booking-details">
 
-                    <div class="booking">
+<div>
 
-                        <div class="booking-top">
+<div class="detail-label">
+    Vehicle
+</div>
 
+<div class="detail-value">
+    2021 Toyota Hilux
+</div>
 
-                            <div class="customer">
+</div>
 
-                                <div class="customer-avatar">
-                                    JS
-                                </div>
+<div>
 
+<div class="detail-label">
+    Service
+</div>
 
-                                <div>
+<div class="detail-value">
+    General Service
+</div>
 
-                                    <div class="customer-name">
-                                        John Smith
-                                    </div>
+</div>
 
-                                    <div class="customer-contact">
-                                        021 555 1234
-                                    </div>
+<div>
 
-                                </div>
+<div class="detail-label">
+    Appointment
+</div>
 
-                            </div>
+<div class="detail-value">
+    Tomorrow • 1:00 PM
+</div>
 
+</div>
 
-                            <div class="booking-status status-new">
-                                New
-                            </div>
+</div>
 
-                        </div>
 
+<div class="booking-actions">
 
-                        <div class="booking-details">
+<button
+    class="small-btn primary"
+    onclick="alert('Sarah Williams booking details opened.')"
+>
+    View Booking
+</button>
 
+<button
+    class="small-btn"
+    onclick="confirmBooking(this)"
+>
+    Confirm
+</button>
 
-                            <div>
+</div>
 
-                                <div class="detail-label">
-                                    Vehicle
-                                </div>
+</div>
 
-                                <div class="detail-value">
-                                    2018 BMW M3
-                                </div>
 
-                            </div>
+<!-- BOOKING 3 -->
 
+<div class="booking">
 
-                            <div>
+<div class="booking-top">
 
-                                <div class="detail-label">
-                                    Service
-                                </div>
+<div class="customer">
 
-                                <div class="detail-value">
-                                    Diagnostics
-                                </div>
+<div class="customer-avatar">
+    MT
+</div>
 
-                            </div>
+<div>
 
+<div class="customer-name">
+    Marcus Taylor
+</div>
 
-                            <div>
+<div class="customer-contact">
+    021 338 9912
+</div>
 
-                                <div class="detail-label">
-                                    Appointment
-                                </div>
+</div>
 
-                                <div class="detail-value">
-                                    Tomorrow • 10:00 AM
-                                </div>
+</div>
 
-                            </div>
+<div class="booking-status status-confirmed">
+    Confirmed
+</div>
 
-                        </div>
+</div>
 
 
-                        <div class="booking-actions">
+<div class="booking-details">
 
-                            <button
-                                class="small-btn primary"
-                                onclick="openBooking('john')"
-                            >
-                                View Booking
-                            </button>
+<div>
 
-                            <button
-                                class="small-btn"
-                                onclick="confirmBooking(this)"
-                            >
-                                Confirm
-                            </button>
+<div class="detail-label">
+    Vehicle
+</div>
 
-                        </div>
+<div class="detail-value">
+    2020 Audi RS3
+</div>
 
-                    </div>
+</div>
 
+<div>
 
-                    <!-- BOOKING 2 -->
+<div class="detail-label">
+    Service
+</div>
 
-                    <div class="booking">
+<div class="detail-value">
+    Performance
+</div>
 
-                        <div class="booking-top">
+</div>
 
+<div>
 
-                            <div class="customer">
+<div class="detail-label">
+    Appointment
+</div>
 
-                                <div class="customer-avatar">
-                                    SW
-                                </div>
+<div class="detail-value">
+    Today • 2:00 PM
+</div>
 
+</div>
 
-                                <div>
+</div>
 
-                                    <div class="customer-name">
-                                        Sarah Williams
-                                    </div>
+</div>
 
-                                    <div class="customer-contact">
-                                        021 444 7821
-                                    </div>
+</section>
 
-                                </div>
 
-                            </div>
+<!-- AUTOMATION -->
 
+<section
+    class="panel"
+    id="automation"
+>
 
-                            <div class="booking-status status-pending">
-                                Pending
-                            </div>
+<div class="panel-header">
 
-                        </div>
+<h2>
+    Booking Automation
+</h2>
 
+<span>
+    Live workflow
+</span>
 
-                        <div class="booking-details">
+</div>
 
 
-                            <div>
+<div class="automation">
 
-                                <div class="detail-label">
-                                    Vehicle
-                                </div>
+<p class="automation-intro">
+    Every online booking can trigger a structured
+    customer journey without your team manually
+    chasing every step.
+</p>
 
-                                <div class="detail-value">
-                                    2021 Toyota Hilux
-                                </div>
 
-                            </div>
+<div class="timeline">
 
 
-                            <div>
+<div class="timeline-item complete">
 
-                                <div class="detail-label">
-                                    Service
-                                </div>
+<div class="timeline-dot"></div>
 
-                                <div class="detail-value">
-                                    General Service
-                                </div>
+<div class="timeline-title">
+    Booking received
+</div>
 
-                            </div>
+<div class="timeline-copy">
+    Customer submits the online booking form.
+</div>
 
+</div>
 
-                            <div>
 
-                                <div class="detail-label">
-                                    Appointment
-                                </div>
+<div class="timeline-item complete">
 
-                                <div class="detail-value">
-                                    Tomorrow • 1:00 PM
-                                </div>
+<div class="timeline-dot"></div>
 
-                            </div>
+<div class="timeline-title">
+    Customer confirmation
+</div>
 
-                        </div>
+<div class="timeline-copy">
+    Booking details are confirmed with the customer.
+</div>
 
+</div>
 
-                        <div class="booking-actions">
 
-                            <button
-                                class="small-btn primary"
-                                onclick="openBooking('sarah')"
-                            >
-                                View Booking
-                            </button>
+<div class="timeline-item current">
 
-                            <button
-                                class="small-btn"
-                                onclick="confirmBooking(this)"
-                            >
-                                Confirm
-                            </button>
+<div class="timeline-dot"></div>
 
-                        </div>
+<div class="timeline-title">
+    Appointment reminder
+</div>
 
-                    </div>
+<div class="timeline-copy">
+    Automated reminder before the vehicle arrives.
+</div>
 
+</div>
 
-                    <!-- BOOKING 3 -->
 
-                    <div class="booking">
+<div class="timeline-item">
 
-                        <div class="booking-top">
+<div class="timeline-dot"></div>
 
+<div class="timeline-title">
+    Service completed
+</div>
 
-                            <div class="customer">
+<div class="timeline-copy">
+    Customer is updated when the job is complete.
+</div>
 
-                                <div class="customer-avatar">
-                                    MT
-                                </div>
+</div>
 
 
-                                <div>
+<div class="timeline-item">
 
-                                    <div class="customer-name">
-                                        Marcus Taylor
-                                    </div>
+<div class="timeline-dot"></div>
 
-                                    <div class="customer-contact">
-                                        021 338 9912
-                                    </div>
+<div class="timeline-title">
+    Follow-up & review
+</div>
 
-                                </div>
+<div class="timeline-copy">
+    Follow-up message and review request after service.
+</div>
 
-                            </div>
+</div>
 
 
-                            <div class="booking-status status-confirmed">
-                                Confirmed
-                            </div>
+</div>
 
-                        </div>
+</div>
 
+</section>
 
-                        <div class="booking-details">
+</div>
 
 
-                            <div>
+<!-- =========================
+     QUOTE
+========================= -->
 
-                                <div class="detail-label">
-                                    Vehicle
-                                </div>
+<section
+    class="panel quote-panel"
+    id="quote"
+>
 
-                                <div class="detail-value">
-                                    2020 Audi RS3
-                                </div>
+<div class="panel-header">
 
-                            </div>
+<h2>
+    Repair Quote
+</h2>
 
+<span>
+    John Smith • BMW M3
+</span>
 
-                            <div>
+</div>
 
-                                <div class="detail-label">
-                                    Service
-                                </div>
 
-                                <div class="detail-value">
-                                    Performance
-                                </div>
+<div class="quote-body">
 
-                            </div>
 
+<div class="quote-customer">
 
-                            <div>
+<div>
 
-                                <div class="detail-label">
-                                    Appointment
-                                </div>
+<h3>
+    2018 BMW M3
+</h3>
 
-                                <div class="detail-value">
-                                    Today • 2:00 PM
-                                </div>
+<p>
+    Diagnostic inspection • Job #PG-1048
+</p>
 
-                            </div>
+</div>
 
-                        </div>
+<div
+    class="quote-status"
+    id="quoteStatus"
+>
+    Draft
+</div>
 
+</div>
 
-                        <div class="booking-actions">
 
-                            <button
-                                class="small-btn primary"
-                                onclick="openBooking('marcus')"
-                            >
-                                View Booking
-                            </button>
+<div class="quote-line">
 
-                            <button
-                                class="small-btn"
-                                onclick="contactCustomer('Marcus Taylor')"
-                            >
-                                Contact
-                            </button>
+<span>
+    Diagnostic inspection
+</span>
 
-                        </div>
+<span>
+    $120
+</span>
 
-                    </div>
+</div>
 
-                </section>
 
+<div class="quote-line">
 
-                <!-- AUTOMATION -->
+<span>
+    Front brake pads
+</span>
 
-                <section class="panel">
+<span>
+    $420
+</span>
 
-                    <div class="panel-header">
+</div>
 
-                        <h2>
-                            Booking Automation
-                        </h2>
 
-                        <span>
-                            Live workflow
-                        </span>
+<div class="quote-line">
 
-                    </div>
+<span>
+    Front brake rotors
+</span>
 
+<span>
+    $380
+</span>
 
-                    <div class="automation">
+</div>
 
 
-                        <p class="automation-intro">
-                            Every online booking can trigger
-                            a structured customer journey
-                            without your team having to chase
-                            every step manually.
-                        </p>
+<div class="quote-line">
 
+<span>
+    Labour
+</span>
 
-                        <div class="timeline">
+<span>
+    $250
+</span>
 
+</div>
 
-                            <div class="timeline-item complete">
 
-                                <div class="timeline-dot"></div>
+<div class="quote-total">
 
+<span>
+    Estimated Total
+</span>
 
-                                <div class="timeline-title">
-                                    Booking received
-                                </div>
+<span>
+    $1,170
+</span>
 
+</div>
 
-                                <div class="timeline-copy">
-                                    Customer submits the
-                                    online booking form.
-                                </div>
 
-                            </div>
+<div class="quote-actions">
 
+<button
+    class="quote-btn primary"
+    id="sendQuoteBtn"
+    onclick="sendQuote()"
+>
+    Send Quote
+</button>
 
-                            <div class="timeline-item complete">
+<button
+    class="quote-btn"
+    id="approveQuoteBtn"
+    onclick="approveQuote()"
+>
+    Customer Approves
+</button>
 
-                                <div class="timeline-dot"></div>
+</div>
 
+</div>
 
-                                <div class="timeline-title">
-                                    Customer confirmation
-                                </div>
+</section>
 
 
-                                <div class="timeline-copy">
-                                    Booking details are
-                                    confirmed with the customer.
-                                </div>
+<!-- =========================
+     LOWER GRID
+========================= -->
 
-                            </div>
+<div class="lower-grid">
 
 
-                            <div class="timeline-item current">
+<section
+    class="panel"
+    id="schedule"
+>
 
-                                <div class="timeline-dot"></div>
+<div class="panel-header">
 
+<h2>
+    Today's Schedule
+</h2>
 
-                                <div class="timeline-title">
-                                    Appointment reminder
-                                </div>
+<span>
+    12 appointments
+</span>
 
+</div>
 
-                                <div class="timeline-copy">
-                                    Automated reminder before
-                                    the vehicle arrives.
-                                </div>
 
-                            </div>
+<div class="schedule-item">
 
+<div class="schedule-time">
+    08:00
+</div>
 
-                            <div class="timeline-item">
+<div>
 
-                                <div class="timeline-dot"></div>
+<div class="schedule-customer">
+    James Wilson
+</div>
 
+<div class="schedule-service">
+    Brake Inspection
+</div>
 
-                                <div class="timeline-title">
-                                    Service completed
-                                </div>
+</div>
 
+<div class="schedule-bay">
+    BAY 01
+</div>
 
-                                <div class="timeline-copy">
-                                    Customer is updated when
-                                    the job is complete.
-                                </div>
+</div>
 
-                            </div>
 
+<div class="schedule-item">
 
-                            <div class="timeline-item">
+<div class="schedule-time">
+    10:00
+</div>
 
-                                <div class="timeline-dot"></div>
+<div>
 
+<div class="schedule-customer">
+    Olivia Brown
+</div>
 
-                                <div class="timeline-title">
-                                    Follow-up & review
-                                </div>
+<div class="schedule-service">
+    General Service
+</div>
 
+</div>
 
-                                <div class="timeline-copy">
-                                    Follow-up message and
-                                    review request after service.
-                                </div>
+<div class="schedule-bay">
+    BAY 02
+</div>
 
-                            </div>
+</div>
 
-                        </div>
 
+<div class="schedule-item">
 
-                        <span class="automation-label">
-                            ManaU Digital Automation Demo
-                        </span>
+<div class="schedule-time">
+    12:30
+</div>
 
-                    </div>
+<div>
 
-                </section>
+<div class="schedule-customer">
+    Ethan Clark
+</div>
 
-            </div>
+<div class="schedule-service">
+    Diagnostics
+</div>
 
+</div>
 
-            <!-- =========================
-                 LOWER GRID
-            ========================= -->
+<div class="schedule-bay">
+    BAY 01
+</div>
 
-            <div class="lower-grid">
+</div>
 
 
-                <!-- SCHEDULE -->
+<div class="schedule-item">
 
-                <section class="panel">
+<div class="schedule-time">
+    14:00
+</div>
 
-                    <div class="panel-header">
+<div>
 
-                        <h2>
-                            Today's Schedule
-                        </h2>
+<div class="schedule-customer">
+    Marcus Taylor
+</div>
 
-                        <span>
-                            12 appointments
-                        </span>
+<div class="schedule-service">
+    Performance
+</div>
 
-                    </div>
+</div>
 
+<div class="schedule-bay">
+    BAY 03
+</div>
 
-                    <div class="schedule-item">
+</div>
 
-                        <div class="schedule-time">
-                            08:00
-                        </div>
+</section>
 
 
-                        <div>
+<section class="panel">
 
-                            <div class="schedule-customer">
-                                James Wilson
-                            </div>
+<div class="panel-header">
 
-                            <div class="schedule-service">
-                                Brake Inspection
-                            </div>
+<h2>
+    Quick Actions
+</h2>
 
-                        </div>
+<span>
+    Workshop tools
+</span>
 
+</div>
 
-                        <div class="schedule-bay">
-                            BAY 01
-                        </div>
 
-                    </div>
+<div class="quick-actions">
 
 
-                    <div class="schedule-item">
+<button
+    class="quick-action"
+    onclick="scrollToQuote()"
+>
 
-                        <div class="schedule-time">
-                            10:00
-                        </div>
+<span class="quick-icon">
+    💰
+</span>
 
+<strong>
+    Create Quote
+</strong>
 
-                        <div>
+<span>
+    Send repair estimate
+</span>
 
-                            <div class="schedule-customer">
-                                Olivia Brown
-                            </div>
+</button>
 
-                            <div class="schedule-service">
-                                General Service
-                            </div>
 
-                        </div>
+<button
+    class="quick-action"
+    onclick="scrollToBookings()"
+>
 
+<span class="quick-icon">
+    ◫
+</span>
 
-                        <div class="schedule-bay">
-                            BAY 02
-                        </div>
+<strong>
+    Manage Bookings
+</strong>
 
-                    </div>
+<span>
+    Review incoming requests
+</span>
 
+</button>
 
-                    <div class="schedule-item">
 
-                        <div class="schedule-time">
-                            12:30
-                        </div>
+<button
+    class="quick-action"
+    onclick="scrollToSchedule()"
+>
 
+<span class="quick-icon">
+    ◷
+</span>
 
-                        <div>
+<strong>
+    View Schedule
+</strong>
 
-                            <div class="schedule-customer">
-                                Ethan Clark
-                            </div>
+<span>
+    See today's appointments
+</span>
 
-                            <div class="schedule-service">
-                                Diagnostics
-                            </div>
+</button>
 
-                        </div>
 
+<button
+    class="quick-action"
+    onclick="scrollToAutomation()"
+>
 
-                        <div class="schedule-bay">
-                            BAY 01
-                        </div>
+<span class="quick-icon">
+    ⚡
+</span>
 
-                    </div>
+<strong>
+    Automations
+</strong>
 
+<span>
+    Manage customer workflows
+</span>
 
-                    <div class="schedule-item">
+</button>
 
-                        <div class="schedule-time">
-                            14:00
-                        </div>
 
+</div>
 
-                        <div>
+</section>
 
-                            <div class="schedule-customer">
-                                Marcus Taylor
-                            </div>
+</div>
 
-                            <div class="schedule-service">
-                                Performance
-                            </div>
 
-                        </div>
+</div>
 
+</main>
 
-                        <div class="schedule-bay">
-                            BAY 03
-                        </div>
 
-                    </div>
+<!-- =========================
+     BOOKING MODAL
+========================= -->
 
-                </section>
+<div
+    class="modal"
+    id="bookingModal"
+>
 
+<div class="modal-card">
 
-                <!-- QUICK ACTIONS -->
 
-                <section class="panel">
+<div class="modal-header">
 
-                    <div class="panel-header">
+<h2>
+    Booking Details
+</h2>
 
-                        <h2>
-                            Quick Actions
-                        </h2>
+<button
+    class="close-modal"
+    onclick="closeBooking()"
+>
+    ×
+</button>
 
-                        <span>
-                            Workshop tools
-                        </span>
+</div>
 
-                    </div>
 
+<div class="modal-body">
 
-                    <div class="quick-actions">
 
+<div class="modal-grid">
 
-                        <button
-                            class="quick-action"
-                            onclick="showBookings()"
-                        >
 
-                            <span class="quick-icon">
-                                ◫
-                            </span>
+<div class="modal-detail">
 
-                            <strong>
-                                Manage Bookings
-                            </strong>
+<small>
+    Customer
+</small>
 
-                            <span>
-                                Review incoming requests
-                            </span>
+<strong>
+    John Smith
+</strong>
 
-                        </button>
+</div>
 
 
-                        <button
-                            class="quick-action"
-                            onclick="showSchedule()"
-                        >
+<div class="modal-detail">
 
-                            <span class="quick-icon">
-                                ◷
-                            </span>
+<small>
+    Phone
+</small>
 
-                            <strong>
-                                View Schedule
-                            </strong>
+<strong>
+    021 555 1234
+</strong>
 
-                            <span>
-                                See today's appointments
-                            </span>
+</div>
 
-                        </button>
 
+<div class="modal-detail">
 
-                        <button
-                            class="quick-action"
-                            onclick="showCustomers()"
-                        >
+<small>
+    Vehicle
+</small>
 
-                            <span class="quick-icon">
-                                ◎
-                            </span>
+<strong>
+    2018 BMW M3
+</strong>
 
-                            <strong>
-                                Customers
-                            </strong>
+</div>
 
-                            <span>
-                                Customer records
-                            </span>
 
-                        </button>
+<div class="modal-detail">
 
+<small>
+    Registration
+</small>
 
-                        <button
-                            class="quick-action"
-                            onclick="showAutomations()"
-                        >
+<strong>
+    ABC123
+</strong>
 
-                            <span class="quick-icon">
-                                ⚡
-                            </span>
+</div>
 
-                            <strong>
-                                Automations
-                            </strong>
 
-                            <span>
-                                Manage customer workflows
-                            </span>
+<div class="modal-detail">
 
-                        </button>
+<small>
+    Service
+</small>
 
-                    </div>
+<strong>
+    Diagnostics
+</strong>
 
-                </section>
+</div>
 
-            </div>
 
-        </div>
+<div class="modal-detail">
 
-    </main>
+<small>
+    Appointment
+</small>
 
+<strong>
+    Tomorrow • 10:00 AM
+</strong>
 
-    <!-- =========================
-         BOOKING MODAL
-    ========================= -->
+</div>
 
-    <div
-        class="modal"
-        id="bookingModal"
-        onclick="closeModalOutside(event)"
-    >
 
-        <div class="modal-card">
+</div>
 
 
-            <div class="modal-header">
+<div class="modal-note">
 
-                <h2>
-                    Booking Details
-                </h2>
+<small>
+    Customer Note
+</small>
 
+<p>
+    Check engine light has come on intermittently.
+    Customer would like the vehicle diagnosed before
+    making any repairs.
+</p>
 
-                <button
-                    class="close-modal"
-                    onclick="closeModal()"
-                >
-                    ×
-                </button>
+</div>
 
-            </div>
 
+<div class="modal-actions">
 
-            <div class="modal-body">
+<button
+    class="quote-btn primary"
+    onclick="closeBooking(); scrollToQuote();"
+>
+    Create Repair Quote
+</button>
 
+<button
+    class="quote-btn"
+    onclick="closeBooking()"
+>
+    Close
+</button>
 
-                <div class="modal-customer">
+</div>
 
+</div>
 
-                    <div
-                        class="modal-avatar"
-                        id="modalAvatar"
-                    >
-                        JS
-                    </div>
+</div>
 
+</div>
 
-                    <div>
 
-                        <h3 id="modalName">
-                            John Smith
-                        </h3>
+<script>
 
-                        <p id="modalContact">
-                            021 555 1234
-                        </p>
+/* =========================
+   BOOKING
+========================= */
 
-                    </div>
+function openBooking(){
 
-                </div>
+    document
+        .getElementById("bookingModal")
+        .classList.add("active");
 
+}
 
-                <div class="modal-grid">
+function closeBooking(){
 
+    document
+        .getElementById("bookingModal")
+        .classList.remove("active");
 
-                    <div class="modal-detail">
+}
 
-                        <small>
-                            Vehicle
-                        </small>
+function confirmBooking(button){
 
-                        <strong id="modalVehicle">
-                            2018 BMW M3
-                        </strong>
+    const booking =
+        button.closest(".booking");
 
-                    </div>
-
-
-                    <div class="modal-detail">
-
-                        <small>
-                            Service
-                        </small>
-
-                        <strong id="modalService">
-                            Diagnostics
-                        </strong>
-
-                    </div>
-
-
-                    <div class="modal-detail">
-
-                        <small>
-                            Appointment
-                        </small>
-
-                        <strong id="modalAppointment">
-                            Tomorrow • 10:00 AM
-                        </strong>
-
-                    </div>
-
-
-                    <div class="modal-detail">
-
-                        <small>
-                            Registration
-                        </small>
-
-                        <strong id="modalRego">
-                            ABC123
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-                <div class="modal-note">
-
-                    <small>
-                        Customer Note
-                    </small>
-
-                    <p id="modalNote">
-                        Check engine light has come on
-                        intermittently. Customer would like
-                        the vehicle diagnosed before making
-                        any repairs.
-                    </p>
-
-                </div>
-
-
-                <div class="modal-actions">
-
-
-                    <button
-                        class="btn btn-primary"
-                        onclick="confirmModalBooking()"
-                    >
-                        Confirm Booking
-                    </button>
-
-
-                    <button
-                        class="btn btn-secondary"
-                        onclick="contactCustomer()"
-                    >
-                        Contact Customer
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================
-         JAVASCRIPT
-    ========================= -->
-
-    <script>
-
-        const bookings = {
-
-            john: {
-
-                initials: "JS",
-
-                name: "John Smith",
-
-                contact: "021 555 1234",
-
-                vehicle: "2018 BMW M3",
-
-                service: "Diagnostics",
-
-                appointment:
-                    "Tomorrow • 10:00 AM",
-
-                rego: "ABC123",
-
-                note:
-                    "Check engine light has come on intermittently. Customer would like the vehicle diagnosed before making any repairs."
-
-            },
-
-
-            sarah: {
-
-                initials: "SW",
-
-                name: "Sarah Williams",
-
-                contact: "021 444 7821",
-
-                vehicle: "2021 Toyota Hilux",
-
-                service: "General Service",
-
-                appointment:
-                    "Tomorrow • 1:00 PM",
-
-                rego: "KLM482",
-
-                note:
-                    "Customer requested a standard service and vehicle inspection."
-
-            },
-
-
-            marcus: {
-
-                initials: "MT",
-
-                name: "Marcus Taylor",
-
-                contact: "021 338 9912",
-
-                vehicle: "2020 Audi RS3",
-
-                service: "Performance",
-
-                appointment:
-                    "Today • 2:00 PM",
-
-                rego: "RS3001",
-
-                note:
-                    "Customer is interested in performance upgrades and wants to discuss available options."
-
-            }
-
-        };
-
-
-        /* =========================
-           OPEN BOOKING
-        ========================= */
-
-        function openBooking(id) {
-
-            const booking =
-                bookings[id];
-
-
-            if (!booking) {
-                return;
-            }
-
-
-            document.getElementById(
-                "modalAvatar"
-            ).textContent =
-                booking.initials;
-
-
-            document.getElementById(
-                "modalName"
-            ).textContent =
-                booking.name;
-
-
-            document.getElementById(
-                "modalContact"
-            ).textContent =
-                booking.contact;
-
-
-            document.getElementById(
-                "modalVehicle"
-            ).textContent =
-                booking.vehicle;
-
-
-            document.getElementById(
-                "modalService"
-            ).textContent =
-                booking.service;
-
-
-            document.getElementById(
-                "modalAppointment"
-            ).textContent =
-                booking.appointment;
-
-
-            document.getElementById(
-                "modalRego"
-            ).textContent =
-                booking.rego;
-
-
-            document.getElementById(
-                "modalNote"
-            ).textContent =
-                booking.note;
-
-
-            document
-                .getElementById(
-                    "bookingModal"
-                )
-                .classList.add(
-                    "active"
-                );
-
-        }
-
-
-        /* =========================
-           CLOSE MODAL
-        ========================= */
-
-        function closeModal() {
-
-            document
-                .getElementById(
-                    "bookingModal"
-                )
-                .classList.remove(
-                    "active"
-                );
-
-        }
-
-
-        function closeModalOutside(event) {
-
-            if (
-                event.target.id ===
-                "bookingModal"
-            ) {
-
-                closeModal();
-
-            }
-
-        }
-
-
-        /* =========================
-           CONFIRM BOOKING
-        ========================= */
-
-        function confirmBooking(button) {
-
-            const booking =
-                button
-                    .closest(".booking");
-
-
-            const status =
-                booking.querySelector(
-                    ".booking-status"
-                );
-
-
-            status.textContent =
-                "Confirmed";
-
-
-            status.className =
-                "booking-status status-confirmed";
-
-
-            button.textContent =
-                "Confirmed";
-
-
-            button.disabled =
-                true;
-
-
-            button.style.opacity =
-                "0.5";
-
-
-            alert(
-                "Booking confirmed. Customer confirmation workflow triggered."
-            );
-
-        }
-
-
-        function confirmModalBooking() {
-
-            alert(
-                "Booking confirmed. Customer confirmation workflow triggered."
-            );
-
-
-            closeModal();
-
-        }
-
-
-        /* =========================
-           CONTACT
-        ========================= */
-
-        function contactCustomer(name) {
-
-            const customer =
-                name ||
-                "the customer";
-
-
-            alert(
-                "Customer contact workflow opened for " +
-                customer +
-                "."
-            );
-
-        }
-
-
-        /* =========================
-           DEMO NAVIGATION
-        ========================= */
-
-        function showDashboard() {
-
-            window.scrollTo({
-
-                top: 0,
-
-                behavior: "smooth"
-
-            });
-
-        }
-
-
-        function showBookings() {
-
-            window.scrollTo({
-
-                top: 0,
-
-                behavior: "smooth"
-
-            });
-
-
-            setTimeout(
-                () => {
-
-                    document
-                        .querySelector(
-                            ".dashboard-grid .panel"
-                        )
-                        .scrollIntoView({
-                            behavior: "smooth"
-                        });
-
-                },
-                200
-            );
-
-        }
-
-
-        function showSchedule() {
-
-            const schedule =
-                document
-                    .querySelector(
-                        ".schedule-item"
-                    );
-
-
-            if (schedule) {
-
-                schedule
-                    .closest(".panel")
-                    .scrollIntoView({
-                        behavior: "smooth"
-                    });
-
-            }
-
-        }
-
-
-        function showCustomers() {
-
-            alert(
-                "Customer management module available in the full ManaU Digital system."
-            );
-
-        }
-
-
-        function showAutomations() {
-
-            const automation =
-                document
-                    .querySelector(
-                        ".automation"
-                    );
-
-
-            if (automation) {
-
-                automation
-                    .closest(".panel")
-                    .scrollIntoView({
-                        behavior: "smooth"
-                    });
-
-            }
-
-        }
-
-
-        function showSettings() {
-
-            alert(
-                "Workshop settings module available in the full ManaU Digital system."
-            );
-
-        }
-
-
-        /* =========================
-           ESCAPE KEY
-        ========================= */
-
-        document.addEventListener(
-            "keydown",
-            event => {
-
-                if (
-                    event.key === "Escape"
-                ) {
-
-                    closeModal();
-
-                }
-
-            }
+    const status =
+        booking.querySelector(
+            ".booking-status"
         );
 
-    </script>
+    status.textContent =
+        "Confirmed";
+
+    status.className =
+        "booking-status status-confirmed";
+
+    button.textContent =
+        "Confirmed";
+
+    button.disabled =
+        true;
+
+    button.style.opacity =
+        ".5";
+
+    alert(
+        "Booking confirmed. Customer confirmation workflow triggered."
+    );
+
+}
+
+
+/* =========================
+   QUOTE
+========================= */
+
+function sendQuote(){
+
+    const status =
+        document.getElementById(
+            "quoteStatus"
+        );
+
+    const button =
+        document.getElementById(
+            "sendQuoteBtn"
+        );
+
+    status.textContent =
+        "Sent to customer";
+
+    status.style.background =
+        "#0d2118";
+
+    status.style.color =
+        "#38c172";
+
+    button.textContent =
+        "Quote Sent ✓";
+
+    button.classList.add(
+        "approved"
+    );
+
+    alert(
+        "Repair quote sent to John Smith. Customer approval is now pending."
+    );
+
+}
+
+
+function approveQuote(){
+
+    const status =
+        document.getElementById(
+            "quoteStatus"
+        );
+
+    const button =
+        document.getElementById(
+            "approveQuoteBtn"
+        );
+
+    status.textContent =
+        "Approved";
+
+    status.style.background =
+        "#0d2118";
+
+    status.style.color =
+        "#38c172";
+
+    button.textContent =
+        "Approved ✓";
+
+    button.classList.add(
+        "approved"
+    );
+
+    alert(
+        "Customer approved the $1,170 repair quote. Job is ready to proceed."
+    );
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function scrollToBookings(){
+
+    document
+        .getElementById("bookings")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+function scrollToSchedule(){
+
+    document
+        .getElementById("schedule")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+function scrollToQuote(){
+
+    document
+        .getElementById("quote")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+function scrollToAutomation(){
+
+    document
+        .getElementById("automation")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* =========================
+   MODAL OUTSIDE CLICK
+========================= */
+
+document
+    .getElementById("bookingModal")
+    .addEventListener(
+        "click",
+        function(event){
+
+            if(
+                event.target ===
+                this
+            ){
+
+                closeBooking();
+
+            }
+
+        }
+    );
+
+
+/* =========================
+   ESCAPE KEY
+========================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Escape"
+        ){
+
+            closeBooking();
+
+        }
+
+    }
+);
+
+</script>
 
 </body>
 </html>
