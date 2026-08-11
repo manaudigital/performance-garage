@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Book a Service | Performance Garage</title>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Book a Service | Performance Garage
+    </title>
 
     <meta
         name="description"
@@ -19,16 +26,25 @@
             box-sizing: border-box;
         }
 
+
         html {
             scroll-behavior: smooth;
         }
 
+
         body {
-            font-family: Arial, Helvetica, sans-serif;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
             background: #080808;
+
             color: #ffffff;
+
             min-height: 100vh;
         }
+
 
         button,
         input,
@@ -36,9 +52,11 @@
             font: inherit;
         }
 
+
         button {
             cursor: pointer;
         }
+
 
         /* =========================
            NAVIGATION
@@ -47,22 +65,32 @@
         nav {
             height: 78px;
 
-            border-bottom: 1px solid #252525;
+            border-bottom:
+                1px solid #252525;
 
-            background: rgba(8, 8, 8, 0.96);
+            background:
+                rgba(8, 8, 8, 0.96);
 
             display: flex;
+
             align-items: center;
         }
 
+
         .nav-container {
-            width: min(1100px, 90%);
+            width:
+                min(1100px, 90%);
+
             margin: auto;
 
             display: flex;
+
             align-items: center;
-            justify-content: space-between;
+
+            justify-content:
+                space-between;
         }
+
 
         .logo {
             color: #ffffff;
@@ -70,40 +98,50 @@
             text-decoration: none;
 
             font-size: 1.15rem;
+
             font-weight: 900;
 
             letter-spacing: 1px;
         }
 
+
         .logo span {
             color: #e3262e;
         }
 
+
         .back-link {
-            color: #777;
+            color: #777777;
 
             text-decoration: none;
 
             font-size: 0.85rem;
+
             font-weight: 700;
 
             transition: 0.3s;
         }
 
+
         .back-link:hover {
             color: #ffffff;
         }
+
 
         /* =========================
            PAGE
         ========================= */
 
         .page {
-            width: min(900px, 92%);
+            width:
+                min(900px, 92%);
+
             margin: auto;
 
-            padding: 70px 0 100px;
+            padding:
+                70px 0 100px;
         }
+
 
         .intro {
             text-align: center;
@@ -111,34 +149,42 @@
             margin-bottom: 45px;
         }
 
+
         .eyebrow {
             display: inline-flex;
 
             align-items: center;
+
             gap: 9px;
 
             color: #e3262e;
 
             font-size: 0.75rem;
+
             font-weight: 900;
 
             letter-spacing: 2px;
+
             text-transform: uppercase;
 
             margin-bottom: 18px;
         }
 
+
         .eyebrow::before {
             content: "";
 
             width: 28px;
+
             height: 2px;
 
             background: #e3262e;
         }
 
+
         .intro h1 {
-            font-size: clamp(2.8rem, 7vw, 5rem);
+            font-size:
+                clamp(2.8rem, 7vw, 5rem);
 
             line-height: 0.95;
 
@@ -149,17 +195,20 @@
             margin-bottom: 18px;
         }
 
+
         .intro h1 span {
             color: #e3262e;
         }
 
+
         .intro p {
-            color: #777;
+            color: #777777;
 
             max-width: 550px;
 
             margin: auto;
         }
+
 
         /* =========================
            PROGRESS
@@ -176,6 +225,7 @@
             margin-bottom: 16px;
         }
 
+
         .progress-step {
             height: 4px;
 
@@ -186,16 +236,19 @@
             transition: 0.3s;
         }
 
+
         .progress-step.active {
             background: #e3262e;
         }
 
+
         .step-labels {
             display: flex;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
 
-            color: #555;
+            color: #555555;
 
             font-size: 0.68rem;
 
@@ -206,9 +259,11 @@
             margin-bottom: 25px;
         }
 
+
         .step-labels .active {
             color: #ffffff;
         }
+
 
         /* =========================
            BOOKING CARD
@@ -217,19 +272,24 @@
         .booking-card {
             background: #101010;
 
-            border: 1px solid #252525;
+            border:
+                1px solid #252525;
 
             border-radius: 10px;
 
-            padding: clamp(25px, 5vw, 45px);
+            padding:
+                clamp(25px, 5vw, 45px);
 
             box-shadow:
-                0 25px 80px rgba(0, 0, 0, 0.35);
+                0 25px 80px
+                rgba(0, 0, 0, 0.35);
         }
+
 
         .booking-step {
             display: none;
         }
+
 
         .booking-step.active {
             display: block;
@@ -238,19 +298,25 @@
                 fadeIn 0.3s ease;
         }
 
+
         @keyframes fadeIn {
 
             from {
                 opacity: 0;
-                transform: translateY(8px);
+
+                transform:
+                    translateY(8px);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0);
+
+                transform:
+                    translateY(0);
             }
 
         }
+
 
         /* =========================
            HEADINGS
@@ -260,15 +326,19 @@
             margin-bottom: 30px;
         }
 
+
         .step-heading small {
             color: #e3262e;
 
             font-size: 0.7rem;
+
             font-weight: 900;
 
             letter-spacing: 2px;
+
             text-transform: uppercase;
         }
+
 
         .step-heading h2 {
             font-size: 2rem;
@@ -278,14 +348,16 @@
             margin-top: 7px;
         }
 
+
         .step-heading p {
-            color: #777;
+            color: #777777;
 
             margin-top: 8px;
         }
 
+
         /* =========================
-           FORM GRID
+           FORM
         ========================= */
 
         .form-grid {
@@ -297,6 +369,7 @@
             gap: 18px;
         }
 
+
         .field {
             display: flex;
 
@@ -305,12 +378,14 @@
             gap: 7px;
         }
 
+
         .field.full {
             grid-column: 1 / -1;
         }
 
+
         .field label {
-            color: #aaa;
+            color: #aaaaaa;
 
             font-size: 0.78rem;
 
@@ -321,15 +396,18 @@
             letter-spacing: 0.5px;
         }
 
+
         .field input,
         .field select {
             width: 100%;
 
-            padding: 14px 15px;
+            padding:
+                14px 15px;
 
             background: #090909;
 
-            border: 1px solid #292929;
+            border:
+                1px solid #292929;
 
             border-radius: 6px;
 
@@ -340,20 +418,24 @@
             transition: 0.2s;
         }
 
+
         .field input:focus,
         .field select:focus {
             border-color: #e3262e;
 
             box-shadow:
-                0 0 0 2px rgba(227, 38, 46, 0.08);
+                0 0 0 2px
+                rgba(227, 38, 46, 0.08);
         }
+
 
         .field input::placeholder {
-            color: #444;
+            color: #444444;
         }
 
+
         /* =========================
-           SERVICE OPTIONS
+           SERVICES
         ========================= */
 
         .options {
@@ -365,9 +447,11 @@
             gap: 12px;
         }
 
+
         .option {
             position: relative;
         }
+
 
         .option input {
             position: absolute;
@@ -375,12 +459,14 @@
             opacity: 0;
         }
 
+
         .option label {
             display: block;
 
             background: #0b0b0b;
 
-            border: 1px solid #292929;
+            border:
+                1px solid #292929;
 
             border-radius: 7px;
 
@@ -390,6 +476,7 @@
 
             transition: 0.25s;
         }
+
 
         .option label strong {
             display: block;
@@ -401,15 +488,18 @@
             margin-bottom: 4px;
         }
 
+
         .option label span {
-            color: #666;
+            color: #666666;
 
             font-size: 0.78rem;
         }
 
+
         .option label:hover {
-            border-color: #555;
+            border-color: #555555;
         }
+
 
         .option input:checked + label {
             border-color: #e3262e;
@@ -420,6 +510,7 @@
                 0 0 0 1px #e3262e;
         }
 
+
         /* =========================
            BUTTONS
         ========================= */
@@ -427,24 +518,28 @@
         .actions {
             display: flex;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
 
             gap: 12px;
 
             margin-top: 35px;
         }
 
+
         .btn {
             display: inline-flex;
 
             align-items: center;
+
             justify-content: center;
 
             border: none;
 
             border-radius: 6px;
 
-            padding: 15px 24px;
+            padding:
+                15px 24px;
 
             font-weight: 900;
 
@@ -455,6 +550,7 @@
             transition: 0.25s;
         }
 
+
         .btn-primary {
             background: #e3262e;
 
@@ -463,27 +559,33 @@
             margin-left: auto;
         }
 
+
         .btn-primary:hover {
             background: #ffffff;
 
             color: #080808;
 
-            transform: translateY(-2px);
+            transform:
+                translateY(-2px);
         }
+
 
         .btn-secondary {
             background: transparent;
 
-            border: 1px solid #333;
+            border:
+                1px solid #333333;
 
-            color: #aaa;
+            color: #aaaaaa;
         }
+
 
         .btn-secondary:hover {
             border-color: #ffffff;
 
             color: #ffffff;
         }
+
 
         /* =========================
            CONFIRMATION
@@ -494,8 +596,10 @@
 
             text-align: center;
 
-            padding: 15px 0 5px;
+            padding:
+                15px 0 5px;
         }
+
 
         .confirmation.active {
             display: block;
@@ -504,28 +608,36 @@
                 fadeIn 0.4s ease;
         }
 
+
         .success-icon {
             width: 72px;
+
             height: 72px;
 
             display: grid;
+
             place-items: center;
 
-            margin: 0 auto 25px;
+            margin:
+                0 auto 25px;
 
             border-radius: 50%;
 
             background: #e3262e;
 
             font-size: 2rem;
+
             font-weight: 900;
 
             box-shadow:
-                0 15px 40px rgba(227, 38, 46, 0.2);
+                0 15px 40px
+                rgba(227, 38, 46, 0.2);
         }
 
+
         .confirmation h2 {
-            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-size:
+                clamp(2rem, 5vw, 2.8rem);
 
             line-height: 1;
 
@@ -534,18 +646,22 @@
             margin-bottom: 15px;
         }
 
+
         .confirmation > p {
-            color: #777;
+            color: #777777;
 
             max-width: 530px;
 
-            margin: 0 auto 30px;
+            margin:
+                0 auto 30px;
         }
+
 
         .booking-summary {
             background: #090909;
 
-            border: 1px solid #242424;
+            border:
+                1px solid #242424;
 
             border-radius: 8px;
 
@@ -558,24 +674,30 @@
             margin: auto;
         }
 
+
         .summary-row {
             display: flex;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
 
             gap: 20px;
 
-            padding: 13px 0;
+            padding:
+                13px 0;
 
-            border-bottom: 1px solid #1d1d1d;
+            border-bottom:
+                1px solid #1d1d1d;
         }
+
 
         .summary-row:last-child {
             border-bottom: none;
         }
 
+
         .summary-row span:first-child {
-            color: #666;
+            color: #666666;
 
             font-size: 0.72rem;
 
@@ -584,19 +706,23 @@
             letter-spacing: 0.5px;
         }
 
+
         .summary-row span:last-child {
             text-align: right;
 
             font-weight: 800;
         }
 
+
         .send-area {
             margin-top: 30px;
 
             padding-top: 25px;
 
-            border-top: 1px solid #222;
+            border-top:
+                1px solid #222222;
         }
+
 
         .send-area h3 {
             font-size: 1rem;
@@ -606,25 +732,35 @@
             margin-bottom: 7px;
         }
 
+
         .send-area p {
-            color: #666;
+            color: #666666;
 
             font-size: 0.8rem;
 
             margin-bottom: 18px;
         }
 
+
         .send-button {
             width: 100%;
+
+            appearance: none;
+
+            -webkit-appearance: none;
+
+            cursor: pointer;
         }
+
 
         .demo-note {
             margin-top: 20px;
 
-            color: #444;
+            color: #444444;
 
             font-size: 0.72rem;
         }
+
 
         /* =========================
            MOBILE
@@ -636,48 +772,60 @@
                 height: 68px;
             }
 
+
             .back-link {
                 font-size: 0.75rem;
             }
+
 
             .page {
                 padding-top: 50px;
             }
 
+
             .intro h1 {
                 letter-spacing: -2px;
             }
+
 
             .options,
             .form-grid {
                 grid-template-columns: 1fr;
             }
 
+
             .field.full {
                 grid-column: auto;
             }
+
 
             .step-labels {
                 font-size: 0.56rem;
             }
 
+
             .actions {
-                flex-direction: column-reverse;
+                flex-direction:
+                    column-reverse;
             }
+
 
             .btn {
                 width: 100%;
             }
 
+
             .btn-primary {
                 margin-left: 0;
             }
+
 
             .summary-row {
                 flex-direction: column;
 
                 gap: 4px;
             }
+
 
             .summary-row span:last-child {
                 text-align: left;
@@ -686,9 +834,12 @@
         }
 
     </style>
+
 </head>
 
+
 <body>
+
 
     <!-- =========================
          NAVIGATION
@@ -698,11 +849,18 @@
 
         <div class="nav-container">
 
-            <a href="index.html" class="logo">
+            <a
+                href="index.html"
+                class="logo"
+            >
                 PERFORMANCE<span>.</span>
             </a>
 
-            <a href="index.html" class="back-link">
+
+            <a
+                href="index.html"
+                class="back-link"
+            >
                 ← Back to website
             </a>
 
@@ -712,7 +870,7 @@
 
 
     <!-- =========================
-         PAGE
+         MAIN
     ========================= -->
 
     <main class="page">
@@ -726,10 +884,12 @@
                 Online Booking
             </div>
 
+
             <h1>
                 Book Your<br>
                 <span>Service.</span>
             </h1>
+
 
             <p>
                 Tell us about your vehicle and what it needs.
@@ -744,8 +904,11 @@
         <div class="progress">
 
             <div class="progress-step active"></div>
+
             <div class="progress-step"></div>
+
             <div class="progress-step"></div>
+
             <div class="progress-step"></div>
 
         </div>
@@ -772,14 +935,14 @@
         </div>
 
 
-        <!-- =========================
-             BOOKING CARD
-        ========================= -->
+        <!-- BOOKING CARD -->
 
         <div class="booking-card">
 
 
-            <!-- STEP 1 -->
+            <!-- =========================
+                 STEP 1
+            ========================= -->
 
             <div
                 class="booking-step active"
@@ -805,11 +968,13 @@
 
                 <div class="form-grid">
 
+
                     <div class="field">
 
                         <label for="make">
                             Make
                         </label>
+
 
                         <select id="make">
 
@@ -872,6 +1037,7 @@
                             Model
                         </label>
 
+
                         <input
                             id="model"
                             type="text"
@@ -886,6 +1052,7 @@
                         <label for="year">
                             Year
                         </label>
+
 
                         <input
                             id="year"
@@ -903,6 +1070,7 @@
                         <label for="rego">
                             Registration
                         </label>
+
 
                         <input
                             id="rego"
@@ -930,7 +1098,9 @@
             </div>
 
 
-            <!-- STEP 2 -->
+            <!-- =========================
+                 STEP 2
+            ========================= -->
 
             <div
                 class="booking-step"
@@ -966,6 +1136,7 @@
                             value="General Service"
                         >
 
+
                         <label for="service1">
 
                             <strong>
@@ -989,6 +1160,7 @@
                             id="service2"
                             value="Diagnostics"
                         >
+
 
                         <label for="service2">
 
@@ -1014,6 +1186,7 @@
                             value="Brakes"
                         >
 
+
                         <label for="service3">
 
                             <strong>
@@ -1037,6 +1210,7 @@
                             id="service4"
                             value="Suspension"
                         >
+
 
                         <label for="service4">
 
@@ -1062,6 +1236,7 @@
                             value="Performance"
                         >
 
+
                         <label for="service5">
 
                             <strong>
@@ -1086,6 +1261,7 @@
                             value="WOF"
                         >
 
+
                         <label for="service6">
 
                             <strong>
@@ -1100,7 +1276,6 @@
 
                     </div>
 
-
                 </div>
 
 
@@ -1113,6 +1288,7 @@
                     >
                         ← Back
                     </button>
+
 
                     <button
                         type="button"
@@ -1127,7 +1303,9 @@
             </div>
 
 
-            <!-- STEP 3 -->
+            <!-- =========================
+                 STEP 3
+            ========================= -->
 
             <div
                 class="booking-step"
@@ -1153,11 +1331,13 @@
 
                 <div class="form-grid">
 
+
                     <div class="field">
 
                         <label for="date">
                             Preferred Date
                         </label>
+
 
                         <input
                             id="date"
@@ -1172,6 +1352,7 @@
                         <label for="time">
                             Preferred Time
                         </label>
+
 
                         <select id="time">
 
@@ -1232,6 +1413,7 @@
                         ← Back
                     </button>
 
+
                     <button
                         type="button"
                         class="btn btn-primary"
@@ -1245,7 +1427,9 @@
             </div>
 
 
-            <!-- STEP 4 -->
+            <!-- =========================
+                 STEP 4
+            ========================= -->
 
             <div
                 class="booking-step"
@@ -1271,11 +1455,13 @@
 
                 <div class="form-grid">
 
+
                     <div class="field">
 
                         <label for="name">
                             Full Name
                         </label>
+
 
                         <input
                             id="name"
@@ -1292,6 +1478,7 @@
                             Phone
                         </label>
 
+
                         <input
                             id="phone"
                             type="tel"
@@ -1306,6 +1493,7 @@
                         <label for="email">
                             Email
                         </label>
+
 
                         <input
                             id="email"
@@ -1327,6 +1515,7 @@
                     >
                         ← Back
                     </button>
+
 
                     <button
                         type="button"
@@ -1354,15 +1543,21 @@
                     ✓
                 </div>
 
+
                 <h2>
                     Booking Request<br>
                     Received.
                 </h2>
 
+
                 <p>
-                    Thanks, <span id="confirmName">there</span>.
-                    Your booking request has been prepared
-                    for Performance Garage.
+                    Thanks,
+                    <span id="confirmName">
+                        there
+                    </span>.
+
+                    Your booking request is ready
+                    to be sent to Performance Garage.
                 </p>
 
 
@@ -1424,21 +1619,25 @@
                     <div class="send-area">
 
                         <h3>
-                            Ready to send?
+                            Send Booking Enquiry
                         </h3>
 
+
                         <p>
-                            Send the booking enquiry to
-                            Performance Garage.
+                            This demo will open your phone's
+                            Messages app with the booking
+                            information ready to send.
                         </p>
 
-                        <a
+
+                        <button
+                            type="button"
                             id="sendEnquiryButton"
                             class="btn btn-primary send-button"
-                            href="#"
+                            onclick="sendBookingSMS()"
                         >
-                            Send Booking Enquiry
-                        </a>
+                            📱 Send Booking Enquiry
+                        </button>
 
                     </div>
 
@@ -1475,6 +1674,7 @@
                 document.querySelectorAll(
                     ".progress-step"
                 );
+
 
             const labels =
                 document.querySelectorAll(
@@ -1515,7 +1715,9 @@
         function showStep(step) {
 
             document
-                .querySelectorAll(".booking-step")
+                .querySelectorAll(
+                    ".booking-step"
+                )
                 .forEach(section => {
 
                     section.classList.remove(
@@ -1541,6 +1743,7 @@
 
 
             currentStep = step;
+
 
             updateProgress();
 
@@ -1768,76 +1971,71 @@
 
 
             /* =========================
-               SMS MESSAGE
+               SAVE BOOKING DATA
             ========================= */
 
-            const message =
+            window.demoBooking = {
 
-`🚗 PERFORMANCE GARAGE
-NEW BOOKING REQUEST
+                name,
 
-Customer: ${name}
-Phone: ${phone}
-Email: ${email}
+                phone,
 
-Vehicle: ${vehicle}
+                email,
 
-Service: ${serviceName}
+                make,
 
-Preferred appointment:
-${appointment}
+                model,
 
-Registration: ${rego || "Not provided"}
+                year,
 
-Submitted via ManaU Digital demo.`;
+                rego,
+
+                service: serviceName,
+
+                date: formattedDate,
+
+                time,
+
+                appointment,
+
+                vehicle
+
+            };
 
 
             /* =========================
-               CONFIRMATION DETAILS
+               CONFIRMATION
             ========================= */
 
             document.getElementById(
                 "confirmName"
-            ).textContent = name;
+            ).textContent =
+                name;
 
 
             document.getElementById(
                 "confirmVehicle"
-            ).textContent = vehicle;
+            ).textContent =
+                vehicle;
 
 
             document.getElementById(
                 "confirmService"
-            ).textContent = serviceName;
+            ).textContent =
+                serviceName;
 
 
             document.getElementById(
                 "confirmAppointment"
-            ).textContent = appointment;
+            ).textContent =
+                appointment;
 
 
             document.getElementById(
                 "confirmContact"
-            ).textContent = phone;
+            ).textContent =
+                phone;
 
-
-            /* =========================
-               SMS LINK
-            ========================= */
-
-            const sendButton =
-                document.getElementById(
-                    "sendEnquiryButton"
-                );
-
-
-            sendButton.href =
-                `sms:+642108839107?&body=${encodeURIComponent(message)}`;
-
-
-            /* =========================
-               SHOW CONFIRMATION
-            ========================= */
 
             document
                 .querySelectorAll(
@@ -1865,20 +2063,96 @@ Submitted via ManaU Digital demo.`;
                 .querySelector(
                     ".progress"
                 )
-                .style.display = "none";
+                .style.display =
+                    "none";
 
 
             document
                 .querySelector(
                     ".step-labels"
-                )
-                .style.display = "none";
+                ).style.display =
+                    "none";
 
 
             window.scrollTo({
+
                 top: 0,
+
                 behavior: "smooth"
+
             });
+
+        }
+
+
+        /* =========================
+           SEND SMS
+        ========================= */
+
+        function sendBookingSMS() {
+
+            if (!window.demoBooking) {
+
+                alert(
+                    "Please complete a booking first."
+                );
+
+                return;
+
+            }
+
+
+            const booking =
+                window.demoBooking;
+
+
+            const message =
+`🚗 PERFORMANCE GARAGE
+NEW BOOKING REQUEST
+
+Customer: ${booking.name}
+Phone: ${booking.phone}
+Email: ${booking.email}
+
+Vehicle: ${booking.vehicle}
+
+Service: ${booking.service}
+
+Preferred appointment:
+${booking.appointment}
+
+Registration: ${booking.rego || "Not provided"}
+
+Submitted via ManaU Digital demo.`;
+
+
+            /*
+             * iPhone Messages handoff.
+             *
+             * The number below is the
+             * private demo receiving number.
+             */
+
+            const recipient =
+                "+642108839107";
+
+
+            const smsURL =
+                "sms:" +
+                recipient +
+                "?body=" +
+                encodeURIComponent(message);
+
+
+            /*
+             * Force the browser to hand
+             * the request to the native
+             * Messages application.
+             */
+
+            window.location.assign(
+                smsURL
+            );
 
         }
 
@@ -1899,7 +2173,8 @@ Submitted via ManaU Digital demo.`;
                 .split("T")[0];
 
 
-        dateInput.min = today;
+        dateInput.min =
+            today;
 
     </script>
 
