@@ -4,7 +4,10 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Workshop Dashboard | Performance Garage</title>
 
@@ -32,6 +35,7 @@ a{
     color:inherit;
     text-decoration:none;
 }
+
 
 /* =========================
    SIDEBAR
@@ -103,6 +107,12 @@ a{
     text-align:center;
 }
 
+.nav-count{
+    margin-left:auto;
+    color:#e3262e;
+    font-size:.6rem;
+}
+
 .sidebar-bottom{
     position:absolute;
     left:18px;
@@ -127,6 +137,7 @@ a{
     background:#38c172;
 }
 
+
 /* =========================
    MAIN
 ========================= */
@@ -143,7 +154,7 @@ a{
     justify-content:space-between;
     padding:0 38px;
     border-bottom:1px solid #222;
-    background:rgba(8,8,8,.94);
+    background:#080808;
 }
 
 .topbar-left{
@@ -176,6 +187,11 @@ a{
     margin:auto;
     padding:38px 0 70px;
 }
+
+
+/* =========================
+   HEADER
+========================= */
 
 .page-heading{
     display:flex;
@@ -210,6 +226,7 @@ a{
     color:#777;
     font-size:.75rem;
 }
+
 
 /* =========================
    STATS
@@ -249,6 +266,7 @@ a{
     margin-top:10px;
 }
 
+
 /* =========================
    PANELS
 ========================= */
@@ -284,9 +302,32 @@ a{
     gap:18px;
 }
 
+
 /* =========================
    BOOKINGS
 ========================= */
+
+.booking-list{
+    min-height:100px;
+}
+
+.empty-state{
+    padding:45px 25px;
+    text-align:center;
+    color:#555;
+}
+
+.empty-state strong{
+    display:block;
+    color:#888;
+    font-size:.8rem;
+    text-transform:uppercase;
+    margin-bottom:7px;
+}
+
+.empty-state span{
+    font-size:.68rem;
+}
 
 .booking{
     padding:20px 22px;
@@ -298,7 +339,7 @@ a{
     border-bottom:none;
 }
 
-.booking.new-highlight{
+.booking.new-booking{
     background:#12090a;
     box-shadow:inset 3px 0 #e3262e;
 }
@@ -333,6 +374,7 @@ a{
 .customer-contact{
     color:#555;
     font-size:.68rem;
+    margin-top:3px;
 }
 
 .booking-status{
@@ -351,11 +393,6 @@ a{
 .status-confirmed{
     background:#0d2118;
     color:#38c172;
-}
-
-.status-progress{
-    background:#201b0e;
-    color:#d6a93d;
 }
 
 .booking-details{
@@ -408,6 +445,7 @@ a{
     background:#e3262e;
     color:#fff;
 }
+
 
 /* =========================
    AUTOMATION
@@ -471,7 +509,9 @@ a{
 .timeline-copy{
     color:#555;
     font-size:.66rem;
+    margin-top:3px;
 }
+
 
 /* =========================
    QUOTE
@@ -572,6 +612,7 @@ a{
     color:#06140b;
 }
 
+
 /* =========================
    LOWER
 ========================= */
@@ -645,6 +686,7 @@ a{
     font-size:.58rem;
 }
 
+
 /* =========================
    MODAL
 ========================= */
@@ -697,13 +739,14 @@ a{
     font-size:1rem;
 }
 
-/* =========================
-   VEHICLE PROFILE
-========================= */
-
 .modal-body{
     padding:24px;
 }
+
+
+/* =========================
+   VEHICLE
+========================= */
 
 .vehicle-hero{
     display:flex;
@@ -771,6 +814,7 @@ a{
     font-size:.72rem;
 }
 
+
 /* =========================
    JOB STATUS
 ========================= */
@@ -792,7 +836,6 @@ a{
 }
 
 .status-step{
-    position:relative;
     padding:12px 7px;
     border:1px solid #282828;
     border-radius:5px;
@@ -802,11 +845,6 @@ a{
     font-size:.54rem;
     font-weight:900;
     text-transform:uppercase;
-    transition:.2s;
-}
-
-.status-step:hover{
-    border-color:#555;
 }
 
 .status-step.active{
@@ -836,6 +874,7 @@ a{
     color:#38c172;
 }
 
+
 /* =========================
    NOTES
 ========================= */
@@ -854,6 +893,7 @@ a{
     line-height:1.6;
 }
 
+
 /* =========================
    HISTORY
 ========================= */
@@ -864,10 +904,6 @@ a{
     gap:15px;
     padding:12px 0;
     border-bottom:1px solid #1d1d1d;
-}
-
-.history-item:last-child{
-    border-bottom:none;
 }
 
 .history-main strong{
@@ -886,54 +922,6 @@ a{
     white-space:nowrap;
 }
 
-/* =========================
-   PHOTOS
-========================= */
-
-.photo-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
-}
-
-.photo-box{
-    min-height:110px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:7px;
-    border:1px dashed #333;
-    border-radius:6px;
-    background:#0b0b0b;
-    color:#555;
-    font-size:.62rem;
-    text-align:center;
-}
-
-.photo-box strong{
-    color:#aaa;
-    font-size:.6rem;
-}
-
-.photo-box.add-photo{
-    cursor:pointer;
-}
-
-.photo-box.add-photo:hover{
-    border-color:#e3262e;
-    color:#e3262e;
-}
-
-/* =========================
-   ACTIONS
-========================= */
-
-.profile-actions{
-    display:flex;
-    gap:10px;
-    margin-top:24px;
-}
 
 /* =========================
    TOAST
@@ -943,30 +931,17 @@ a{
     position:fixed;
     right:25px;
     bottom:25px;
-
     max-width:340px;
-
     padding:16px 18px;
-
     background:#151515;
-
     border:1px solid #333;
-
     border-left:3px solid #e3262e;
-
     border-radius:7px;
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.45);
-
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
     transform:translateY(120px);
-
     opacity:0;
-
     pointer-events:none;
-
     transition:.3s;
-
     z-index:1000;
 }
 
@@ -986,6 +961,7 @@ a{
     color:#777;
     font-size:.64rem;
 }
+
 
 /* =========================
    RESPONSIVE
@@ -1088,10 +1064,6 @@ a{
         grid-template-columns:repeat(3,1fr);
     }
 
-    .photo-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
     .vehicle-hero{
         flex-direction:column;
     }
@@ -1115,6 +1087,7 @@ a{
 }
 
 </style>
+
 </head>
 
 
@@ -1127,66 +1100,91 @@ a{
 
 <aside class="sidebar">
 
-<a href="index.html" class="brand">
+<a
+    href="index.html"
+    class="brand"
+>
     PERFORMANCE<span>.</span>
 </a>
+
 
 <div class="nav-label">
     Workshop
 </div>
 
+
 <nav class="side-nav">
 
-<button class="active" onclick="topPage()">
+<button
+    class="active"
+    onclick="topPage()"
+>
     <span class="nav-icon">▦</span>
     Dashboard
 </button>
 
-<button onclick="scrollToBookings()">
+
+<button
+    onclick="scrollToBookings()"
+>
     <span class="nav-icon">◫</span>
     Bookings
+
     <span
+        class="nav-count"
         id="bookingNavCount"
-        style="
-            margin-left:auto;
-            color:#e3262e;
-            font-size:.6rem;
-        "
     >
-        3
+        0
     </span>
 </button>
 
-<button onclick="scrollToSchedule()">
+
+<button
+    onclick="scrollToSchedule()"
+>
     <span class="nav-icon">◷</span>
     Schedule
 </button>
 
-<button onclick="scrollToQuote()">
+
+<button
+    onclick="scrollToQuote()"
+>
     <span class="nav-icon">💰</span>
     Quotes
 </button>
 
 </nav>
 
-<div class="nav-label" style="margin-top:28px;">
+
+<div
+    class="nav-label"
+    style="margin-top:28px;"
+>
     System
 </div>
 
+
 <nav class="side-nav">
 
-<button onclick="scrollToAutomation()">
+<button
+    onclick="scrollToAutomation()"
+>
     <span class="nav-icon">⚡</span>
     Automations
 </button>
 
 </nav>
 
+
 <div class="sidebar-bottom">
 
 <div class="workshop-status">
-    <span class="status-dot"></span>
-    Workshop system online
+
+<span class="status-dot"></span>
+
+Workshop system online
+
 </div>
 
 </div>
@@ -1199,6 +1197,7 @@ a{
 ========================= -->
 
 <main class="main">
+
 
 <header class="topbar">
 
@@ -1214,6 +1213,7 @@ a{
 
 </div>
 
+
 <div class="avatar">
     PG
 </div>
@@ -1224,7 +1224,9 @@ a{
 <div class="content">
 
 
-<!-- HEADING -->
+<!-- =========================
+     PAGE HEADING
+========================= -->
 
 <div class="page-heading">
 
@@ -1244,18 +1246,24 @@ a{
 
 </div>
 
+
 <div class="date-display">
-    <span id="liveDate">
-        Loading...
-    </span>
-</div>
+
+<span id="liveDate">
+    Loading...
+</span>
 
 </div>
 
+</div>
 
-<!-- STATS -->
+
+<!-- =========================
+     STATS
+========================= -->
 
 <div class="stats-grid">
+
 
 <div class="stat-card">
 
@@ -1267,11 +1275,11 @@ a{
     class="stat-number"
     id="todayBookings"
 >
-    12
+    0
 </div>
 
 <div class="stat-change">
-    ↑ 20% from last week
+    Online booking requests
 </div>
 
 </div>
@@ -1287,7 +1295,7 @@ a{
     class="stat-number"
     id="pendingBookings"
 >
-    4
+    0
 </div>
 
 <div class="stat-change">
@@ -1325,7 +1333,7 @@ a{
 </div>
 
 <div class="stat-change">
-    ↑ 12% this week
+    This week
 </div>
 
 </div>
@@ -1333,311 +1341,61 @@ a{
 </div>
 
 
-<!-- BOOKINGS + AUTOMATION -->
+<!-- =========================
+     BOOKINGS + AUTOMATION
+========================= -->
 
 <div class="dashboard-grid">
 
 
-<section class="panel" id="bookings">
+<section
+    class="panel"
+    id="bookings"
+>
+
 
 <div class="panel-header">
 
 <h2>
-    New Bookings
+    Incoming Bookings
 </h2>
 
 <span id="bookingCountLabel">
-    3 recent
+    0 bookings
 </span>
 
 </div>
 
 
-<!-- JOHN -->
-
 <div
-    class="booking new-highlight"
-    data-customer="John Smith"
+    class="booking-list"
+    id="bookingList"
 >
 
-<div class="booking-top">
 
-<div class="customer">
+<div class="empty-state">
 
-<div class="customer-avatar">
-    JS
-</div>
+<strong>
+    No online bookings yet
+</strong>
 
-<div>
-
-<div class="customer-name">
-    John Smith
-</div>
-
-<div class="customer-contact">
-    021 555 1234
-</div>
+<span>
+    Customer bookings will appear here automatically.
+</span>
 
 </div>
 
-</div>
-
-<div class="booking-status status-new">
-    New
-</div>
-
-</div>
-
-
-<div class="booking-details">
-
-<div>
-
-<div class="detail-label">
-    Vehicle
-</div>
-
-<div class="detail-value">
-    2018 BMW M3
-</div>
-
-</div>
-
-
-<div>
-
-<div class="detail-label">
-    Service
-</div>
-
-<div class="detail-value">
-    Diagnostics
-</div>
-
-</div>
-
-
-<div>
-
-<div class="detail-label">
-    Appointment
-</div>
-
-<div class="detail-value">
-    Tomorrow • 10:00 AM
-</div>
-
-</div>
-
-</div>
-
-
-<div class="booking-actions">
-
-<button
-    class="small-btn primary"
-    onclick="openVehicleProfile()"
->
-    View Vehicle
-</button>
-
-<button
-    class="small-btn"
-    onclick="confirmBooking(this)"
->
-    Confirm
-</button>
-
-</div>
-
-</div>
-
-
-<!-- SARAH -->
-
-<div
-    class="booking"
-    data-customer="Sarah Williams"
->
-
-<div class="booking-top">
-
-<div class="customer">
-
-<div class="customer-avatar">
-    SW
-</div>
-
-<div>
-
-<div class="customer-name">
-    Sarah Williams
-</div>
-
-<div class="customer-contact">
-    021 444 7821
-</div>
-
-</div>
-
-</div>
-
-<div class="booking-status status-new">
-    New
-</div>
-
-</div>
-
-
-<div class="booking-details">
-
-<div>
-
-<div class="detail-label">
-    Vehicle
-</div>
-
-<div class="detail-value">
-    2021 Toyota Hilux
-</div>
-
-</div>
-
-<div>
-
-<div class="detail-label">
-    Service
-</div>
-
-<div class="detail-value">
-    General Service
-</div>
-
-</div>
-
-<div>
-
-<div class="detail-label">
-    Appointment
-</div>
-
-<div class="detail-value">
-    Tomorrow • 1:00 PM
-</div>
-
-</div>
-
-</div>
-
-
-<div class="booking-actions">
-
-<button
-    class="small-btn primary"
-    onclick="showToast(
-        'Vehicle profile',
-        'Sarah Williams vehicle profile opened.'
-    )"
->
-    View Vehicle
-</button>
-
-<button
-    class="small-btn"
-    onclick="confirmBooking(this)"
->
-    Confirm
-</button>
-
-</div>
-
-</div>
-
-
-<!-- MARCUS -->
-
-<div
-    class="booking"
-    data-customer="Marcus Taylor"
->
-
-<div class="booking-top">
-
-<div class="customer">
-
-<div class="customer-avatar">
-    MT
-</div>
-
-<div>
-
-<div class="customer-name">
-    Marcus Taylor
-</div>
-
-<div class="customer-contact">
-    021 338 9912
-</div>
-
-</div>
-
-</div>
-
-<div class="booking-status status-confirmed">
-    Confirmed
-</div>
-
-</div>
-
-
-<div class="booking-details">
-
-<div>
-
-<div class="detail-label">
-    Vehicle
-</div>
-
-<div class="detail-value">
-    2020 Audi RS3
-</div>
-
-</div>
-
-<div>
-
-<div class="detail-label">
-    Service
-</div>
-
-<div class="detail-value">
-    Performance
-</div>
-
-</div>
-
-<div>
-
-<div class="detail-label">
-    Appointment
-</div>
-
-<div class="detail-value">
-    Today • 2:00 PM
-</div>
-
-</div>
-
-</div>
 
 </div>
 
 </section>
 
 
-<!-- AUTOMATION -->
+<section
+    class="panel"
+    id="automation"
+>
 
-<section class="panel" id="automation">
 
 <div class="panel-header">
 
@@ -1646,7 +1404,7 @@ a{
 </h2>
 
 <span>
-    Live workflow
+    Workflow
 </span>
 
 </div>
@@ -1655,9 +1413,11 @@ a{
 <div class="automation">
 
 <p class="automation-intro">
-    Every online booking can trigger a structured
-    customer journey without your team manually
-    chasing every step.
+
+Every online booking can trigger a
+structured customer journey without
+your team manually chasing every step.
+
 </p>
 
 
@@ -1679,22 +1439,22 @@ a{
 </div>
 
 
-<div class="timeline-item complete">
+<div class="timeline-item current">
 
 <div class="timeline-dot"></div>
 
 <div class="timeline-title">
-    Customer confirmation
+    Workshop review
 </div>
 
 <div class="timeline-copy">
-    Booking details are confirmed.
+    Team reviews and confirms the request.
 </div>
 
 </div>
 
 
-<div class="timeline-item current">
+<div class="timeline-item">
 
 <div class="timeline-dot"></div>
 
@@ -1703,7 +1463,7 @@ a{
 </div>
 
 <div class="timeline-copy">
-    Automated reminder before arrival.
+    Customer receives a reminder before arrival.
 </div>
 
 </div>
@@ -1751,7 +1511,11 @@ a{
      QUOTE
 ========================= -->
 
-<section class="panel quote-panel" id="quote">
+<section
+    class="panel quote-panel"
+    id="quote"
+>
+
 
 <div class="panel-header">
 
@@ -1760,13 +1524,14 @@ a{
 </h2>
 
 <span>
-    John Smith • BMW M3
+    Demo job
 </span>
 
 </div>
 
 
 <div class="quote-body">
+
 
 <div class="quote-customer">
 
@@ -1781,6 +1546,7 @@ a{
 </p>
 
 </div>
+
 
 <div
     class="quote-status"
@@ -1859,6 +1625,7 @@ a{
 
 <div class="quote-actions">
 
+
 <button
     class="quote-btn primary"
     id="sendQuoteBtn"
@@ -1866,6 +1633,7 @@ a{
 >
     Send Quote
 </button>
+
 
 <button
     class="quote-btn"
@@ -1889,7 +1657,11 @@ a{
 <div class="lower-grid">
 
 
-<section class="panel" id="schedule">
+<section
+    class="panel"
+    id="schedule"
+>
+
 
 <div class="panel-header">
 
@@ -1898,7 +1670,7 @@ a{
 </h2>
 
 <span>
-    12 appointments
+    Workshop
 </span>
 
 </div>
@@ -2008,6 +1780,7 @@ a{
 
 <section class="panel">
 
+
 <div class="panel-header">
 
 <h2>
@@ -2086,7 +1859,7 @@ a{
 
 <button
     class="quick-action"
-    onclick="openVehicleProfile()"
+    onclick="openSelectedVehicle()"
 >
 
 <span class="quick-icon">
@@ -2098,7 +1871,7 @@ a{
 </strong>
 
 <span>
-    Open customer vehicle
+    Open selected booking
 </span>
 
 </button>
@@ -2117,13 +1890,14 @@ a{
 
 
 <!-- =========================
-     VEHICLE / JOB MODAL
+     VEHICLE MODAL
 ========================= -->
 
 <div
     class="modal"
     id="vehicleModal"
 >
+
 
 <div class="modal-card">
 
@@ -2133,6 +1907,7 @@ a{
 <h2>
     Vehicle & Job Profile
 </h2>
+
 
 <button
     class="close-modal"
@@ -2152,24 +1927,28 @@ a{
 <div>
 
 <div class="vehicle-label">
-    Active Job
+    Incoming Job
 </div>
 
-<h3>
-    2018 BMW M3
+<h3 id="modalVehicle">
+    Vehicle
 </h3>
 
-<div class="vehicle-subtitle">
-    John Smith • Job #PG-1048
+<div
+    class="vehicle-subtitle"
+    id="modalCustomer"
+>
+    Customer
 </div>
 
 </div>
+
 
 <div
     class="job-status"
     id="jobStatusBadge"
 >
-    Awaiting Approval
+    New
 </div>
 
 </div>
@@ -2177,14 +1956,15 @@ a{
 
 <div class="vehicle-grid">
 
+
 <div class="vehicle-card">
 
 <small>
     Registration
 </small>
 
-<strong>
-    ABC123
+<strong id="modalRego">
+    Not provided
 </strong>
 
 </div>
@@ -2193,11 +1973,11 @@ a{
 <div class="vehicle-card">
 
 <small>
-    Mileage
+    Year
 </small>
 
-<strong>
-    84,210 km
+<strong id="modalYear">
+    -
 </strong>
 
 </div>
@@ -2206,11 +1986,11 @@ a{
 <div class="vehicle-card">
 
 <small>
-    Engine
+    Model
 </small>
 
-<strong>
-    3.0L Twin Turbo
+<strong id="modalModel">
+    -
 </strong>
 
 </div>
@@ -2222,8 +2002,8 @@ a{
     Service
 </small>
 
-<strong>
-    Diagnostics
+<strong id="modalService">
+    -
 </strong>
 
 </div>
@@ -2235,8 +2015,8 @@ a{
     Appointment
 </small>
 
-<strong>
-    Tomorrow 10:00 AM
+<strong id="modalAppointment">
+    -
 </strong>
 
 </div>
@@ -2245,11 +2025,11 @@ a{
 <div class="vehicle-card">
 
 <small>
-    Quote
+    Booking ID
 </small>
 
-<strong>
-    $1,170
+<strong id="modalId">
+    -
 </strong>
 
 </div>
@@ -2268,26 +2048,40 @@ a{
 
 
 <button
-    class="status-step"
-    onclick="setJobStatus(0,'Booked')"
+    class="status-step active"
+    onclick="setJobStatus(0,'New')"
 >
 
 <span class="status-number">
     01
 </span>
 
-Booked
+New
 
 </button>
 
 
 <button
     class="status-step"
-    onclick="setJobStatus(1,'In Workshop')"
+    onclick="setJobStatus(1,'Confirmed')"
 >
 
 <span class="status-number">
     02
+</span>
+
+Confirmed
+
+</button>
+
+
+<button
+    class="status-step"
+    onclick="setJobStatus(2,'In Workshop')"
+>
+
+<span class="status-number">
+    03
 </span>
 
 In Workshop
@@ -2297,28 +2091,14 @@ In Workshop
 
 <button
     class="status-step"
-    onclick="setJobStatus(2,'Diagnosing')"
->
-
-<span class="status-number">
-    03
-</span>
-
-Diagnosing
-
-</button>
-
-
-<button
-    class="status-step active"
-    onclick="setJobStatus(3,'Awaiting Approval')"
+    onclick="setJobStatus(3,'Diagnosing')"
 >
 
 <span class="status-number">
     04
 </span>
 
-Awaiting Approval
+Diagnosing
 
 </button>
 
@@ -2350,7 +2130,6 @@ Completed
 
 </button>
 
-
 </div>
 
 </div>
@@ -2359,15 +2138,14 @@ Completed
 <div class="profile-section">
 
 <h4>
-    Customer Complaint
+    Customer Details
 </h4>
+
 
 <div class="note-box">
 
-<p>
-    Check engine light has been coming on
-    intermittently. Customer would like the vehicle
-    diagnosed before approving any repairs.
+<p id="modalContact">
+    No customer details.
 </p>
 
 </div>
@@ -2378,155 +2156,15 @@ Completed
 <div class="profile-section">
 
 <h4>
-    Service History
+    Service Requested
 </h4>
 
 
-<div class="history-item">
+<div class="note-box">
 
-<div class="history-main">
-
-<strong>
-    Oil & Filter Service
-</strong>
-
-<p>
-    Engine oil and filter replaced.
+<p id="modalIssue">
+    No additional information provided.
 </p>
-
-</div>
-
-<div class="history-date">
-    Mar 2026
-</div>
-
-</div>
-
-
-<div class="history-item">
-
-<div class="history-main">
-
-<strong>
-    Brake Inspection
-</strong>
-
-<p>
-    Front pads showing wear.
-</p>
-
-</div>
-
-<div class="history-date">
-    Nov 2025
-</div>
-
-</div>
-
-
-<div class="history-item">
-
-<div class="history-main">
-
-<strong>
-    General Service
-</strong>
-
-<p>
-    Routine maintenance completed.
-</p>
-
-</div>
-
-<div class="history-date">
-    Jul 2025
-</div>
-
-</div>
-
-</div>
-
-
-<div class="profile-section">
-
-<h4>
-    Job Photos
-</h4>
-
-
-<div class="photo-grid">
-
-
-<div class="photo-box">
-
-<span style="font-size:1.5rem;">
-    📷
-</span>
-
-<strong>
-    BEFORE
-</strong>
-
-<span>
-    Vehicle condition
-</span>
-
-</div>
-
-
-<div class="photo-box">
-
-<span style="font-size:1.5rem;">
-    📷
-</span>
-
-<strong>
-    DURING
-</strong>
-
-<span>
-    Work in progress
-</span>
-
-</div>
-
-
-<div class="photo-box">
-
-<span style="font-size:1.5rem;">
-    📷
-</span>
-
-<strong>
-    AFTER
-</strong>
-
-<span>
-    Completed work
-</span>
-
-</div>
-
-
-<div
-    class="photo-box add-photo"
-    onclick="addPhoto()"
->
-
-<span style="font-size:1.5rem;">
-    +
-</span>
-
-<strong>
-    ADD PHOTO
-</strong>
-
-<span>
-    Attach to job
-</span>
-
-</div>
-
 
 </div>
 
@@ -2538,7 +2176,7 @@ Completed
 
 <button
     class="quote-btn primary"
-    onclick="closeVehicleProfile(); scrollToQuote();"
+    onclick="scrollToQuote(); closeVehicleProfile();"
 >
     View Repair Quote
 </button>
@@ -2546,7 +2184,7 @@ Completed
 
 <button
     class="quote-btn"
-    onclick="jobComplete()"
+    onclick="setJobStatus(5,'Completed')"
 >
     Complete Job
 </button>
@@ -2559,9 +2197,7 @@ Completed
     Close
 </button>
 
-
 </div>
-
 
 </div>
 
@@ -2598,34 +2234,41 @@ Completed
 
 <script>
 
+
 /* =========================
-   LIVE DATE
+   STATE
+========================= */
+
+let selectedBooking = null;
+
+const STORAGE_KEY =
+    "performanceGarageBookings";
+
+
+/* =========================
+   DATE
 ========================= */
 
 function updateDate(){
 
-    const now =
-        new Date();
-
-    const formatted =
-        now.toLocaleDateString(
-            "en-NZ",
-            {
-                weekday:"long",
-                day:"numeric",
-                month:"long",
-                year:"numeric"
-            }
-        );
+    const date =
+        new Date()
+            .toLocaleDateString(
+                "en-NZ",
+                {
+                    weekday:"long",
+                    day:"numeric",
+                    month:"long",
+                    year:"numeric"
+                }
+            );
 
     document
         .getElementById("liveDate")
         .textContent =
-            formatted;
+            date;
 
 }
-
-updateDate();
 
 
 /* =========================
@@ -2634,22 +2277,27 @@ updateDate();
 
 let toastTimer;
 
-function showToast(title,copy){
+function showToast(
+    title,
+    copy
+){
 
     const toast =
         document.getElementById(
             "toast"
         );
 
-    document.getElementById(
-        "toastTitle"
-    ).textContent =
-        title;
 
-    document.getElementById(
-        "toastCopy"
-    ).textContent =
-        copy;
+    document
+        .getElementById("toastTitle")
+        .textContent =
+            title;
+
+
+    document
+        .getElementById("toastCopy")
+        .textContent =
+            copy;
 
 
     toast.classList.add(
@@ -2678,10 +2326,419 @@ function showToast(title,copy){
 
 
 /* =========================
-   VEHICLE PROFILE
+   STORAGE
 ========================= */
 
-function openVehicleProfile(){
+function getBookings(){
+
+    return JSON.parse(
+        localStorage.getItem(
+            STORAGE_KEY
+        ) || "[]"
+    );
+
+}
+
+
+function saveBookings(
+    bookings
+){
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(
+            bookings
+        )
+    );
+
+}
+
+
+/* =========================
+   LOAD BOOKINGS
+========================= */
+
+function loadBookings(){
+
+    const bookings =
+        getBookings();
+
+
+    const list =
+        document.getElementById(
+            "bookingList"
+        );
+
+
+    list.innerHTML = "";
+
+
+    if(!bookings.length){
+
+        list.innerHTML = `
+
+            <div class="empty-state">
+
+                <strong>
+                    No online bookings yet
+                </strong>
+
+                <span>
+                    Submit a booking from the customer website
+                    and it will appear here.
+
+                </span>
+
+            </div>
+
+        `;
+
+        updateCounts(
+            bookings
+        );
+
+        return;
+
+    }
+
+
+    bookings
+        .slice(0,20)
+        .forEach(
+            function(booking){
+
+                list.appendChild(
+                    createBookingCard(
+                        booking
+                    )
+                );
+
+            }
+        );
+
+
+    updateCounts(
+        bookings
+    );
+
+}
+
+
+/* =========================
+   BOOKING CARD
+========================= */
+
+function createBookingCard(
+    booking
+){
+
+    const card =
+        document.createElement(
+            "article"
+        );
+
+
+    card.className =
+        "booking";
+
+
+    if(
+        booking.status === "New"
+    ){
+
+        card.classList.add(
+            "new-booking"
+        );
+
+    }
+
+
+    const initials =
+        (booking.name || "Customer")
+            .split(" ")
+            .map(
+                word =>
+                    word.charAt(0)
+            )
+            .slice(0,2)
+            .join("")
+            .toUpperCase();
+
+
+    const statusClass =
+        booking.status === "Confirmed"
+            ? "status-confirmed"
+            : "status-new";
+
+
+    card.innerHTML = `
+
+        <div class="booking-top">
+
+            <div class="customer">
+
+                <div class="customer-avatar">
+                    ${escapeHTML(initials)}
+                </div>
+
+                <div>
+
+                    <div class="customer-name">
+                        ${escapeHTML(
+                            booking.name || "Customer"
+                        )}
+                    </div>
+
+                    <div class="customer-contact">
+                        ${escapeHTML(
+                            booking.phone || "No phone"
+                        )}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="booking-status ${statusClass}">
+                ${escapeHTML(
+                    booking.status || "New"
+                )}
+            </div>
+
+        </div>
+
+
+        <div class="booking-details">
+
+            <div>
+
+                <div class="detail-label">
+                    Vehicle
+                </div>
+
+                <div class="detail-value">
+                    ${escapeHTML(
+                        booking.vehicle ||
+                        `${booking.year || ""} ${booking.make || ""} ${booking.model || ""}`
+                    )}
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <div class="detail-label">
+                    Service
+                </div>
+
+                <div class="detail-value">
+                    ${escapeHTML(
+                        booking.service ||
+                        "Service request"
+                    )}
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <div class="detail-label">
+                    Appointment
+                </div>
+
+                <div class="detail-value">
+                    ${escapeHTML(
+                        booking.appointment ||
+                        "Not selected"
+                    )}
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="booking-actions">
+
+            <button
+                class="small-btn primary"
+                data-action="view"
+            >
+                View Booking
+            </button>
+
+
+            ${
+                booking.status === "New"
+                ? `
+                    <button
+                        class="small-btn"
+                        data-action="confirm"
+                    >
+                        Confirm
+                    </button>
+                `
+                : ""
+            }
+
+        </div>
+
+    `;
+
+
+    card
+        .querySelector(
+            '[data-action="view"]'
+        )
+        .addEventListener(
+            "click",
+            function(){
+
+                openBooking(
+                    booking
+                );
+
+            }
+        );
+
+
+    const confirmButton =
+        card.querySelector(
+            '[data-action="confirm"]'
+        );
+
+
+    if(confirmButton){
+
+        confirmButton.addEventListener(
+            "click",
+            function(){
+
+                confirmBooking(
+                    booking.id
+                );
+
+            }
+        );
+
+    }
+
+
+    return card;
+
+}
+
+
+/* =========================
+   VIEW BOOKING
+========================= */
+
+function openBooking(
+    booking
+){
+
+    selectedBooking =
+        booking;
+
+
+    document
+        .getElementById(
+            "modalVehicle"
+        )
+        .textContent =
+            booking.vehicle ||
+            `${booking.year || ""} ${booking.make || ""} ${booking.model || ""}`;
+
+
+    document
+        .getElementById(
+            "modalCustomer"
+        )
+        .textContent =
+            `${booking.name || "Customer"} • ${booking.id || "Demo Booking"}`;
+
+
+    document
+        .getElementById(
+            "modalRego"
+        )
+        .textContent =
+            booking.rego ||
+            "Not provided";
+
+
+    document
+        .getElementById(
+            "modalYear"
+        )
+        .textContent =
+            booking.year ||
+            "-";
+
+
+    document
+        .getElementById(
+            "modalModel"
+        )
+        .textContent =
+            booking.model ||
+            "-";
+
+
+    document
+        .getElementById(
+            "modalService"
+        )
+        .textContent =
+            booking.service ||
+            "-";
+
+
+    document
+        .getElementById(
+            "modalAppointment"
+        )
+        .textContent =
+            booking.appointment ||
+            "-";
+
+
+    document
+        .getElementById(
+            "modalId"
+        )
+        .textContent =
+            booking.id ||
+            "-";
+
+
+    document
+        .getElementById(
+            "modalContact"
+        )
+        .textContent =
+            `${booking.phone || "No phone"} • ${booking.email || "No email"}`;
+
+
+    document
+        .getElementById(
+            "modalIssue"
+        )
+        .textContent =
+            booking.issue ||
+            "No additional customer message provided.";
+
+
+    setJobStatusVisual(
+        getStatusIndex(
+            booking.status
+        ),
+        booking.status || "New"
+    );
+
 
     document
         .getElementById(
@@ -2694,15 +2751,64 @@ function openVehicleProfile(){
 }
 
 
-function closeVehicleProfile(){
+/* =========================
+   CONFIRM BOOKING
+========================= */
 
-    document
-        .getElementById(
-            "vehicleModal"
-        )
-        .classList.remove(
-            "active"
+function confirmBooking(
+    bookingId
+){
+
+    const bookings =
+        getBookings();
+
+
+    const booking =
+        bookings.find(
+            item =>
+                item.id === bookingId
         );
+
+
+    if(!booking){
+
+        return;
+
+    }
+
+
+    booking.status =
+        "Confirmed";
+
+
+    saveBookings(
+        bookings
+    );
+
+
+    if(
+        selectedBooking &&
+        selectedBooking.id === bookingId
+    ){
+
+        selectedBooking =
+            booking;
+
+        setJobStatusVisual(
+            1,
+            "Confirmed"
+        );
+
+    }
+
+
+    loadBookings();
+
+
+    showToast(
+        "Booking confirmed",
+        `${booking.name || "Customer"} has been confirmed.`
+    );
 
 }
 
@@ -2712,6 +2818,73 @@ function closeVehicleProfile(){
 ========================= */
 
 function setJobStatus(
+    index,
+    status
+){
+
+    if(
+        !selectedBooking
+    ){
+
+        return;
+
+    }
+
+
+    const bookings =
+        getBookings();
+
+
+    const booking =
+        bookings.find(
+            item =>
+                item.id ===
+                selectedBooking.id
+        );
+
+
+    if(!booking){
+
+        return;
+
+    }
+
+
+    booking.status =
+        status;
+
+
+    saveBookings(
+        bookings
+    );
+
+
+    selectedBooking =
+        booking;
+
+
+    setJobStatusVisual(
+        index,
+        status
+    );
+
+
+    loadBookings();
+
+
+    showToast(
+        "Job updated",
+        `Job moved to ${status}.`
+    );
+
+}
+
+
+/* =========================
+   STATUS VISUAL
+========================= */
+
+function setJobStatusVisual(
     index,
     status
 ){
@@ -2764,7 +2937,8 @@ function setJobStatus(
 
     if(
         status === "Completed" ||
-        status === "Approved"
+        status === "Approved" ||
+        status === "Confirmed"
     ){
 
         badge.style.background =
@@ -2775,7 +2949,7 @@ function setJobStatus(
 
     }
     else if(
-        status === "Awaiting Approval"
+        status === "Diagnosing"
     ){
 
         badge.style.background =
@@ -2795,113 +2969,65 @@ function setJobStatus(
 
     }
 
-
-    showToast(
-        "Job status updated",
-        `Job moved to ${status}.`
-    );
-
 }
 
 
 /* =========================
-   PHOTO DEMO
+   STATUS INDEX
 ========================= */
 
-function addPhoto(){
+function getStatusIndex(
+    status
+){
 
-    showToast(
-        "Photo upload",
-        "Technician photo attachment workflow opened."
-    );
-
-}
-
-
-/* =========================
-   COMPLETE JOB
-========================= */
-
-function jobComplete(){
-
-    setJobStatus(
-        5,
+    const statuses = [
+        "New",
+        "Confirmed",
+        "In Workshop",
+        "Diagnosing",
+        "Approved",
         "Completed"
-    );
+    ];
 
 
-    showToast(
-        "Job completed",
-        "Customer follow-up and review workflow is ready."
-    );
+    const index =
+        statuses.indexOf(
+            status
+        );
+
+
+    return index >= 0
+        ? index
+        : 0;
 
 }
 
 
 /* =========================
-   BOOKING CONFIRM
+   COUNTS
 ========================= */
 
-function confirmBooking(button){
+function updateCounts(
+    bookings
+){
 
-    const booking =
-        button.closest(
-            ".booking"
-        );
+    const total =
+        bookings.length;
 
-
-    const status =
-        booking.querySelector(
-            ".booking-status"
-        );
-
-
-    status.textContent =
-        "Confirmed";
-
-
-    status.className =
-        "booking-status status-confirmed";
-
-
-    button.textContent =
-        "Confirmed ✓";
-
-
-    button.disabled =
-        true;
-
-
-    button.style.opacity =
-        ".5";
-
-
-    booking.classList.remove(
-        "new-highlight"
-    );
-
-
-    updatePendingCount();
-
-
-    showToast(
-        "Booking confirmed",
-        "Customer confirmation workflow triggered."
-    );
-
-}
-
-
-/* =========================
-   PENDING COUNT
-========================= */
-
-function updatePendingCount(){
 
     const pending =
-        document.querySelectorAll(
-            ".status-new"
+        bookings.filter(
+            booking =>
+                booking.status === "New"
         ).length;
+
+
+    document
+        .getElementById(
+            "todayBookings"
+        )
+        .textContent =
+            total;
 
 
     document
@@ -2919,6 +3045,58 @@ function updatePendingCount(){
         .textContent =
             pending;
 
+
+    document
+        .getElementById(
+            "bookingCountLabel"
+        )
+        .textContent =
+            `${total} booking${total === 1 ? "" : "s"}`;
+
+}
+
+
+/* =========================
+   SELECTED VEHICLE
+========================= */
+
+function openSelectedVehicle(){
+
+    if(
+        selectedBooking
+    ){
+
+        openBooking(
+            selectedBooking
+        );
+
+        return;
+
+    }
+
+
+    const bookings =
+        getBookings();
+
+
+    if(
+        bookings.length
+    ){
+
+        openBooking(
+            bookings[0]
+        );
+
+        return;
+
+    }
+
+
+    showToast(
+        "No booking selected",
+        "Submit a customer booking first."
+    );
+
 }
 
 
@@ -2928,42 +3106,50 @@ function updatePendingCount(){
 
 function sendQuote(){
 
-    const status =
-        document.getElementById(
+    document
+        .getElementById(
             "quoteStatus"
-        );
+        )
+        .textContent =
+            "Sent to customer";
 
 
-    const button =
-        document.getElementById(
+    document
+        .getElementById(
+            "quoteStatus"
+        )
+        .style.background =
+            "#0d2118";
+
+
+    document
+        .getElementById(
+            "quoteStatus"
+        )
+        .style.color =
+            "#38c172";
+
+
+    document
+        .getElementById(
             "sendQuoteBtn"
+        )
+        .textContent =
+            "Quote Sent ✓";
+
+
+    document
+        .getElementById(
+            "sendQuoteBtn"
+        )
+        .classList.add(
+            "approved"
         );
-
-
-    status.textContent =
-        "Sent to customer";
-
-
-    status.style.background =
-        "#0d2118";
-
-
-    status.style.color =
-        "#38c172";
-
-
-    button.textContent =
-        "Quote Sent ✓";
-
-
-    button.classList.add(
-        "approved"
-    );
 
 
     showToast(
         "Quote sent",
-        "John Smith has been sent the $1,170 repair estimate."
+        "Repair estimate is ready for customer approval."
     );
 
 }
@@ -2971,42 +3157,50 @@ function sendQuote(){
 
 function approveQuote(){
 
-    const status =
-        document.getElementById(
+    document
+        .getElementById(
             "quoteStatus"
-        );
+        )
+        .textContent =
+            "Approved";
 
 
-    const button =
-        document.getElementById(
+    document
+        .getElementById(
+            "quoteStatus"
+        )
+        .style.background =
+            "#0d2118";
+
+
+    document
+        .getElementById(
+            "quoteStatus"
+        )
+        .style.color =
+            "#38c172";
+
+
+    document
+        .getElementById(
             "approveQuoteBtn"
+        )
+        .textContent =
+            "Approved ✓";
+
+
+    document
+        .getElementById(
+            "approveQuoteBtn"
+        )
+        .classList.add(
+            "approved"
         );
-
-
-    status.textContent =
-        "Approved";
-
-
-    status.style.background =
-        "#0d2118";
-
-
-    status.style.color =
-        "#38c172";
-
-
-    button.textContent =
-        "Approved ✓";
-
-
-    button.classList.add(
-        "approved"
-    );
 
 
     showToast(
         "Quote approved",
-        "Customer approved the $1,170 repair quote."
+        "Customer approved the repair estimate."
     );
 
 }
@@ -3079,8 +3273,21 @@ function scrollToAutomation(){
 
 
 /* =========================
-   MODAL CLICK
+   MODAL
 ========================= */
+
+function closeVehicleProfile(){
+
+    document
+        .getElementById(
+            "vehicleModal"
+        )
+        .classList.remove(
+            "active"
+        );
+
+}
+
 
 document
     .getElementById(
@@ -3102,10 +3309,6 @@ document
     );
 
 
-/* =========================
-   ESCAPE
-========================= */
-
 document.addEventListener(
     "keydown",
     function(event){
@@ -3123,10 +3326,57 @@ document.addEventListener(
 
 
 /* =========================
+   SAFE HTML
+========================= */
+
+function escapeHTML(
+    value
+){
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+
+    div.textContent =
+        value == null
+            ? ""
+            : String(value);
+
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================
+   LIVE REFRESH
+========================= */
+
+window.addEventListener(
+    "storage",
+    function(event){
+
+        if(
+            event.key === STORAGE_KEY
+        ){
+
+            loadBookings();
+
+        }
+
+    }
+);
+
+
+/* =========================
    INITIALISE
 ========================= */
 
-updatePendingCount();
+updateDate();
+
+loadBookings();
 
 </script>
 
