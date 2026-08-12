@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Book a Service | Performance Garage</title>
 
@@ -18,228 +15,209 @@
 
 <style>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #080808;
-    color: #ffffff;
-    min-height: 100vh;
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#080808;
+    color:#fff;
+    min-height:100vh;
 }
 
 button,
 input,
 select,
-textarea {
-    font: inherit;
+textarea{
+    font:inherit;
 }
 
-button {
-    cursor: pointer;
+button{
+    cursor:pointer;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
+a{
+    color:inherit;
+    text-decoration:none;
 }
 
 /* =========================
    NAVIGATION
 ========================= */
 
-nav {
-    height: 78px;
-    border-bottom: 1px solid #252525;
-    background: rgba(8, 8, 8, 0.96);
+nav{
+    height:78px;
+    border-bottom:1px solid #252525;
+    background:rgba(8,8,8,.96);
 
-    display: flex;
-    align-items: center;
+    display:flex;
+    align-items:center;
 }
 
-.nav-container {
-    width: min(1100px, 90%);
-    margin: auto;
+.nav-container{
+    width:min(1100px,90%);
+    margin:auto;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
-.logo {
-    color: #ffffff;
-    font-size: 1.15rem;
-    font-weight: 900;
-    letter-spacing: 1px;
+.logo{
+    font-size:1.15rem;
+    font-weight:900;
+    letter-spacing:1px;
 }
 
-.logo span {
-    color: #e3262e;
+.logo span{
+    color:#e3262e;
 }
 
-.back-link {
-    color: #777777;
-    font-size: 0.85rem;
-    font-weight: 700;
-    transition: 0.3s;
+.back-link{
+    color:#777;
+    font-size:.85rem;
+    font-weight:700;
 }
 
-.back-link:hover {
-    color: #ffffff;
+.back-link:hover{
+    color:#fff;
 }
 
 /* =========================
    PAGE
 ========================= */
 
-.page {
-    width: min(950px, 92%);
-    margin: auto;
-
-    padding: 70px 0 100px;
+.page{
+    width:min(950px,92%);
+    margin:auto;
+    padding:70px 0 100px;
 }
 
-.intro {
-    text-align: center;
-    margin-bottom: 45px;
+.intro{
+    text-align:center;
+    margin-bottom:45px;
 }
 
-.eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
 
-    color: #e3262e;
+    color:#e3262e;
 
-    font-size: 0.75rem;
-    font-weight: 900;
+    font-size:.75rem;
+    font-weight:900;
 
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    letter-spacing:2px;
+    text-transform:uppercase;
 
-    margin-bottom: 18px;
+    margin-bottom:18px;
 }
 
-.eyebrow::before {
-    content: "";
-
-    width: 28px;
-    height: 2px;
-
-    background: #e3262e;
+.eyebrow::before{
+    content:"";
+    width:28px;
+    height:2px;
+    background:#e3262e;
 }
 
-.intro h1 {
-    font-size: clamp(2.8rem, 7vw, 5rem);
-
-    line-height: 0.95;
-
-    letter-spacing: -3px;
-
-    text-transform: uppercase;
-
-    margin-bottom: 18px;
+.intro h1{
+    font-size:clamp(2.8rem,7vw,5rem);
+    line-height:.95;
+    letter-spacing:-3px;
+    text-transform:uppercase;
+    margin-bottom:18px;
 }
 
-.intro h1 span {
-    color: #e3262e;
+.intro h1 span{
+    color:#e3262e;
 }
 
-.intro p {
-    color: #777777;
-    max-width: 550px;
-    margin: auto;
+.intro p{
+    color:#777;
+    max-width:550px;
+    margin:auto;
 }
 
 /* =========================
    PROGRESS
 ========================= */
 
-.progress {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 8px;
-
-    margin-bottom: 16px;
+.progress{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin-bottom:16px;
 }
 
-.progress-step {
-    height: 4px;
-
-    background: #242424;
-
-    border-radius: 20px;
-
-    transition: 0.3s;
+.progress-step{
+    height:4px;
+    background:#242424;
+    border-radius:20px;
+    transition:.3s;
 }
 
-.progress-step.active {
-    background: #e3262e;
+.progress-step.active{
+    background:#e3262e;
 }
 
-.step-labels {
-    display: flex;
-    justify-content: space-between;
+.step-labels{
+    display:flex;
+    justify-content:space-between;
 
-    color: #555555;
+    color:#555;
+    font-size:.68rem;
+    text-transform:uppercase;
+    letter-spacing:1px;
 
-    font-size: 0.68rem;
-
-    text-transform: uppercase;
-    letter-spacing: 1px;
-
-    margin-bottom: 25px;
+    margin-bottom:25px;
 }
 
-.step-labels .active {
-    color: #ffffff;
+.step-labels .active{
+    color:#fff;
 }
 
 /* =========================
    BOOKING CARD
 ========================= */
 
-.booking-card {
-    background: #101010;
+.booking-card{
+    background:#101010;
+    border:1px solid #252525;
+    border-radius:10px;
 
-    border: 1px solid #252525;
-
-    border-radius: 10px;
-
-    padding: clamp(25px, 5vw, 45px);
+    padding:clamp(25px,5vw,45px);
 
     box-shadow:
-        0 25px 80px rgba(0, 0, 0, 0.35);
+        0 25px 80px rgba(0,0,0,.35);
 }
 
-.booking-step {
-    display: none;
+.booking-step{
+    display:none;
 }
 
-.booking-step.active {
-    display: block;
-
-    animation: fadeIn 0.3s ease;
+.booking-step.active{
+    display:block;
+    animation:fadeIn .3s ease;
 }
 
-@keyframes fadeIn {
+@keyframes fadeIn{
 
-    from {
-        opacity: 0;
-        transform: translateY(8px);
+    from{
+        opacity:0;
+        transform:translateY(8px);
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    to{
+        opacity:1;
+        transform:translateY(0);
     }
 
 }
@@ -248,606 +226,498 @@ nav {
    HEADINGS
 ========================= */
 
-.step-heading {
-    margin-bottom: 30px;
+.step-heading{
+    margin-bottom:30px;
 }
 
-.step-heading small {
-    color: #e3262e;
-
-    font-size: 0.7rem;
-    font-weight: 900;
-
-    letter-spacing: 2px;
-
-    text-transform: uppercase;
+.step-heading small{
+    color:#e3262e;
+    font-size:.7rem;
+    font-weight:900;
+    letter-spacing:2px;
+    text-transform:uppercase;
 }
 
-.step-heading h2 {
-    font-size: 2rem;
-
-    text-transform: uppercase;
-
-    margin-top: 7px;
+.step-heading h2{
+    font-size:2rem;
+    text-transform:uppercase;
+    margin-top:7px;
 }
 
-.step-heading p {
-    color: #777777;
-
-    margin-top: 8px;
+.step-heading p{
+    color:#777;
+    margin-top:8px;
 }
 
 /* =========================
    FORM
 ========================= */
 
-.form-grid {
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 18px;
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
 }
 
-.field {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 7px;
+.field{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
 }
 
-.field.full {
-    grid-column: 1 / -1;
+.field.full{
+    grid-column:1/-1;
 }
 
-.field label {
-    color: #aaaaaa;
-
-    font-size: 0.78rem;
-
-    font-weight: 800;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.5px;
+.field label{
+    color:#aaa;
+    font-size:.78rem;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.5px;
 }
 
 .field input,
 .field select,
-.field textarea {
-    width: 100%;
+.field textarea{
+    width:100%;
 
-    padding: 14px 15px;
+    padding:14px 15px;
 
-    background: #090909;
+    background:#090909;
+    border:1px solid #292929;
+    border-radius:6px;
 
-    border: 1px solid #292929;
+    color:#fff;
+    outline:none;
 
-    border-radius: 6px;
-
-    color: #ffffff;
-
-    outline: none;
-
-    transition: 0.2s;
+    transition:.2s;
 }
 
 .field input:focus,
 .field select:focus,
-.field textarea:focus {
-    border-color: #e3262e;
+.field textarea:focus{
+    border-color:#e3262e;
 
     box-shadow:
-        0 0 0 2px
-        rgba(227, 38, 46, 0.08);
+        0 0 0 2px rgba(227,38,46,.08);
 }
 
 .field input::placeholder,
-.field textarea::placeholder {
-    color: #444444;
+.field textarea::placeholder{
+    color:#444;
 }
 
-.field textarea {
-    min-height: 115px;
-
-    resize: vertical;
+.field textarea{
+    min-height:115px;
+    resize:vertical;
 }
 
-/* =========================
-   OPTIONAL FIELD
-========================= */
-
-.optional {
-    color: #555555;
-
-    font-size: 0.62rem;
-
-    font-weight: 700;
-
-    margin-left: 5px;
-
-    text-transform: none;
+.optional{
+    color:#555;
+    font-size:.62rem;
+    font-weight:700;
+    margin-left:5px;
+    text-transform:none;
 }
 
 /* =========================
    SERVICES
 ========================= */
 
-.options {
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 12px;
+.options{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
 }
 
-.option {
-    position: relative;
+.option{
+    position:relative;
 }
 
-.option input {
-    position: absolute;
-
-    opacity: 0;
+.option input{
+    position:absolute;
+    opacity:0;
 }
 
-.option label {
-    display: block;
+.option label{
+    display:block;
 
-    background: #0b0b0b;
+    background:#0b0b0b;
+    border:1px solid #292929;
+    border-radius:7px;
 
-    border: 1px solid #292929;
+    padding:20px;
+    cursor:pointer;
 
-    border-radius: 7px;
-
-    padding: 20px;
-
-    cursor: pointer;
-
-    transition: 0.25s;
+    transition:.25s;
 }
 
-.option label strong {
-    display: block;
-
-    font-size: 0.95rem;
-
-    text-transform: uppercase;
-
-    margin-bottom: 4px;
+.option label strong{
+    display:block;
+    font-size:.95rem;
+    text-transform:uppercase;
+    margin-bottom:4px;
 }
 
-.option label span {
-    color: #666666;
-
-    font-size: 0.78rem;
+.option label span{
+    color:#666;
+    font-size:.78rem;
 }
 
-.option label:hover {
-    border-color: #555555;
+.option label:hover{
+    border-color:#555;
 }
 
-.option input:checked + label {
-    border-color: #e3262e;
-
-    background: #160b0c;
+.option input:checked + label{
+    border-color:#e3262e;
+    background:#160b0c;
 
     box-shadow:
         0 0 0 1px #e3262e;
 }
 
 /* =========================
-   PHOTO UPLOAD
+   PHOTO
 ========================= */
 
-.photo-upload {
-    position: relative;
+.photo-upload{
+    position:relative;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    min-height: 120px;
+    min-height:120px;
+    padding:20px;
 
-    padding: 20px;
+    border:1px dashed #333;
+    border-radius:7px;
 
-    border: 1px dashed #333333;
+    background:#0b0b0b;
 
-    border-radius: 7px;
-
-    background: #0b0b0b;
-
-    text-align: center;
-
-    transition: 0.25s;
+    text-align:center;
 }
 
-.photo-upload:hover {
-    border-color: #e3262e;
+.photo-upload:hover{
+    border-color:#e3262e;
 }
 
-.photo-upload input {
-    position: absolute;
+.photo-upload input{
+    position:absolute;
+    inset:0;
 
-    inset: 0;
+    width:100%;
+    height:100%;
 
-    width: 100%;
-    height: 100%;
-
-    opacity: 0;
-
-    cursor: pointer;
+    opacity:0;
+    cursor:pointer;
 }
 
-.photo-content {
-    pointer-events: none;
+.photo-content{
+    pointer-events:none;
 }
 
-.photo-icon {
-    display: block;
-
-    font-size: 1.5rem;
-
-    margin-bottom: 8px;
+.photo-icon{
+    display:block;
+    font-size:1.5rem;
+    margin-bottom:8px;
 }
 
-.photo-content strong {
-    display: block;
-
-    font-size: 0.7rem;
-
-    text-transform: uppercase;
+.photo-content strong{
+    display:block;
+    font-size:.7rem;
+    text-transform:uppercase;
 }
 
-.photo-content span {
-    display: block;
-
-    color: #555555;
-
-    font-size: 0.62rem;
-
-    margin-top: 4px;
+.photo-content span{
+    display:block;
+    color:#555;
+    font-size:.62rem;
+    margin-top:4px;
 }
 
-.photo-name {
-    color: #38c172 !important;
-
-    margin-top: 8px !important;
-}
-
-/* =========================
-   BUTTONS
-========================= */
-
-.actions {
-    display: flex;
-
-    justify-content: space-between;
-
-    gap: 12px;
-
-    margin-top: 35px;
-}
-
-.btn {
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border: none;
-
-    border-radius: 6px;
-
-    padding: 15px 24px;
-
-    font-weight: 900;
-
-    text-transform: uppercase;
-
-    text-decoration: none;
-
-    transition: 0.25s;
-}
-
-.btn-primary {
-    background: #e3262e;
-
-    color: #ffffff;
-
-    margin-left: auto;
-}
-
-.btn-primary:hover {
-    background: #ffffff;
-
-    color: #080808;
-
-    transform: translateY(-2px);
-}
-
-.btn-secondary {
-    background: transparent;
-
-    border: 1px solid #333333;
-
-    color: #aaaaaa;
-}
-
-.btn-secondary:hover {
-    border-color: #ffffff;
-
-    color: #ffffff;
+.photo-name{
+    color:#38c172 !important;
+    margin-top:8px !important;
 }
 
 /* =========================
    LIVE SUMMARY
 ========================= */
 
-.live-summary {
-    margin-top: 25px;
+.live-summary{
+    margin-top:25px;
+    padding:18px;
 
-    padding: 18px;
-
-    background: #0b0b0b;
-
-    border: 1px solid #222222;
-
-    border-radius: 7px;
+    background:#0b0b0b;
+    border:1px solid #222;
+    border-radius:7px;
 }
 
-.live-summary-title {
-    color: #e3262e;
+.live-summary-title{
+    color:#e3262e;
 
-    font-size: 0.65rem;
+    font-size:.65rem;
+    font-weight:900;
 
-    font-weight: 900;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
 
-    letter-spacing: 1.5px;
-
-    text-transform: uppercase;
-
-    margin-bottom: 12px;
+    margin-bottom:12px;
 }
 
-.live-summary-grid {
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 12px;
+.live-summary-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
 }
 
-.live-item small {
-    display: block;
+.live-item small{
+    display:block;
 
-    color: #555555;
+    color:#555;
 
-    font-size: 0.58rem;
+    font-size:.58rem;
+    font-weight:900;
 
-    font-weight: 900;
+    text-transform:uppercase;
 
-    text-transform: uppercase;
-
-    margin-bottom: 3px;
+    margin-bottom:3px;
 }
 
-.live-item strong {
-    color: #cccccc;
+.live-item strong{
+    color:#ccc;
+    font-size:.7rem;
+}
 
-    font-size: 0.7rem;
+/* =========================
+   BUTTONS
+========================= */
+
+.actions{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    margin-top:35px;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    border:none;
+    border-radius:6px;
+
+    padding:15px 24px;
+
+    font-weight:900;
+    text-transform:uppercase;
+    text-decoration:none;
+
+    transition:.25s;
+}
+
+.btn-primary{
+    background:#e3262e;
+    color:#fff;
+    margin-left:auto;
+}
+
+.btn-primary:hover{
+    background:#fff;
+    color:#080808;
+    transform:translateY(-2px);
+}
+
+.btn-secondary{
+    background:transparent;
+    border:1px solid #333;
+    color:#aaa;
+}
+
+.btn-secondary:hover{
+    border-color:#fff;
+    color:#fff;
 }
 
 /* =========================
    CONFIRMATION
 ========================= */
 
-.confirmation {
-    display: none;
-
-    text-align: center;
-
-    padding: 15px 0 5px;
+.confirmation{
+    display:none;
+    text-align:center;
+    padding:15px 0 5px;
 }
 
-.confirmation.active {
-    display: block;
-
-    animation: fadeIn 0.4s ease;
+.confirmation.active{
+    display:block;
+    animation:fadeIn .4s ease;
 }
 
-.success-icon {
-    width: 72px;
-    height: 72px;
+.success-icon{
+    width:72px;
+    height:72px;
 
-    display: grid;
+    display:grid;
+    place-items:center;
 
-    place-items: center;
+    margin:0 auto 25px;
 
-    margin: 0 auto 25px;
+    border-radius:50%;
 
-    border-radius: 50%;
+    background:#e3262e;
 
-    background: #e3262e;
-
-    font-size: 2rem;
-
-    font-weight: 900;
+    font-size:2rem;
+    font-weight:900;
 
     box-shadow:
-        0 15px 40px
-        rgba(227, 38, 46, 0.2);
+        0 15px 40px rgba(227,38,46,.2);
 }
 
-.confirmation h2 {
-    font-size:
-        clamp(2rem, 5vw, 2.8rem);
-
-    line-height: 1;
-
-    text-transform: uppercase;
-
-    margin-bottom: 15px;
+.confirmation h2{
+    font-size:clamp(2rem,5vw,2.8rem);
+    line-height:1;
+    text-transform:uppercase;
+    margin-bottom:15px;
 }
 
-.confirmation > p {
-    color: #777777;
-
-    max-width: 530px;
-
-    margin: 0 auto 30px;
+.confirmation > p{
+    color:#777;
+    max-width:530px;
+    margin:0 auto 30px;
 }
 
-.booking-summary {
-    background: #090909;
+.booking-summary{
+    background:#090909;
 
-    border: 1px solid #242424;
+    border:1px solid #242424;
+    border-radius:8px;
 
-    border-radius: 8px;
+    padding:25px;
 
-    padding: 25px;
+    text-align:left;
 
-    text-align: left;
-
-    max-width: 540px;
-
-    margin: auto;
+    max-width:540px;
+    margin:auto;
 }
 
-.summary-row {
-    display: flex;
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
 
-    justify-content: space-between;
+    padding:13px 0;
 
-    gap: 20px;
-
-    padding: 13px 0;
-
-    border-bottom: 1px solid #1d1d1d;
+    border-bottom:1px solid #1d1d1d;
 }
 
-.summary-row:last-child {
-    border-bottom: none;
+.summary-row:last-child{
+    border-bottom:none;
 }
 
-.summary-row span:first-child {
-    color: #666666;
+.summary-row span:first-child{
+    color:#666;
 
-    font-size: 0.72rem;
+    font-size:.72rem;
 
-    text-transform: uppercase;
-
-    letter-spacing: 0.5px;
+    text-transform:uppercase;
+    letter-spacing:.5px;
 }
 
-.summary-row span:last-child {
-    text-align: right;
-
-    font-weight: 800;
+.summary-row span:last-child{
+    text-align:right;
+    font-weight:800;
 }
 
-.send-area {
-    margin-top: 30px;
-
-    padding-top: 25px;
-
-    border-top: 1px solid #222222;
+.send-area{
+    margin-top:30px;
+    padding-top:25px;
+    border-top:1px solid #222;
 }
 
-.send-area h3 {
-    font-size: 1rem;
-
-    text-transform: uppercase;
-
-    margin-bottom: 7px;
+.send-area h3{
+    font-size:1rem;
+    text-transform:uppercase;
+    margin-bottom:7px;
 }
 
-.send-area p {
-    color: #666666;
-
-    font-size: 0.8rem;
-
-    margin-bottom: 18px;
+.send-area p{
+    color:#666;
+    font-size:.8rem;
+    margin-bottom:18px;
 }
 
-.send-button {
-    width: 100%;
-
-    appearance: none;
-
-    -webkit-appearance: none;
-
-    cursor: pointer;
+.send-button{
+    width:100%;
 }
 
-.demo-note {
-    margin-top: 20px;
-
-    color: #444444;
-
-    font-size: 0.72rem;
+.demo-note{
+    margin-top:20px;
+    color:#444;
+    font-size:.72rem;
 }
 
 /* =========================
    MOBILE
 ========================= */
 
-@media (max-width: 650px) {
+@media(max-width:650px){
 
-    nav {
-        height: 68px;
+    nav{
+        height:68px;
     }
 
-    .back-link {
-        font-size: 0.75rem;
+    .back-link{
+        font-size:.75rem;
     }
 
-    .page {
-        padding-top: 50px;
+    .page{
+        padding-top:50px;
     }
 
-    .intro h1 {
-        letter-spacing: -2px;
+    .intro h1{
+        letter-spacing:-2px;
     }
 
     .options,
-    .form-grid {
-        grid-template-columns: 1fr;
+    .form-grid{
+        grid-template-columns:1fr;
     }
 
-    .field.full {
-        grid-column: auto;
+    .field.full{
+        grid-column:auto;
     }
 
-    .step-labels {
-        font-size: 0.56rem;
+    .step-labels{
+        font-size:.56rem;
     }
 
-    .actions {
-        flex-direction: column-reverse;
+    .actions{
+        flex-direction:column-reverse;
     }
 
-    .btn {
-        width: 100%;
+    .btn{
+        width:100%;
     }
 
-    .btn-primary {
-        margin-left: 0;
+    .btn-primary{
+        margin-left:0;
     }
 
-    .summary-row {
-        flex-direction: column;
-
-        gap: 4px;
+    .summary-row{
+        flex-direction:column;
+        gap:4px;
     }
 
-    .summary-row span:last-child {
-        text-align: left;
+    .summary-row span:last-child{
+        text-align:left;
     }
 
-    .live-summary-grid {
-        grid-template-columns: 1fr;
+    .live-summary-grid{
+        grid-template-columns:1fr;
     }
 
 }
@@ -859,10 +729,6 @@ nav {
 
 <body>
 
-
-<!-- =========================
-     NAVIGATION
-========================= -->
 
 <nav>
 
@@ -887,10 +753,6 @@ nav {
 </nav>
 
 
-<!-- =========================
-     MAIN
-========================= -->
-
 <main class="page">
 
 
@@ -913,8 +775,6 @@ nav {
 </div>
 
 
-<!-- PROGRESS -->
-
 <div class="progress">
 
 <div class="progress-step active"></div>
@@ -927,33 +787,20 @@ nav {
 
 <div class="step-labels">
 
-<span class="active">
-    Vehicle
-</span>
-
-<span>
-    Service
-</span>
-
-<span>
-    Appointment
-</span>
-
-<span>
-    Details
-</span>
+<span class="active">Vehicle</span>
+<span>Service</span>
+<span>Appointment</span>
+<span>Details</span>
 
 </div>
 
 
-<!-- =========================
-     BOOKING CARD
-========================= -->
-
 <div class="booking-card">
 
 
-<!-- STEP 1 -->
+<!-- =========================
+     STEP 1
+========================= -->
 
 <div
     class="booking-step active"
@@ -992,26 +839,54 @@ nav {
     Select make
 </option>
 
+<option>Abarth</option>
+<option>Alfa Romeo</option>
 <option>Audi</option>
 <option>BMW</option>
+<option>BYD</option>
+<option>Chery</option>
+<option>Chevrolet</option>
+<option>Chrysler</option>
+<option>Citroen</option>
+<option>Daewoo</option>
+<option>Daihatsu</option>
+<option>Dodge</option>
+<option>Fiat</option>
 <option>Ford</option>
-<option>Honda</option>
-<option>Infiniti</option>
-<option>Lexus</option>
-<option>Mercedes-Benz</option>
-<option>Nissan</option>
-<option>Toyota</option>
-<option>Volkswagen</option>
-<option>Mazda</option>
-<option>Mitsubishi</option>
-<option>Subaru</option>
+<option>Foton</option>
+<option>GWM</option>
+<option>Haval</option>
 <option>Holden</option>
+<option>Honda</option>
 <option>Hyundai</option>
+<option>Infiniti</option>
+<option>Isuzu</option>
+<option>Jaguar</option>
+<option>Jeep</option>
 <option>Kia</option>
 <option>Land Rover</option>
-<option>Jeep</option>
-<option>Jaguar</option>
+<option>Lexus</option>
+<option>Mahindra</option>
+<option>Mazda</option>
+<option>McLaren</option>
+<option>Mercedes-Benz</option>
+<option>MG</option>
+<option>Mini</option>
+<option>Mitsubishi</option>
+<option>Nissan</option>
+<option>Peugeot</option>
 <option>Porsche</option>
+<option>Ram</option>
+<option>Renault</option>
+<option>Rolls-Royce</option>
+<option>Skoda</option>
+<option>Smart</option>
+<option>Subaru</option>
+<option>Suzuki</option>
+<option>Tesla</option>
+<option>Toyota</option>
+<option>Volkswagen</option>
+<option>Volvo</option>
 <option>Other</option>
 
 </select>
@@ -1083,7 +958,6 @@ nav {
 
 </div>
 
-
 </div>
 
 
@@ -1106,6 +980,7 @@ nav {
 </strong>
 
 </div>
+
 
 <div class="live-item">
 
@@ -1139,7 +1014,9 @@ nav {
 </div>
 
 
-<!-- STEP 2 -->
+<!-- =========================
+     STEP 2
+========================= -->
 
 <div
     class="booking-step"
@@ -1167,7 +1044,6 @@ nav {
 
 
 <div class="option">
-
 <input
     type="radio"
     name="service"
@@ -1186,12 +1062,10 @@ nav {
 </span>
 
 </label>
-
 </div>
 
 
 <div class="option">
-
 <input
     type="radio"
     name="service"
@@ -1210,12 +1084,10 @@ nav {
 </span>
 
 </label>
-
 </div>
 
 
 <div class="option">
-
 <input
     type="radio"
     name="service"
@@ -1234,12 +1106,10 @@ nav {
 </span>
 
 </label>
-
 </div>
 
 
 <div class="option">
-
 <input
     type="radio"
     name="service"
@@ -1258,12 +1128,10 @@ nav {
 </span>
 
 </label>
-
 </div>
 
 
 <div class="option">
-
 <input
     type="radio"
     name="service"
@@ -1282,12 +1150,10 @@ nav {
 </span>
 
 </label>
-
 </div>
 
 
 <div class="option">
-
 <input
     type="radio"
     name="service"
@@ -1306,8 +1172,8 @@ nav {
 </span>
 
 </label>
-
 </div>
+
 
 </div>
 
@@ -1335,7 +1201,9 @@ nav {
 </div>
 
 
-<!-- STEP 3 -->
+<!-- =========================
+     STEP 3
+========================= -->
 
 <div
     class="booking-step"
@@ -1454,8 +1322,7 @@ nav {
 <span
     class="photo-name"
     id="photoName"
->
-</span>
+></span>
 
 </div>
 
@@ -1489,7 +1356,9 @@ nav {
 </div>
 
 
-<!-- STEP 4 -->
+<!-- =========================
+     STEP 4
+========================= -->
 
 <div
     class="booking-step"
@@ -1583,6 +1452,7 @@ nav {
 
 </div>
 
+
 <div class="live-item">
 
 <small>
@@ -1595,6 +1465,7 @@ nav {
 
 </div>
 
+
 <div class="live-item">
 
 <small>
@@ -1606,6 +1477,7 @@ nav {
 </strong>
 
 </div>
+
 
 <div class="live-item">
 
@@ -1674,13 +1546,26 @@ Thanks,
     there
 </span>.
 
-Your booking request is ready
-to be sent to Performance Garage.
+Your booking has been added
+to the workshop dashboard.
 
 </p>
 
 
 <div class="booking-summary">
+
+
+<div class="summary-row">
+
+<span>
+    Booking ID
+</span>
+
+<span id="confirmId">
+    -
+</span>
+
+</div>
 
 
 <div class="summary-row">
@@ -1754,7 +1639,6 @@ to be sent to Performance Garage.
     Send Booking Enquiry
 </h3>
 
-
 <p>
     This demo will open your phone's
     Messages app with the booking
@@ -1764,7 +1648,6 @@ to be sent to Performance Garage.
 
 <button
     type="button"
-    id="sendEnquiryButton"
     class="btn btn-primary send-button"
     onclick="sendBookingSMS()"
 >
@@ -1782,6 +1665,7 @@ to be sent to Performance Garage.
 
 </div>
 
+
 </div>
 
 </main>
@@ -1797,10 +1681,18 @@ let currentStep = 1;
 
 
 /* =========================
-   UPDATE PROGRESS
+   STORAGE
 ========================= */
 
-function updateProgress() {
+const BOOKING_STORAGE_KEY =
+    "performanceGarageBookings";
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+function updateProgress(){
 
     const progressSteps =
         document.querySelectorAll(
@@ -1814,7 +1706,7 @@ function updateProgress() {
 
 
     progressSteps.forEach(
-        (step, index) => {
+        (step,index) => {
 
             step.classList.toggle(
                 "active",
@@ -1826,7 +1718,7 @@ function updateProgress() {
 
 
     labels.forEach(
-        (label, index) => {
+        (label,index) => {
 
             label.classList.toggle(
                 "active",
@@ -1843,7 +1735,7 @@ function updateProgress() {
    SHOW STEP
 ========================= */
 
-function showStep(step) {
+function showStep(step){
 
     document
         .querySelectorAll(
@@ -1864,7 +1756,7 @@ function showStep(step) {
         );
 
 
-    if (selectedStep) {
+    if(selectedStep){
 
         selectedStep.classList.add(
             "active"
@@ -1873,18 +1765,18 @@ function showStep(step) {
     }
 
 
-    currentStep = step;
+    currentStep =
+        step;
 
 
     updateProgress();
-
 
     updateFinalPreview();
 
 
     window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+        top:0,
+        behavior:"smooth"
     });
 
 }
@@ -1894,9 +1786,9 @@ function showStep(step) {
    NEXT STEP
 ========================= */
 
-function nextStep() {
+function nextStep(){
 
-    if (currentStep === 1) {
+    if(currentStep === 1){
 
         const make =
             document.getElementById(
@@ -1909,7 +1801,7 @@ function nextStep() {
             ).value.trim();
 
 
-        if (!make || !model) {
+        if(!make || !model){
 
             alert(
                 "Please enter your vehicle make and model."
@@ -1922,7 +1814,7 @@ function nextStep() {
     }
 
 
-    if (currentStep === 2) {
+    if(currentStep === 2){
 
         const service =
             document.querySelector(
@@ -1930,7 +1822,7 @@ function nextStep() {
             );
 
 
-        if (!service) {
+        if(!service){
 
             alert(
                 "Please select a service."
@@ -1943,7 +1835,7 @@ function nextStep() {
     }
 
 
-    if (currentStep === 3) {
+    if(currentStep === 3){
 
         const date =
             document.getElementById(
@@ -1956,7 +1848,7 @@ function nextStep() {
             ).value;
 
 
-        if (!date || !time) {
+        if(!date || !time){
 
             alert(
                 "Please select a preferred date and time."
@@ -1969,7 +1861,7 @@ function nextStep() {
     }
 
 
-    if (currentStep < 4) {
+    if(currentStep < 4){
 
         showStep(
             currentStep + 1
@@ -1984,9 +1876,9 @@ function nextStep() {
    PREVIOUS STEP
 ========================= */
 
-function previousStep() {
+function previousStep(){
 
-    if (currentStep > 1) {
+    if(currentStep > 1){
 
         showStep(
             currentStep - 1
@@ -2001,7 +1893,7 @@ function previousStep() {
    VEHICLE PREVIEW
 ========================= */
 
-function updateVehiclePreview() {
+function updateVehiclePreview(){
 
     const make =
         document.getElementById(
@@ -2024,26 +1916,27 @@ function updateVehiclePreview() {
         ).value.trim();
 
 
-    const vehicleParts = [];
+    const parts = [];
 
-    if (year) {
-        vehicleParts.push(year);
+
+    if(year){
+        parts.push(year);
     }
 
-    if (make) {
-        vehicleParts.push(make);
+    if(make){
+        parts.push(make);
     }
 
-    if (model) {
-        vehicleParts.push(model);
+    if(model){
+        parts.push(model);
     }
 
 
     document.getElementById(
         "previewVehicle"
     ).textContent =
-        vehicleParts.length
-            ? vehicleParts.join(" ")
+        parts.length
+            ? parts.join(" ")
             : "Not entered";
 
 
@@ -2059,7 +1952,7 @@ function updateVehiclePreview() {
    FINAL PREVIEW
 ========================= */
 
-function updateFinalPreview() {
+function updateFinalPreview(){
 
     const make =
         document.getElementById(
@@ -2116,10 +2009,11 @@ function updateFinalPreview() {
             : "-";
 
 
-    let appointment = "-";
+    let appointment =
+        "-";
 
 
-    if (date && time) {
+    if(date && time){
 
         const formattedDate =
             new Date(
@@ -2127,9 +2021,9 @@ function updateFinalPreview() {
             ).toLocaleDateString(
                 "en-NZ",
                 {
-                    day: "numeric",
-                    month: "short",
-                    year: "numeric"
+                    day:"numeric",
+                    month:"short",
+                    year:"numeric"
                 }
             );
 
@@ -2157,100 +2051,39 @@ function updateFinalPreview() {
 
 
 /* =========================
-   LIVE LISTENERS
+   SAVE BOOKING
 ========================= */
 
-document
-    .getElementById("make")
-    .addEventListener(
-        "change",
-        updateVehiclePreview
+function saveBooking(booking){
+
+    const bookings =
+        JSON.parse(
+            localStorage.getItem(
+                BOOKING_STORAGE_KEY
+            ) || "[]"
+        );
+
+
+    bookings.unshift(
+        booking
     );
 
 
-document
-    .getElementById("model")
-    .addEventListener(
-        "input",
-        updateVehiclePreview
+    localStorage.setItem(
+        BOOKING_STORAGE_KEY,
+        JSON.stringify(
+            bookings
+        )
     );
 
-
-document
-    .getElementById("year")
-    .addEventListener(
-        "input",
-        updateVehiclePreview
-    );
-
-
-document
-    .getElementById("rego")
-    .addEventListener(
-        "input",
-        updateVehiclePreview
-    );
-
-
-document
-    .getElementById("photo")
-    .addEventListener(
-        "change",
-        function() {
-
-            const file =
-                this.files[0];
-
-            document.getElementById(
-                "photoName"
-            ).textContent =
-                file
-                    ? `Selected: ${file.name}`
-                    : "";
-
-            updateFinalPreview();
-
-        }
-    );
-
-
-document
-    .querySelectorAll(
-        'input[name="service"]'
-    )
-    .forEach(
-        radio => {
-
-            radio.addEventListener(
-                "change",
-                updateFinalPreview
-            );
-
-        }
-    );
-
-
-document
-    .getElementById("date")
-    .addEventListener(
-        "change",
-        updateFinalPreview
-    );
-
-
-document
-    .getElementById("time")
-    .addEventListener(
-        "change",
-        updateFinalPreview
-    );
+}
 
 
 /* =========================
    SUBMIT BOOKING
 ========================= */
 
-function submitBooking() {
+function submitBooking(){
 
     const name =
         document.getElementById(
@@ -2268,7 +2101,7 @@ function submitBooking() {
         ).value.trim();
 
 
-    if (!name || !phone || !email) {
+    if(!name || !phone || !email){
 
         alert(
             "Please complete your contact details."
@@ -2314,7 +2147,6 @@ function submitBooking() {
             'input[name="service"]:checked'
         );
 
-
     const date =
         document.getElementById(
             "date"
@@ -2325,6 +2157,11 @@ function submitBooking() {
             "time"
         ).value;
 
+    const photo =
+        document.getElementById(
+            "photo"
+        ).files[0];
+
 
     const formattedDate =
         new Date(
@@ -2332,9 +2169,9 @@ function submitBooking() {
         ).toLocaleDateString(
             "en-NZ",
             {
-                day: "numeric",
-                month: "long",
-                year: "numeric"
+                day:"numeric",
+                month:"long",
+                year:"numeric"
             }
         );
 
@@ -2354,17 +2191,21 @@ function submitBooking() {
         `${formattedDate} • ${time}`;
 
 
-    const photo =
-        document.getElementById(
-            "photo"
-        ).files[0];
-
-
     /* =========================
-       STORE DEMO BOOKING
-    ========================= */
+       CREATE BOOKING
+========================= */
 
-    window.demoBooking = {
+    const booking = {
+
+        id:
+            "PG-" +
+            Date.now(),
+
+        createdAt:
+            new Date().toISOString(),
+
+        status:
+            "new",
 
         name,
         phone,
@@ -2376,6 +2217,8 @@ function submitBooking() {
         rego,
         mileage,
 
+        vehicle,
+
         service:
             serviceName,
 
@@ -2385,8 +2228,6 @@ function submitBooking() {
         time,
 
         appointment,
-
-        vehicle,
 
         issue,
 
@@ -2399,13 +2240,32 @@ function submitBooking() {
 
 
     /* =========================
+       SAVE
+========================= */
+
+    saveBooking(
+        booking
+    );
+
+
+    window.demoBooking =
+        booking;
+
+
+    /* =========================
        CONFIRMATION
-    ========================= */
+========================= */
 
     document.getElementById(
         "confirmName"
     ).textContent =
         name;
+
+
+    document.getElementById(
+        "confirmId"
+    ).textContent =
+        booking.id;
 
 
     document.getElementById(
@@ -2429,7 +2289,8 @@ function submitBooking() {
     document.getElementById(
         "confirmIssue"
     ).textContent =
-        issue || "No issue provided";
+        issue ||
+        "No issue provided";
 
 
     document.getElementById(
@@ -2473,11 +2334,8 @@ function submitBooking() {
 
 
     window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
+        top:0,
+        behavior:"smooth"
     });
 
 }
@@ -2487,9 +2345,9 @@ function submitBooking() {
    SEND SMS
 ========================= */
 
-function sendBookingSMS() {
+function sendBookingSMS(){
 
-    if (!window.demoBooking) {
+    if(!window.demoBooking){
 
         alert(
             "Please complete a booking first."
@@ -2507,6 +2365,9 @@ function sendBookingSMS() {
     const message =
 `🚗 PERFORMANCE GARAGE
 NEW BOOKING REQUEST
+
+BOOKING ID
+${booking.id}
 
 CUSTOMER
 ${booking.name}
@@ -2533,17 +2394,9 @@ ${booking.photo || "No photo attached"}
 Submitted via ManaU Digital demo.`;
 
 
-    /*
-     * Demo receiving number.
-     */
-
     const recipient =
         "+642108839107";
 
-
-    /*
-     * iOS Messages link.
-     */
 
     const smsURL =
         "sms:" +
@@ -2554,43 +2407,129 @@ Submitted via ManaU Digital demo.`;
         );
 
 
-    /*
-     * Trigger from the user's
-     * button interaction.
-     */
-
-    const smsLink =
+    const link =
         document.createElement(
             "a"
         );
 
 
-    smsLink.href =
+    link.href =
         smsURL;
 
-
-    smsLink.style.display =
+    link.style.display =
         "none";
 
 
     document.body.appendChild(
-        smsLink
+        link
     );
 
 
-    smsLink.click();
+    link.click();
 
 
     setTimeout(
         () => {
 
-            smsLink.remove();
+            link.remove();
 
         },
         1000
     );
 
 }
+
+
+/* =========================
+   LIVE LISTENERS
+========================= */
+
+document
+    .getElementById("make")
+    .addEventListener(
+        "change",
+        updateVehiclePreview
+    );
+
+
+document
+    .getElementById("model")
+    .addEventListener(
+        "input",
+        updateVehiclePreview
+    );
+
+
+document
+    .getElementById("year")
+    .addEventListener(
+        "input",
+        updateVehiclePreview
+    );
+
+
+document
+    .getElementById("rego")
+    .addEventListener(
+        "input",
+        updateVehiclePreview
+    );
+
+
+document
+    .getElementById("photo")
+    .addEventListener(
+        "change",
+        function(){
+
+            const file =
+                this.files[0];
+
+
+            document.getElementById(
+                "photoName"
+            ).textContent =
+                file
+                    ? `Selected: ${file.name}`
+                    : "";
+
+
+            updateFinalPreview();
+
+        }
+    );
+
+
+document
+    .querySelectorAll(
+        'input[name="service"]'
+    )
+    .forEach(
+        radio => {
+
+            radio.addEventListener(
+                "change",
+                updateFinalPreview
+            );
+
+        }
+    );
+
+
+document
+    .getElementById("date")
+    .addEventListener(
+        "change",
+        updateFinalPreview
+    );
+
+
+document
+    .getElementById("time")
+    .addEventListener(
+        "change",
+        updateFinalPreview
+    );
 
 
 /* =========================
@@ -2620,6 +2559,8 @@ dateInput.min =
 updateVehiclePreview();
 
 updateFinalPreview();
+
+updateProgress();
 
 </script>
 
